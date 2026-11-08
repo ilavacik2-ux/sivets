@@ -28,7 +28,7 @@ export default function VideoSection() {
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
             <Film className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 03 / SELECTED VIDEO INVESTIGATIONS ]</span>
+            <span>Видеорасследования</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
             Видеоисследования <span className="italic font-light text-stone-500">& кинематограф</span>
@@ -92,8 +92,8 @@ export default function VideoSection() {
 
             {/* Editorial Information */}
             <div className="lg:col-span-5 space-y-5">
-              <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#c5a059] font-medium">
-                СПЕЦПРОЕКТ НАСТИ СИВЕЦ &bull; 2026
+              <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#c5a059] font-medium">
+                СПЕЦПРОЕКТ НАСТИ СИВЕЦ
               </div>
 
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900 leading-tight">
@@ -101,7 +101,7 @@ export default function VideoSection() {
               </h3>
 
               <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
-                Глубокое исследование теневого рынка селективной парфюмерии: почему копии стали визуально неотличимы от оригинала, как молекулярная экспертиза раскрывает подделки и что попадает в дыхательные пути при использовании реплик.
+                Глубокое исследование теневого рынка парфюмерии: почему копии стали визуально неотличимы от оригинала, как молекулярная экспертиза раскрывает подделки и что попадает в дыхательные пути при использовании реплик.
               </p>
 
               {/* Watch Actions */}

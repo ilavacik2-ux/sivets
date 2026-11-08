@@ -17,7 +17,7 @@ export default function BirthdayCapsule({ onOpenBirthday }) {
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
             <Cake className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 07 / 14 NOVEMBER CAPSULE ]</span>
+            <span>Капсула 14 Ноября</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
             Капсула 14 Ноября <span className="italic font-light text-stone-500">& L'Anniversaire</span>

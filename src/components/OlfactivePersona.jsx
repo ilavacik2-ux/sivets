@@ -12,14 +12,14 @@ export default function OlfactivePersona() {
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
             <Compass className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 01 / THE OLFACTIVE PERSONA ]</span>
+            <span>О Насте</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
             Ольфакторная персона <span className="italic font-light text-stone-500">& философия</span>
           </h2>
         </div>
         <div className="text-xs uppercase tracking-[0.2em] text-stone-400 font-mono sm:text-right">
-          Манифест независимого исследователя &bull; 2026
+          Философия ароматов &bull; Настя Сивец
         </div>
       </div>
 

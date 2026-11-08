@@ -55,14 +55,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="pt-8 border-t border-stone-200/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] sm:text-[11px] font-mono text-stone-400">
+      <div className="pt-8 border-t border-stone-200/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] sm:text-[11px] font-sans text-stone-400">
         <div>&copy; {new Date().getFullYear()} Настя Сивец. Все права защищены.</div>
-        <div className="flex items-center gap-2 text-stone-500">
-          <span>ОЛЬФАКТОРНЫЙ АТЛАС</span>
+        <div className="flex items-center gap-2 text-stone-500 font-sans text-[11px]">
+          <span>НАСТЯ СИВЕЦ</span>
           <span>&bull;</span>
           <span>SLUU AROMATHERAPY</span>
-          <span>&bull;</span>
-          <span>PARIS • MOSCOW</span>
         </div>
       </div>
     </footer>

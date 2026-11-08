@@ -3,7 +3,6 @@ import FragranceAura from './components/FragranceAura';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import OlfactivePersona from './components/OlfactivePersona';
-import OlfactivePyramid from './components/OlfactivePyramid';
 import VideoSection from './components/VideoSection';
 import EducationAndMasterclasses from './components/EducationAndMasterclasses';
 import SluuBrand from './components/SluuBrand';
@@ -36,17 +35,14 @@ export default function App() {
         {/* Editorial Hero Monograph */}
         <Hero onOpenBirthday={() => setBirthdayOpen(true)} />
 
-        {/* Chapter 01: The Olfactive Persona */}
+        {/* Section: The Olfactive Persona */}
         <OlfactivePersona />
 
-        {/* Chapter 02: The Scent Archive & Notes */}
-        <OlfactivePyramid />
-
-        {/* Chapter 03: Selected Video Investigations */}
-        <VideoSection />
-
-        {/* Chapter 04: Education & Masterclasses */}
+        {/* Education & Masterclasses (Course) */}
         <EducationAndMasterclasses />
+
+        {/* Section: Selected Video Investigations */}
+        <VideoSection />
 
         {/* Chapter 05: SLUU Aromatherapy Atelier */}
         <SluuBrand />

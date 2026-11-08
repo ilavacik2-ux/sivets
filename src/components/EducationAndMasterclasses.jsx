@@ -49,25 +49,25 @@ export default function EducationAndMasterclasses() {
       {/* Chapter Editorial Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
+          <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.22em] text-[#e8559a] mb-2 font-semibold">
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 04 / EDUCATION & MASTERCLASSES ]</span>
+            <span>Обучение & Курсы</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight [text-wrap:balance]">
             Обучение <span className="italic font-light text-stone-500">& авторские мастер-классы</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-[0.2em] text-stone-400 font-mono sm:text-right">
+        <div className="text-xs uppercase tracking-[0.16em] text-stone-400 font-sans font-medium sm:text-right">
           Синхронизация &bull; Частный архив материалов
         </div>
       </div>
 
       {/* Part 1: Flagship Course Brochure (Synchronize Collaboration) */}
       <div id="course" className="mb-20 pb-20 border-b border-stone-200/80 scroll-mt-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left: Course Visual & Luxury Promocode Voucher */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="relative aspect-[16/10] overflow-hidden bg-stone-100 border border-stone-200/80 shadow-xs">
+          <div className="lg:col-span-5 space-y-5">
+            <div className="relative aspect-[16/10] overflow-hidden bg-stone-100 rounded-2xl border border-stone-200/80 shadow-sm">
               <img
                 src={course.image}
                 alt={course.title}
@@ -76,30 +76,30 @@ export default function EducationAndMasterclasses() {
                 height={437}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 left-4 text-[10px] font-mono uppercase tracking-wider px-3 py-1 bg-stone-900/85 text-white backdrop-blur-md">
+              <div className="absolute top-4 left-4 text-[10px] font-sans font-medium uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
                 {course.badge}
               </div>
             </div>
 
             {/* Embossed Luxury Promocode Voucher */}
-            <div className="editorial-card p-6 sm:p-7 rounded-2xl space-y-5">
+            <div className="editorial-card p-6 rounded-2xl space-y-4 border border-stone-200/90 shadow-xs">
               <div className="flex items-center justify-between pb-3 border-b border-stone-100">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-stone-500">
+                <span className="text-[11px] font-sans uppercase tracking-[0.18em] text-stone-500 font-medium">
                   АВТОРСКИЙ ПРОМОКОД
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#fdf2f7] text-[#e8559a] text-xs font-mono font-bold">
+                <span className="px-3 py-1 rounded-full bg-[#fdf2f7] text-[#e8559a] text-xs font-sans font-bold">
                   {course.discount}
                 </span>
               </div>
 
               <div className="flex items-center justify-between p-3.5 rounded-xl bg-stone-50 border border-stone-200">
-                <span className="font-mono text-lg font-bold tracking-widest text-stone-900 uppercase">
+                <span className="font-mono text-xl font-bold tracking-widest text-stone-900 uppercase">
                   {course.promocode}
                 </span>
 
                 <button
                   onClick={copyPromocode}
-                  className="editorial-btn-dark px-4 py-2 rounded-lg flex items-center gap-1.5 cursor-pointer"
+                  className="editorial-btn-dark px-4 py-2.5 rounded-lg flex items-center gap-1.5 cursor-pointer font-sans text-xs font-medium tracking-wider"
                   title="Скопировать промокод"
                 >
                   {copied ? (
@@ -121,7 +121,7 @@ export default function EducationAndMasterclasses() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="editorial-btn-dark w-full py-4 rounded-xl flex items-center justify-center gap-2 text-center"
+                className="editorial-btn-dark w-full py-4 rounded-xl flex items-center justify-center gap-2 text-center text-xs font-sans font-medium uppercase tracking-[0.14em] shadow-sm hover:shadow-md transition-all"
               >
                 <span>Записаться на курс со скидкой</span>
                 <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
@@ -130,24 +130,24 @@ export default function EducationAndMasterclasses() {
           </div>
 
           {/* Right: Course Narrative & Interactive Syllabus */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6">
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#c5a059] font-medium mb-3">
+              <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#c5a059] font-medium mb-2">
                 ФЛАГМАНСКИЙ КУРС &bull; ЛЕКТОРИЙ «СИНХРОНИЗАЦИЯ»
               </div>
 
-              <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 leading-tight mb-4">
+              <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-normal text-stone-900 leading-tight mb-4">
                 {course.title}
               </h3>
 
               <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
-                {course.description} Курс создан для тех, кто хочет перестать теряться в парфюмерных бутиках, научиться распознавать натуральные абсолюты от синтетических молекул и уверенно формировать собственный селективный гардероб.
+                {course.description} Курс создан для тех, кто хочет перестать теряться в парфюмерных бутиках, научиться распознавать натуральные абсолюты от синтетических молекул и уверенно формировать собственный парфюмерный гардероб.
               </p>
             </div>
 
             {/* Interactive Module Navigator */}
             <div className="space-y-4 pt-4 border-t border-stone-200/80">
-              <div className="text-[11px] font-mono uppercase tracking-widest text-stone-400 flex items-center gap-2">
+              <div className="text-[11px] font-sans uppercase tracking-[0.18em] font-semibold text-stone-400 flex items-center gap-2">
                 <BookOpen className="w-3.5 h-3.5 text-[#e8559a]" />
                 <span>ПРОГРАММА ОБУЧЕНИЯ (4 КЛЮЧЕВЫХ МОДУЛЯ):</span>
               </div>
@@ -168,7 +168,7 @@ export default function EducationAndMasterclasses() {
                           : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300'
                       }`}
                     >
-                      <div className={`text-[10px] font-mono font-bold mb-1 ${isCurrent ? 'text-[#f878b3]' : 'text-stone-400'}`}>
+                      <div className={`text-[10px] font-sans font-bold mb-1 ${isCurrent ? 'text-[#f878b3]' : 'text-stone-400'}`}>
                         {mod.num}
                       </div>
                       <div className="text-xs font-serif truncate">
@@ -180,9 +180,9 @@ export default function EducationAndMasterclasses() {
               </div>
 
               {/* Active Module Details */}
-              <div className="editorial-card p-6 rounded-2xl space-y-3">
+              <div className="editorial-card p-6 rounded-2xl space-y-3 bg-[#FAF8F5]">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#e8559a] font-mono text-xs font-bold">
+                  <span className="text-[#e8559a] font-sans text-xs font-bold">
                     МОДУЛЬ {course.modules[activeModule].num}
                   </span>
                   <span className="text-stone-300">&bull;</span>
@@ -195,11 +195,11 @@ export default function EducationAndMasterclasses() {
                   {course.modules[activeModule].desc}
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-3 border-t border-stone-100">
+                <div className="flex flex-wrap gap-2 pt-3 border-t border-stone-200/60">
                   {course.modules[activeModule].topics?.map((top, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-3 py-1 rounded-full bg-stone-50 border border-stone-200/80 text-[10px] font-mono text-stone-600"
+                      className="px-3 py-1 rounded-full bg-white border border-stone-200/80 text-[10px] font-sans font-medium text-stone-600"
                     >
                       {top}
                     </span>
@@ -214,7 +214,7 @@ export default function EducationAndMasterclasses() {
       {/* Part 2: Private Masterclasses & Audio Guide Brochure */}
       <div>
         <div className="mb-10">
-          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#e8559a] font-semibold mb-2">
+          <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#e8559a] font-semibold mb-2">
             ПРИВАТНЫЙ АРХИВ МАТЕРИАЛОВ
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">

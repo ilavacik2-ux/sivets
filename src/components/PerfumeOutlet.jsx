@@ -13,7 +13,7 @@ export default function PerfumeOutlet() {
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 06 / PERFUME OUTLET ]</span>
+            <span>Комьюнити & Аутлет</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
             Парфюмерный аутлет <span className="italic font-light text-stone-500">& комьюнити</span>

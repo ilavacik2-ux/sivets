@@ -13,7 +13,7 @@ export default function SluuBrand() {
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
             <Flame className="w-3.5 h-3.5" />
-            <span>[ CHAPITRE 05 / SLUU AROMATHERAPY ATELIER ]</span>
+            <span>Ароматерапия & Дом</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
             Ателье SLUU <span className="italic font-light text-stone-500">Aromatherapy</span>
@@ -56,8 +56,8 @@ export default function SluuBrand() {
 
       {/* Minimalist Products Showcase (Aesop / Byredo Lookbook) */}
       <div className="mb-20">
-        <div className="text-[11px] font-mono uppercase tracking-[0.25em] text-stone-400 mb-8 pb-3 border-b border-stone-200/60">
-          КОЛЛЕКЦИЯ АТЕЛЬЕ &bull; РУЧНАЯ СЕЛЕКЦИЯ
+        <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-stone-400 mb-8 pb-3 border-b border-stone-200/60 font-medium">
+          КОЛЛЕКЦИЯ АТЕЛЬЕ &bull; АВТОРСКИЕ КОМПОЗИЦИИ
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -9,9 +9,9 @@ export default function Navbar() {
 
   const navLinks = [
     { id: 'persona', label: 'О Насте', href: '#persona' },
+    { id: 'sluu', label: 'SLUU', href: '#sluu' },
     { id: 'course', label: 'Курс', href: '#course' },
     { id: 'videos', label: 'Видео', href: '#videos' },
-    { id: 'sluu', label: 'SLUU', href: '#sluu' },
     { id: 'cooperation', label: 'Контакты', href: '#cooperation' },
   ];
 

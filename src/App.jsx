@@ -36,14 +36,14 @@ export default function App() {
         {/* Section: The Olfactive Persona */}
         <OlfactivePersona />
 
+        {/* SLUU Aromatherapy Brand Showcase */}
+        <SluuBrand />
+
         {/* Education & Masterclasses (Course, Lectures, Audio Guide & Merch) */}
         <EducationAndMasterclasses />
 
         {/* Section: Selected Video Investigations */}
         <VideoSection />
-
-        {/* SLUU Aromatherapy Atelier */}
-        <SluuBrand />
 
         {/* PR & Collaboration */}
         <Collaboration />

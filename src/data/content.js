@@ -296,44 +296,53 @@ export const SITE_DATA = {
   sluuBrand: {
     title: "SLUU Aromatherapy",
     tagline: "Ароматерапия для дома и ритуалов заботы о себе",
-    description: "Бренд, созданный Настей Сивец. Натуральные интерьерные диффузоры, медитативные соевые свечи и ботанические спреи с авторскими композициями, которые преображают пространство вокруг.",
-    pillars: [
-      { title: "100% Чистые экстракты", desc: "Натуральные эфирные масла и редкие ботанические компоненты без парабенов и синтетических фиксаторов" },
-      { title: "Ольфакторная медитация", desc: "Ароматы для баланса нервной системы, восстановления ресурса и глубокого сна" },
-      { title: "Собственное производство", desc: "Ручная заливка, соевый воск высшей очистки и премиальные стеклянные флаконы" }
-    ],
+    description: "Авторский бренд ароматерапии Насти Сивец. Натуральные бленды эфирных масел 100% терапевтического класса для восстановления ресурса, фокуса и эмоционального баланса.",
+    heroImage: "https://static.tildacdn.com/tild6532-3036-4361-b835-306539623965/R7__6390_from-RAW_1.png",
     products: [
       {
-        name: "Свеча No. 1 • Smoked Amber & Vanilla",
-        type: "Соевая свеча ручной работы",
-        notes: "Амбра, бурбонская ваниль, сандал, сухой кедр",
-        specs: "220 г • 55+ часов чистого горения",
-        price: "2 900 ₽",
+        id: "focus",
+        name: "Поймать фокус",
+        type: "Бленд эфирных масел • 5 мл",
+        desc: "Для концентрации внимания, ясности мысли и собранности.",
+        price: "3 500 ₽",
+        image: "https://static.tildacdn.com/tild3266-6334-4364-b538-333739343334/Frame_376-11_1.png",
         link: "https://sluu.club/shop?utm_source=site_nastya",
-        badge: "Bestseller"
+        badge: "Фокус & Энергия"
       },
       {
-        name: "Диффузор No. 2 • Fig Leaf & White Cedar",
-        type: "Интерьерный аромадиффузор",
-        notes: "Инжирный лист, зелёный чай, белый кедр, амброксан",
-        specs: "100 мл • 3-4 месяца диффузии",
-        price: "3 400 ₽",
+        id: "calm",
+        name: "Снизить тревогу",
+        type: "Бленд эфирных масел • 5 мл",
+        desc: "Мягкое заземление, снятие эмоционального напряжения и внутренний покой.",
+        price: "3 500 ₽",
+        image: "https://static.tildacdn.com/tild3032-3863-4335-b831-393137633238/Frame_483.png",
         link: "https://sluu.club/shop?utm_source=site_nastya",
-        badge: "Zen Ritual"
+        badge: "Антистресс"
       },
       {
-        name: "Ботанический мист • Neroli & Sea Salt",
-        type: "Спрей для дома и текстиля",
-        notes: "Цветы нероли, морская соль, бергамот, белый мускус",
-        specs: "150 мл • Мелкодисперсное облако",
-        price: "2 400 ₽",
+        id: "mood",
+        name: "Поднять настроение",
+        type: "Бленд эфирных масел • 5 мл",
+        desc: "Искрящийся цитрусово-пряный заряд радости, вдохновения и легкости.",
+        price: "3 500 ₽",
+        image: "https://static.tildacdn.com/tild3663-3236-4263-b930-333565626234/Frame_376-1_1.png",
         link: "https://sluu.club/shop?utm_source=site_nastya",
-        badge: "Fresh Awakening"
+        badge: "Настроение"
+      },
+      {
+        id: "sleep",
+        name: "Наладить сон",
+        type: "Бленд эфирных масел • 5 мл",
+        desc: "Глубокая вечерняя релаксация, ритуал замедления и спокойный сон.",
+        price: "3 500 ₽",
+        image: "https://static.tildacdn.com/tild3638-3934-4066-b833-643064343636/Frame_936.png",
+        link: "https://sluu.club/shop?utm_source=site_nastya",
+        badge: "Релакс & Сон"
       }
     ],
     links: [
       {
-        name: "Официальный бутик SLUU",
+        name: "Интернет-магазин SLUU",
         url: "https://sluu.club/shop?utm_source=site_nastya",
         badge: "sluu.club",
         primary: true
@@ -341,13 +350,13 @@ export const SITE_DATA = {
       {
         name: "SLUU на Ozon",
         url: "https://www.ozon.ru/seller/sluu-1528891/",
-        badge: "Экспресс-доставка",
+        badge: "Ozon",
         logo: "https://static.tildacdn.com/tild6564-3564-4764-a239-626132666235/ozon-icon-logo.png"
       },
       {
-        name: "SLUU на Wildberries",
+        name: "SLUU на WB",
         url: "https://www.wildberries.ru/brands/311263969-sluu",
-        badge: "Фирменный склад",
+        badge: "Wildberries",
         logo: "https://static.tildacdn.com/tild6233-3061-4731-b135-336538306161/wildberries-sign-log.png"
       }
     ]

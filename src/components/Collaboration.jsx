@@ -15,38 +15,38 @@ export default function Collaboration() {
   };
 
   return (
-    <section id="cooperation" className="py-24 px-4 sm:px-8 max-w-6xl mx-auto scroll-mt-24">
+    <section id="cooperation" className="py-20 sm:py-24 px-4 sm:px-8 max-w-6xl mx-auto scroll-mt-24">
       {/* Chapter Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#f878b3] mb-2">
-            <Handshake className="w-4 h-4 text-[#f878b3]" />
+          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
+            <Handshake className="w-4 h-4 text-[#e8559a]" />
             <span>[ 07 / ПАРТНЕРСТВО & PR ]</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-white tracking-tight">
-            Сотрудничество <span className="italic font-light text-neutral-300">& спецпроекты</span>
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
+            Сотрудничество <span className="italic font-light text-stone-600">& спецпроекты</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-widest text-neutral-400 font-mono sm:text-right">
+        <div className="text-xs uppercase tracking-widest text-stone-500 font-mono sm:text-right">
           Коммерческие интеграции &bull; Лекции
         </div>
       </div>
 
-      <div className="relative rounded-[2.5rem] p-8 sm:p-14 glass-luxury border border-white/15 overflow-hidden text-center max-w-3xl mx-auto shadow-2xl">
+      <div className="relative rounded-[2.5rem] p-8 sm:p-14 bg-white/95 border border-stone-200/90 overflow-hidden text-center max-w-3xl mx-auto shadow-xl shadow-stone-900/5">
         {/* Glow */}
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#f878b3]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-mono uppercase tracking-widest text-[#e5c18a] mb-5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-stone-100 border border-stone-200 text-[11px] font-mono uppercase tracking-widest text-[#c5a059] mb-5 font-semibold">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Прямой канал связи с командой</span>
           </div>
 
-          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-white mb-4">
+          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 mb-4">
             Создадим незабываемую ольфакторную историю
           </h3>
 
-          <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-light max-w-lg mx-auto mb-8">
+          <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-light max-w-lg mx-auto mb-8">
             {collaboration.description}
           </p>
 
@@ -54,20 +54,21 @@ export default function Collaboration() {
           {collaboration.formats && (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 text-left">
               {collaboration.formats.map((fmt, idx) => (
-                <div key={idx} className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
-                  <div className="text-xs font-semibold text-white mb-1">{fmt.title}</div>
-                  <div className="text-[11px] text-neutral-400 font-light leading-snug">{fmt.desc}</div>
+                <div key={idx} className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200/70 shadow-2xs">
+                  <div className="text-xs font-semibold text-stone-900 mb-1">{fmt.title}</div>
+                  <div className="text-[11px] text-stone-500 font-light leading-snug">{fmt.desc}</div>
                 </div>
               ))}
             </div>
           )}
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={collaboration.botUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundEngine.playClick()}
-              className="btn-glow-rose w-full sm:w-auto py-4 px-8 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center justify-center gap-2.5 shadow-xl"
+              className="btn-glow-rose w-full sm:w-auto py-4 px-8 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center justify-center gap-2.5 shadow-md"
             >
               <Send className="w-4 h-4" />
               <span>{collaboration.botLabel}</span>
@@ -76,14 +77,14 @@ export default function Collaboration() {
 
             <button
               onClick={copyEmail}
-              className="btn-luxury-glass w-full sm:w-auto py-4 px-7 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center justify-center gap-2.5 cursor-pointer"
+              className="btn-luxury-glass w-full sm:w-auto py-4 px-7 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center justify-center gap-2.5 cursor-pointer shadow-xs"
             >
-              <Mail className="w-4 h-4 text-[#f878b3]" />
+              <Mail className="w-4 h-4 text-[#e8559a]" />
               <span>{collaboration.email}</span>
               {copiedEmail ? (
-                <Check className="w-4 h-4 text-emerald-400 ml-1" />
+                <Check className="w-4 h-4 text-emerald-600 ml-1" />
               ) : (
-                <Copy className="w-4 h-4 text-neutral-400 ml-1" />
+                <Copy className="w-4 h-4 text-stone-400 ml-1" />
               )}
             </button>
           </div>

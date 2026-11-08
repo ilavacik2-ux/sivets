@@ -6,7 +6,7 @@ export const SITE_DATA = {
     image: "https://static.tildacdn.com/tild3564-3133-4161-b432-373034306535/IMG_0059.JPG",
     badge: "SLUU • Perfume Researcher • 2026",
     birthday: "14 Ноября",
-    editorialIssue: "HAUTE PARFUMERIE • VOL. 14",
+    editorialIssue: "ОЛЬФАКТОРНЫЙ АТЛАС • 2026",
     coordinates: "43°39′36″N 6°55′30″E [Grasse] • Paris • Moscow",
     cities: ["Москва", "Париж", "Милан", "Грас"],
     perfumeChords: [
@@ -30,7 +30,7 @@ export const SITE_DATA = {
   },
 
   olfactivePyramid: {
-    title: "Ольфакторная лаборатория & Пирамида нот",
+    title: "Ольфакторный атлас & Пирамида нот",
     subtitle: "Интерактивный атлас редких аккордов, которые исследует Настя Сивец",
     tiers: [
       {
@@ -270,28 +270,26 @@ export const SITE_DATA = {
 
   outlet: {
     title: "Парфюмерный аутлет",
-    badge: "Private Trading Syndicate",
-    description: "Выгодно купить и быстро продать оригинальную нишевую парфюмерию. Проверенная закрытая площадка для коллекционеров и любителей редких флаконов.",
+    badge: "Парфюмерное комьюнити",
+    description: "Выгодно купить и безопасно продать оригинальную нишевую парфюмерию. Уютная проверенная площадка в Telegram для коллекционеров, ценителей и тех, кто ищет редкие ароматы.",
     link: "https://t.me/parfoutlet",
-    buttonText: "Войти в Telegram аутлет",
+    buttonText: "Перейти в Telegram аутлет",
     image: "https://static.tildacdn.com/tild6362-6263-4333-b331-613034333964/a_fluffy_green_chara.jpeg",
     stats: [
       { value: "100%", label: "Проверка подлинности" },
-      { value: "0% рисков", label: "Гарантия оригиналов" },
+      { value: "0% подделок", label: "Строгая модерация" },
       { value: "24/7", label: "Живое комьюнити" }
     ],
-    liveDrops: [
-      { name: "Maison Francis Kurkdjian • Baccarat Rouge 540 Extrait 70ml", status: "Verified" },
-      { name: "Zoologist Perfumes • Tyrannosaurus Rex Limited Batch", status: "Rare Lot" },
-      { name: "Filippo Sorcinelli • Reliqvia Extrait", status: "Decant Available" },
-      { name: "Byredo • Bal d’Afrique 100ml Original", status: "Sold in 4 min" },
-      { name: "Le Labo • The Noir 29 Flacon 100ml", status: "New Drop" },
-      { name: "Kilian • Angels' Share Cognac Batch", status: "Verified" }
+    communityPillars: [
+      { name: "Редкие винтажи & снятости", desc: "Шанс найти легендарные формулы прошлых лет" },
+      { name: "Отливанты от 2 до 10 мл", desc: "Удобный способ протестировать аромат на коже" },
+      { name: "Полноразмерные флаконы", desc: "Оригинальные остатки во флаконах по честной цене" },
+      { name: "Безопасные сделки", desc: "Отзывы участников и проверка репутации продавцов" }
     ],
     verificationSteps: [
-      { title: "Батч-коды & лазерная гравировка", desc: "Сверка с официальными базами производителей" },
-      { title: "Геометрия распылителя", desc: "Проверка шарика клапана и микронасадки" },
-      { title: "Плотность и вес стекла", desc: "Взвешивание с точностью до 0.1г на эталонных весах" }
+      { title: "Проверка оригинальности", desc: "Сверка батч-кодов, качества полиграфии и геометрии флаконов" },
+      { title: "Репутация продавцов", desc: "Прозрачная система отзывов от реальных участников сообщества" },
+      { title: "Защита от подделок", desc: "Модерация каждого объявления и запрет реплик и подделок" }
     ]
   },
 

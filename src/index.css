@@ -6,25 +6,32 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --color-rose-gold: #f878b3;
-  --color-champagne: #e5c18a;
-  --color-obsidian: #09080a;
+  --color-rose-deep: #e8559a;
+  --color-champagne: #c5a059;
+  --color-alabaster: #faf8f5;
+  --color-cashmere: #f5f2ee;
+  --color-porcelain: #ffffff;
+  --color-obsidian: #1c1917;
 }
 
 @layer base {
   :root {
-    --bg-dark: #09080a;
-    --bg-surface: #121014;
-    --bg-card: rgba(18, 16, 21, 0.78);
+    --bg-light: #faf8f5;
+    --bg-surface: #ffffff;
+    --bg-muted: #f5f2ee;
+    --bg-card: rgba(255, 255, 255, 0.88);
     --color-rose: #f878b3;
-    --color-rose-glow: rgba(248, 120, 179, 0.35);
-    --color-gold: #e5c18a;
-    --color-gold-glow: rgba(229, 193, 138, 0.25);
-    --text-primary: #f5f2f1;
-    --text-secondary: #9e9799;
+    --color-rose-glow: rgba(248, 120, 179, 0.25);
+    --color-gold: #c5a059;
+    --color-gold-glow: rgba(197, 160, 89, 0.2);
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+    --text-muted: #78716c;
+    --border-subtle: rgba(28, 25, 23, 0.08);
   }
 
   body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-light);
     color: var(--text-primary);
     font-family: var(--font-sans);
     overflow-x: hidden;
@@ -37,89 +44,92 @@
   }
 }
 
-/* Haute Parfumerie Glassmorphism */
+/* Light Luxury Glassmorphism */
 .glass-luxury {
-  background: rgba(18, 15, 20, 0.75);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  box-shadow: 0 20px 45px -15px rgba(28, 25, 23, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.95) inset;
 }
 
 .glass-luxury-hover {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-luxury-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(248, 120, 179, 0.3);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 35px -5px rgba(248, 120, 179, 0.18);
+  transform: translateY(-3px);
+  border-color: rgba(248, 120, 179, 0.35);
+  box-shadow: 0 25px 50px -15px rgba(248, 120, 179, 0.15), 0 10px 25px -5px rgba(28, 25, 23, 0.05);
 }
 
+.glass-pill-light,
 .glass-pill-dark {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(28, 25, 23, 0.1);
+  color: #44403c;
 }
 
-/* Liquid gold & Rose Quartz luxury buttons */
+/* Luxury Light Theme Buttons */
 .btn-glow-rose {
   background: linear-gradient(135deg, #f878b3 0%, #e8559a 100%);
-  color: #0d0b0d;
+  color: #ffffff !important;
   font-weight: 600;
-  box-shadow: 0 0 25px -4px rgba(248, 120, 179, 0.45);
+  box-shadow: 0 10px 25px -4px rgba(248, 120, 179, 0.38), 0 4px 10px -2px rgba(232, 85, 154, 0.2);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-glow-rose:hover {
-  background: linear-gradient(135deg, #ff8bc1 0%, #f878b3 100%);
+  background: linear-gradient(135deg, #fa8ebb 0%, #eb62a4 100%);
   transform: translateY(-2px);
-  box-shadow: 0 0 35px 2px rgba(248, 120, 179, 0.65);
+  box-shadow: 0 14px 30px -3px rgba(248, 120, 179, 0.48), 0 6px 14px -2px rgba(232, 85, 154, 0.28);
 }
 .btn-glow-rose:active {
   transform: translateY(0);
 }
 
 .btn-luxury-glass {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #f5f2f1;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(28, 25, 23, 0.12);
+  color: #1c1917;
   backdrop-filter: blur(12px);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-luxury-glass:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #ffffff;
+  border-color: rgba(248, 120, 179, 0.5);
+  color: #e8559a;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(28, 25, 23, 0.08);
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #f5d8a9 0%, #d4af37 100%);
-  color: #0b090c;
+  background: linear-gradient(135deg, #f6e5c9 0%, #c5a059 100%);
+  color: #1c1917;
   font-weight: 600;
-  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(197, 160, 89, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 35px 2px rgba(212, 175, 55, 0.6);
+  box-shadow: 0 14px 30px -4px rgba(197, 160, 89, 0.5);
 }
 
 /* Typography Editorial Accents */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #fbeec8 0%, #e5c18a 50%, #c49658 100%);
+  background: linear-gradient(135deg, #a16207 0%, #c5a059 50%, #854d0e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-rose-gradient {
-  background: linear-gradient(135deg, #ffd3e6 0%, #f878b3 60%, #e24991 100%);
+  background: linear-gradient(135deg, #d4387e 0%, #f878b3 60%, #e24991 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-silver-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #d8d4d5 60%, #999395 100%);
+.text-charcoal-gradient {
+  background: linear-gradient(135deg, #1c1917 0%, #44403c 70%, #78716c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -131,7 +141,7 @@
 }
 
 .shimmer-text {
-  background: linear-gradient(90deg, #f5f2f1 0%, #ffd3e6 50%, #f5f2f1 100%);
+  background: linear-gradient(90deg, #1c1917 0%, #e8559a 50%, #1c1917 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -36,7 +36,7 @@ export default function BirthdayModal({ isOpen, onClose }) {
 
   const triggerConfetti = () => {
     soundEngine.playChime(659, 1.8);
-    const colors = ['#f878b3', '#ffffff', '#ffd166', '#f4a261', '#e5c18a'];
+    const colors = ['#f878b3', '#e8559a', '#ffd166', '#f4a261', '#c5a059', '#ffffff'];
 
     confetti({
       particleCount: 100,
@@ -88,42 +88,42 @@ export default function BirthdayModal({ isOpen, onClose }) {
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/25 backdrop-blur-md animate-in fade-in duration-300"
     >
       <div
-        className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto no-scrollbar rounded-[2.5rem] p-6 sm:p-10 glass-luxury border border-[#f878b3]/40 shadow-[0_0_60px_rgba(248,120,179,0.3)] text-center animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto no-scrollbar rounded-[2.5rem] p-6 sm:p-10 bg-white/98 border border-stone-200/90 shadow-2xl shadow-stone-900/20 text-center animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ambient Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-b from-[#f878b3]/25 via-[#e5c18a]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-b from-[#f878b3]/20 via-[#c5a059]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white border border-white/15 transition-all cursor-pointer z-20"
+          className="absolute top-5 right-5 p-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 border border-stone-200 transition-all cursor-pointer z-20"
           aria-label="Закрыть"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Birthday Date Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#f878b3]/20 to-[#e5c18a]/20 border border-[#f878b3]/40 text-xs font-mono font-bold uppercase tracking-widest text-[#f878b3] mb-4">
-          <Cake className="w-4 h-4 text-[#f878b3]" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#fdf2f7] to-[#fef8ee] border border-[#f878b3]/40 text-xs font-mono font-bold uppercase tracking-widest text-[#e8559a] mb-4 shadow-xs">
+          <Cake className="w-4 h-4 text-[#e8559a]" />
           <span>14 Ноября • С Днем Рождения, Настя!</span>
         </div>
 
-        <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white tracking-tight mb-3">
+        <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight mb-3">
           Праздничная капсула
         </h3>
 
-        <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-light mb-6 max-w-md mx-auto">
-          Пусть каждый новый год звучит как безупречная нишевая композиция: смело, глубоко, завораживающе и неповторимо. Процветания бренду <strong className="text-white font-medium">SLUU</strong>, неиссякаемого вдохновения и бесконечной любви!
+        <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-light mb-6 max-w-md mx-auto">
+          Пусть каждый новый год звучит как безупречная нишевая композиция: смело, глубоко, завораживающе и неповторимо. Процветания бренду <strong className="text-stone-900 font-medium">SLUU</strong>, неиссякаемого вдохновения и бесконечной любви!
         </p>
 
         {/* Interactive Olfactive Wish Composer */}
-        <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-left">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2.5 flex items-center gap-1.5">
-            <Gift className="w-3.5 h-3.5 text-[#e5c18a]" />
+        <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80 text-left">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-stone-500 mb-2.5 flex items-center gap-1.5 font-medium">
+            <Gift className="w-3.5 h-3.5 text-[#c5a059]" />
             <span>Выберите праздничный ольфакторный аккорд:</span>
           </div>
 
@@ -138,25 +138,25 @@ export default function BirthdayModal({ isOpen, onClose }) {
                     setSelectedAccord(accord);
                     triggerConfetti();
                   }}
-                  className={`p-2.5 rounded-xl text-left border text-xs transition-all cursor-pointer ${
+                  className={`p-2.5 rounded-xl text-left border text-xs transition-all cursor-pointer shadow-2xs ${
                     isSel
-                      ? 'bg-[#f878b3]/20 border-[#f878b3] text-white shadow-[0_0_15px_rgba(248,120,179,0.3)]'
-                      : 'bg-white/[0.03] border-white/10 text-neutral-300 hover:text-white hover:border-white/25'
+                      ? 'bg-[#fdf2f7] border-[#f878b3] text-stone-900 font-semibold'
+                      : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300'
                   }`}
                 >
-                  <div className="font-medium text-white mb-0.5">{accord.name}</div>
-                  <div className="text-[10px] text-neutral-400 font-light truncate">{accord.desc}</div>
+                  <div className="font-medium text-stone-900 mb-0.5">{accord.name}</div>
+                  <div className="text-[10px] text-stone-500 font-light truncate">{accord.desc}</div>
                 </button>
               );
             })}
           </div>
 
           {selectedAccord && (
-            <div className="p-3.5 rounded-xl bg-[#f878b3]/15 border border-[#f878b3]/30 text-xs text-white animate-in fade-in duration-300 mb-3">
-              <span className="font-semibold text-[#f878b3] block mb-1">
+            <div className="p-3.5 rounded-xl bg-[#fdf2f7] border border-[#f878b3]/30 text-xs text-stone-800 animate-in fade-in duration-300 mb-3">
+              <span className="font-semibold text-[#e8559a] block mb-1">
                 ✨ Готовое поздравление для Насти:
               </span>
-              <p className="italic font-serif text-sm text-neutral-200 leading-snug">
+              <p className="italic font-serif text-sm text-stone-800 leading-snug">
                 &laquo;{selectedAccord.note}&raquo;
               </p>
             </div>
@@ -165,27 +165,27 @@ export default function BirthdayModal({ isOpen, onClose }) {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={copyWish}
-              className="flex-1 py-2 px-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-xs font-mono uppercase tracking-wider text-white flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+              className="flex-1 py-2 px-3 rounded-xl bg-white hover:bg-stone-50 border border-stone-200 text-xs font-mono uppercase tracking-wider text-stone-800 flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-2xs"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Скопировано!</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5 text-[#f878b3]" />
+                  <Copy className="w-3.5 h-3.5 text-[#e8559a]" />
                   <span>Скопировать поздравление</span>
                 </>
               )}
             </button>
 
             <a
-              href={`https://t.me/nastyasivets`}
+              href="https://t.me/nastyasivets"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundEngine.playClick()}
-              className="py-2 px-4 rounded-xl bg-[#f878b3] hover:bg-[#ff8bc1] text-black text-xs font-mono font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md"
+              className="py-2 px-4 rounded-xl bg-[#f878b3] hover:bg-[#e8559a] text-white text-xs font-mono font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm"
             >
               <Send className="w-3.5 h-3.5" />
               <span>В Telegram Насте</span>
@@ -197,23 +197,23 @@ export default function BirthdayModal({ isOpen, onClose }) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={triggerConfetti}
-            className="btn-glow-rose w-full sm:w-auto py-3.5 px-7 rounded-full text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 shadow-xl cursor-pointer"
+            className="btn-glow-rose w-full sm:w-auto py-3.5 px-7 rounded-full text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 shadow-md cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-black" />
+            <Sparkles className="w-4 h-4 text-white" />
             <span>Запустить салют конфетти!</span>
           </button>
 
           <button
             onClick={onClose}
-            className="btn-luxury-glass w-full sm:w-auto py-3.5 px-6 rounded-full text-xs font-mono uppercase tracking-widest cursor-pointer"
+            className="btn-luxury-glass w-full sm:w-auto py-3.5 px-6 rounded-full text-xs font-mono uppercase tracking-widest cursor-pointer shadow-xs"
           >
             <span>Насладиться сайтом</span>
           </button>
         </div>
 
-        <div className="mt-5 flex items-center justify-center gap-1.5 text-xs text-neutral-400">
+        <div className="mt-5 flex items-center justify-center gap-1.5 text-xs text-stone-400">
           <span>С глубоким уважением и любовью</span>
-          <Heart className="w-3.5 h-3.5 text-[#f878b3] fill-[#f878b3]" />
+          <Heart className="w-3.5 h-3.5 text-[#e8559a] fill-[#e8559a]" />
         </div>
       </div>
     </div>

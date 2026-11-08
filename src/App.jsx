@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import FragranceAura from './components/FragranceAura';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import OlfactivePersona from './components/OlfactivePersona';
 import OlfactivePyramid from './components/OlfactivePyramid';
-import OnlineCourse from './components/OnlineCourse';
-import LecturesAndGuides from './components/LecturesAndGuides';
 import VideoSection from './components/VideoSection';
+import EducationAndMasterclasses from './components/EducationAndMasterclasses';
 import SluuBrand from './components/SluuBrand';
 import PerfumeOutlet from './components/PerfumeOutlet';
+import BirthdayCapsule from './components/BirthdayCapsule';
 import Collaboration from './components/Collaboration';
 import Footer from './components/Footer';
 import BirthdayModal from './components/BirthdayModal';
@@ -17,34 +18,50 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF8F5] text-[#1C1917] selection:bg-[#F878B3] selection:text-white overflow-hidden">
-      {/* Soft warm luminous background gradients */}
+      {/* Subtle warm architectural ambient light */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[55vw] h-[55vw] max-w-[800px] max-h-[800px] bg-gradient-to-br from-[#FDF2F7]/80 via-[#FCE7F3]/40 to-transparent rounded-full blur-3xl opacity-70" />
-        <div className="absolute top-[35vh] -left-[10vw] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] bg-gradient-to-tr from-[#FDF8EE]/90 via-[#F8EFE4]/50 to-transparent rounded-full blur-3xl opacity-75" />
-        <div className="absolute top-[80vh] right-[5vw] w-[45vw] h-[45vw] max-w-[650px] max-h-[650px] bg-gradient-to-bl from-[#FCE7F3]/50 via-[#FAF0F5]/40 to-transparent rounded-full blur-3xl opacity-60" />
-        <div className="absolute top-[160vh] left-[5vw] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] bg-gradient-to-r from-[#FAF4EC]/70 to-[#FDF2F7]/50 rounded-full blur-3xl opacity-70" />
-        <div className="absolute bottom-0 right-0 w-[60vw] h-[60vw] max-w-[850px] max-h-[850px] bg-gradient-to-tl from-[#FCE7F3]/60 via-[#F8EFE4]/40 to-transparent rounded-full blur-3xl opacity-65" />
+        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] max-w-[650px] max-h-[650px] bg-gradient-to-br from-[#FDF2F7]/40 to-transparent rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-[45vh] -left-[10vw] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-gradient-to-tr from-[#FDF8EE]/50 to-transparent rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-0 right-0 w-[45vw] h-[45vw] max-w-[650px] max-h-[650px] bg-gradient-to-tl from-[#FCE7F3]/30 to-transparent rounded-full blur-3xl opacity-40" />
       </div>
 
       {/* Living Ambient Fragrance Atmosphere Canvas */}
       <FragranceAura />
 
-      {/* Floating Header */}
+      {/* Floating Architectural Header */}
       <Navbar onOpenBirthday={() => setBirthdayOpen(true)} />
 
-      {/* Editorial Content Exhibition */}
+      {/* High-Fashion Editorial Monograph Experience */}
       <main className="relative z-10">
+        {/* Editorial Hero Monograph */}
         <Hero onOpenBirthday={() => setBirthdayOpen(true)} />
+
+        {/* Chapter 01: The Olfactive Persona */}
+        <OlfactivePersona />
+
+        {/* Chapter 02: The Scent Archive & Notes */}
         <OlfactivePyramid />
-        <OnlineCourse />
-        <LecturesAndGuides />
+
+        {/* Chapter 03: Selected Video Investigations */}
         <VideoSection />
+
+        {/* Chapter 04: Education & Masterclasses */}
+        <EducationAndMasterclasses />
+
+        {/* Chapter 05: SLUU Aromatherapy Atelier */}
         <SluuBrand />
+
+        {/* Chapter 06: Perfume Outlet */}
         <PerfumeOutlet />
+
+        {/* Chapter 07: 14 November Capsule */}
+        <BirthdayCapsule onOpenBirthday={() => setBirthdayOpen(true)} />
+
+        {/* Chapter 08: PR & Collaboration */}
         <Collaboration />
       </main>
 
-      {/* Footer & Legal Dossier */}
+      {/* Footer & Colophon */}
       <Footer />
 
       {/* Interactive November 14 Birthday Experience Modal */}

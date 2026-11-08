@@ -1,119 +1,122 @@
 import React from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { Send, CheckCircle2, ShieldCheck, Zap, ArrowUpRight, TrendingUp } from 'lucide-react';
+import { Send, CheckCircle2, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 export default function PerfumeOutlet() {
   const { outlet } = SITE_DATA;
 
   return (
-    <section id="outlet" className="py-20 sm:py-24 px-4 sm:px-8 max-w-6xl mx-auto scroll-mt-24">
-      {/* Chapter Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-4">
+    <section id="outlet" className="py-24 sm:py-32 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+      {/* Chapter Editorial Header */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
-            <Zap className="w-4 h-4 text-[#c5a059]" />
-            <span>[ 06 / КОМЬЮНИТИ & АУТЛЕТ ]</span>
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>[ CHAPITRE 06 / PERFUME OUTLET ]</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
-            Парфюмерный <span className="italic font-light text-stone-600">аутлет</span>
+            Парфюмерный аутлет <span className="italic font-light text-stone-500">& комьюнити</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-widest text-stone-500 font-mono sm:text-right">
-          Безопасная площадка для коллекционеров
+        <div className="text-xs uppercase tracking-[0.2em] text-stone-400 font-mono sm:text-right">
+          Приватный клуб коллекционеров в Telegram
         </div>
       </div>
 
-      {/* Main Community Card */}
-      <div className="relative rounded-[2.5rem] p-8 sm:p-12 bg-white/95 border border-stone-200/90 overflow-hidden shadow-xl shadow-stone-900/5 group">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#38bdf8]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Main Editorial Presentation */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
+        <div className="lg:col-span-7 space-y-7">
+          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#c5a059] font-medium">
+            БЕЗОПАСНЫЙ РЫНОК ОРИГИНАЛЬНОЙ ПАРФЮМЕРИИ
+          </div>
 
-        {/* Community Highlights Bar */}
-        <div className="mb-8 p-3 sm:p-4 rounded-2xl bg-stone-50 border border-stone-200/80 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-          {outlet.communityPillars?.map((pil, i) => (
-            <div key={i} className="p-2.5 sm:p-3 rounded-xl bg-white border border-stone-200/70 shadow-2xs">
-              <div className="text-xs font-semibold text-stone-900 mb-0.5">{pil.name}</div>
-              <div className="text-[10px] text-stone-500 font-light leading-snug">{pil.desc}</div>
+          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 leading-tight">
+            Оригинальные флаконы, редкие винтажи и проверенные распивы
+          </h3>
+
+          <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
+            {outlet.description} Все объявления проходят строгую предварительную модерацию. Мы исключаем любой риск реплик и подделок, создавая прозрачную среду для покупки, обмена и продажи редких флаконов.
+          </p>
+
+          {/* Verification Standards Manifesto */}
+          <div className="space-y-4 pt-2">
+            <div className="text-[11px] font-mono uppercase tracking-wider text-stone-400">
+              СТАНДАРТЫ ВЕРИФИКАЦИИ СООБЩЕСТВА:
             </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Outlet Info */}
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-stone-100 border border-stone-200 text-[11px] font-mono uppercase tracking-widest text-[#e8559a] mb-4 font-semibold">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>{outlet.badge}</span>
-            </div>
-
-            <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 mb-4 leading-tight">
-              Оригинальные флаконы, редкие винтажи и проверенные распивы
-            </h3>
-
-            <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-light mb-6 max-w-xl">
-              {outlet.description} Все лоты строго модерируются, а участники проходят проверку репутации. Никаких подделок, реплик и обмана.
-            </p>
-
-            {/* Authenticity Verification Steps */}
-            <div className="space-y-2.5 mb-8">
-              {outlet.verificationSteps?.map((step, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-stone-700 font-light">
-                  <CheckCircle2 className="w-4 h-4 text-[#e8559a] flex-none mt-0.5" />
-                  <div>
-                    <strong className="font-medium text-stone-900">{step.title}</strong> — {step.desc}
-                  </div>
+            {outlet.verificationSteps?.map((step, idx) => (
+              <div key={idx} className="flex items-start gap-3.5 text-xs sm:text-sm text-stone-700 font-light">
+                <CheckCircle2 className="w-4 h-4 text-[#e8559a] flex-none mt-0.5" />
+                <div>
+                  <strong className="font-medium text-stone-900">{step.title}</strong> — {step.desc}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
 
-            {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-3 mb-8">
-              {outlet.stats?.map((st, i) => (
-                <div key={i} className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200/70 text-center shadow-2xs">
-                  <div className="font-mono text-lg font-bold text-stone-900 mb-0.5">{st.value}</div>
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-stone-500">{st.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Direct Telegram Button */}
+          {/* Telegram Action Button */}
+          <div className="pt-4">
             <a
               href={outlet.link}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundEngine.playClick()}
-              className="btn-glow-rose py-4 px-8 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center gap-2.5 shadow-md"
+              className="editorial-btn-dark px-8 py-4 rounded-full inline-flex items-center gap-2.5 shadow-sm"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-3.5 h-3.5 text-[#f878b3]" />
               <span>{outlet.buttonText}</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
+        </div>
 
-          {/* Visual Avatar Monolith */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-xs aspect-square rounded-[2.5rem] overflow-hidden border-2 border-stone-200 shadow-xl bg-stone-100 group-hover:scale-[1.03] transition-transform duration-500">
-              <img
-                src={outlet.image}
-                alt="Парфюмерный аутлет Насти Сивец"
-                loading="lazy"
-                width={350}
-                height={350}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-4 left-4 right-4 text-center">
-                <div className="text-xs font-mono font-bold text-white tracking-widest uppercase">
-                  @parfoutlet
+        {/* Right: Archival Collector Standards Card & Stats */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="editorial-card p-8 rounded-2xl bg-[#FAF8F5] space-y-6">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#e8559a] font-semibold">
+                КЛУБНЫЙ РЕЕСТР
+              </span>
+              <span className="text-[10px] font-mono text-stone-400">@parfoutlet</span>
+            </div>
+
+            <div className="font-serif text-2xl font-light text-stone-900">
+              Пространство для ценителей, коллекционеров и исследователей ароматов
+            </div>
+
+            <p className="text-xs text-stone-600 font-light leading-relaxed">
+              Отливанты от 2 до 10 мл для безопасного первого знакомства, винтажные выпуски ароматов до переформулировок IFRA и остатки во флаконах по честной цене.
+            </p>
+
+            {/* Stats Bar */}
+            <div className="grid grid-cols-3 gap-3 pt-2 border-t border-stone-200/80">
+              {outlet.stats?.map((st, i) => (
+                <div key={i} className="text-center">
+                  <div className="font-serif text-2xl font-light text-stone-900 mb-0.5">
+                    {st.value}
+                  </div>
+                  <div className="text-[9px] uppercase font-mono tracking-wider text-stone-400">
+                    {st.label}
+                  </div>
                 </div>
-                <div className="text-[10px] font-mono text-[#f878b3]">
-                  Официальное сообщество
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Community Offerings Ledger */}
+      <div className="pt-10 border-t border-stone-200/80 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {outlet.communityPillars?.map((pil, i) => (
+          <div key={i} className="space-y-1.5">
+            <div className="text-xs font-mono uppercase tracking-wider text-stone-900 font-semibold">
+              {pil.name}
+            </div>
+            <div className="text-xs text-stone-500 font-light leading-relaxed">
+              {pil.desc}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

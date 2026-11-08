@@ -1,200 +1,104 @@
 import React from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { Flame, ShoppingBag, ArrowUpRight, Sparkles, Feather, ShieldCheck, Compass } from 'lucide-react';
+import { Flame, ShoppingBag, ArrowUpRight } from 'lucide-react';
 
 export default function SluuBrand() {
   const { sluuBrand } = SITE_DATA;
 
   return (
-    <section id="sluu" className="py-20 sm:py-24 px-4 sm:px-8 max-w-6xl mx-auto scroll-mt-24">
-      {/* Chapter Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-4">
+    <section id="sluu" className="py-24 sm:py-32 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+      {/* Chapter Editorial Header */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
-            <Flame className="w-4 h-4 text-[#e8559a]" />
-            <span>[ 05 / АВТОРСКИЙ БРЕНД ]</span>
+            <Flame className="w-3.5 h-3.5" />
+            <span>[ CHAPITRE 05 / SLUU AROMATHERAPY ATELIER ]</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
-            SLUU <span className="italic font-light text-stone-600">Aromatherapy</span>
+            Ателье SLUU <span className="italic font-light text-stone-500">Aromatherapy</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-widest text-stone-500 font-mono sm:text-right">
-          Создано Настей Сивец &bull; sluu.club
+        <div className="text-xs uppercase tracking-[0.2em] text-stone-400 font-mono sm:text-right">
+          Бренд Насти Сивец &bull; sluu.club
         </div>
       </div>
 
-      {/* Main Brand Pavilion */}
-      <div className="relative rounded-[2.5rem] p-8 sm:p-12 lg:p-14 bg-white/95 border border-stone-200/90 overflow-hidden shadow-xl shadow-stone-900/5 mb-10">
-        {/* Ambient Candle Fire Glow */}
-        <div className="absolute top-1/2 -right-20 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#f878b3]/15 via-[#c5a059]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Brand Philosophy */}
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-stone-100 border border-stone-200 text-[11px] font-mono uppercase tracking-widest text-[#c5a059] mb-5 font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-[#e8559a]" />
-              <span>Ритуалы замедления & эстетика дома</span>
-            </div>
-
-            <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 mb-4 leading-tight">
-              Ароматерапия как искусство заботы о себе
-            </h3>
-
-            <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-light mb-8 max-w-xl">
-              {sluuBrand.description}
-            </p>
-
-            {/* 3 Pillars */}
-            <div className="space-y-3.5 mb-8">
-              {sluuBrand.pillars?.map((pil, idx) => (
-                <div key={idx} className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/70 shadow-2xs">
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-none border border-stone-200 text-[#e8559a] shadow-xs">
-                    <Feather className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-stone-900 mb-0.5">{pil.title}</div>
-                    <div className="text-xs text-stone-600 font-light leading-relaxed">{pil.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Flagship Store CTA */}
-            <a
-              href={sluuBrand.links[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundEngine.playClick()}
-              className="btn-glow-rose py-4 px-8 rounded-full text-xs font-mono uppercase tracking-widest inline-flex items-center gap-2.5 shadow-md"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span>Официальный бутик sluu.club</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+      {/* Brand Philosophy Editorial Intro */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 items-start">
+        <div className="lg:col-span-6 space-y-5">
+          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#c5a059] font-medium">
+            РИТУАЛЫ ЗАМЕДЛЕНИЯ & ОЛЬФАКТОРНЫЙ ДЗЕН
           </div>
+          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 leading-tight">
+            {sluuBrand.tagline}
+          </h3>
+          <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
+            {sluuBrand.description}
+          </p>
+        </div>
 
-          {/* Marketplaces Showcase Column */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-stone-500 mb-1 font-medium">
-              Быстрый заказ на маркетплейсах
-            </div>
-
-            {/* Ozon */}
-            <a
-              href={sluuBrand.links[1].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundEngine.playClick()}
-              className="p-5 rounded-2xl bg-stone-50 hover:bg-stone-100/90 border border-stone-200/80 hover:border-[#f878b3]/40 transition-all hover:-translate-y-0.5 group flex items-center justify-between shadow-2xs"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center overflow-hidden flex-none border border-stone-200 shadow-2xs">
-                  <img
-                    src={sluuBrand.links[1].logo}
-                    alt="Ozon"
-                    loading="lazy"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-stone-900 group-hover:text-[#e8559a] transition-colors">
-                    SLUU на Ozon
-                  </div>
-                  <div className="text-xs text-stone-500 font-light">Доставка в любой пункт выдачи РФ</div>
-                </div>
+        {/* 3 Pillars in Minimalist High-Fashion Layout */}
+        <div className="lg:col-span-6 space-y-6 pt-2">
+          {sluuBrand.pillars?.map((pil, idx) => (
+            <div key={idx} className="pb-5 border-b border-stone-200/60 last:border-0">
+              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-wider text-stone-900 font-semibold mb-1.5">
+                <span className="text-[#e8559a]">0{idx + 1}.</span>
+                <span>{pil.title}</span>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-stone-400 group-hover:text-stone-900 transition-colors" />
-            </a>
-
-            {/* Wildberries */}
-            <a
-              href={sluuBrand.links[2].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundEngine.playClick()}
-              className="p-5 rounded-2xl bg-stone-50 hover:bg-stone-100/90 border border-stone-200/80 hover:border-[#f878b3]/40 transition-all hover:-translate-y-0.5 group flex items-center justify-between shadow-2xs"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center overflow-hidden flex-none border border-stone-200 shadow-2xs">
-                  <img
-                    src={sluuBrand.links[2].logo}
-                    alt="Wildberries"
-                    loading="lazy"
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-stone-900 group-hover:text-[#e8559a] transition-colors">
-                    SLUU на Wildberries
-                  </div>
-                  <div className="text-xs text-stone-500 font-light">Фирменная витрина бренда</div>
-                </div>
-              </div>
-              <ArrowUpRight className="w-5 h-5 text-stone-400 group-hover:text-stone-900 transition-colors" />
-            </a>
-
-            {/* Guarantee Pill */}
-            <div className="mt-2 p-3.5 rounded-2xl bg-stone-50 border border-stone-200/70 flex items-center gap-3 text-xs text-stone-600">
-              <ShieldCheck className="w-4 h-4 text-[#c5a059] flex-none" />
-              <span>Официальная сертифицированная продукция</span>
+              <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed pl-6">
+                {pil.desc}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Sensory Product Lineup Showcase */}
-      <div className="mt-12">
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-xs font-mono uppercase tracking-widest text-[#e8559a] flex items-center gap-2 font-semibold">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Знаковые позиции коллекции SLUU</span>
-          </div>
-          <span className="text-[11px] font-mono text-stone-500">Натуральный соевый воск & эфирные масла</span>
+      {/* Minimalist Products Showcase (Aesop / Byredo Lookbook) */}
+      <div className="mb-20">
+        <div className="text-[11px] font-mono uppercase tracking-[0.25em] text-stone-400 mb-8 pb-3 border-b border-stone-200/60">
+          КОЛЛЕКЦИЯ АТЕЛЬЕ &bull; РУЧНАЯ СЕЛЕКЦИЯ
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {sluuBrand.products?.map((prod, idx) => (
             <div
               key={idx}
-              className="rounded-3xl p-6 bg-white/95 border border-stone-200/90 hover:border-[#f878b3]/50 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-stone-900/5"
+              className="editorial-card p-8 rounded-2xl flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#fdf2f7] text-[#e8559a] border border-[#f878b3]/30 font-semibold">
-                    {prod.badge}
-                  </span>
-                  <span className="text-[10px] font-mono text-stone-400 uppercase tracking-widest">
-                    {prod.type}
-                  </span>
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-4">
+                  <span>{prod.type}</span>
+                  <span className="text-[#e8559a] font-semibold">{prod.badge}</span>
                 </div>
 
-                <h4 className="font-serif text-2xl font-medium text-stone-900 mb-2 group-hover:text-[#e8559a] transition-colors leading-snug">
+                <h4 className="font-serif text-2xl font-normal text-stone-900 mb-4 leading-snug">
                   {prod.name}
                 </h4>
 
-                <div className="text-xs text-stone-600 leading-relaxed font-light mb-4">
-                  <span className="text-stone-400 font-mono text-[10px] uppercase block mb-0.5 font-medium">Ольфакторные ноты:</span>
-                  {prod.notes}
-                </div>
-
-                <div className="text-[11px] font-mono text-stone-500 mb-6">
-                  {prod.specs}
+                <div className="text-xs text-stone-600 font-light space-y-3 mb-8">
+                  <div className="pb-2 border-b border-stone-100">
+                    <span className="text-stone-400 uppercase tracking-wider text-[10px] block font-mono mb-0.5">Аккорды:</span>
+                    <span className="font-serif italic text-stone-800">{prod.notes}</span>
+                  </div>
+                  <div>
+                    <span className="text-stone-400 uppercase tracking-wider text-[10px] block font-mono mb-0.5">Спецификация:</span>
+                    <span className="font-mono text-[11px] text-stone-500">{prod.specs}</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-stone-200/70 flex items-center justify-between">
-                <span className="font-mono text-lg font-bold text-stone-900">{prod.price}</span>
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <span className="font-mono text-base font-semibold text-stone-900">
+                  {prod.price}
+                </span>
+
                 <a
                   href={prod.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="btn-luxury-glass px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 shadow-2xs hover:border-[#f878b3] hover:text-[#e8559a]"
+                  className="text-xs font-mono uppercase tracking-wider text-[#e8559a] hover:text-stone-900 transition-colors flex items-center gap-1.5"
                 >
                   <span>Заказать</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -202,6 +106,53 @@ export default function SluuBrand() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Seamless Marketplace Concierge */}
+      <div className="pt-8 border-t border-stone-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-stone-400 mb-1">
+            ГДЕ ПРИОБРЕСТИ
+          </div>
+          <div className="font-serif text-xl sm:text-2xl text-stone-900">
+            Официальный бутик & фирменные маркетплейсы
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          <a
+            href={sluuBrand.links[0].url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEngine.playClick()}
+            className="editorial-btn-dark px-7 py-3.5 rounded-full flex items-center gap-2 shadow-xs"
+          >
+            <ShoppingBag className="w-3.5 h-3.5 text-[#f878b3]" />
+            <span>Официальный бутик sluu.club</span>
+          </a>
+
+          <a
+            href={sluuBrand.links[1].url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEngine.playClick()}
+            className="editorial-btn-light px-6 py-3.5 rounded-full flex items-center gap-2"
+          >
+            <span>Ozon</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
+          </a>
+
+          <a
+            href={sluuBrand.links[2].url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEngine.playClick()}
+            className="editorial-btn-light px-6 py-3.5 rounded-full flex items-center gap-2"
+          >
+            <span>Wildberries</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
+          </a>
         </div>
       </div>
     </section>

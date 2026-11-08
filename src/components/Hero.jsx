@@ -1,251 +1,190 @@
 import React, { useState } from 'react';
 import { SITE_DATA } from '../data/content';
-import { IconTelegram, IconYouTube, IconInstagram, IconTikTok, IconVKVideo } from './Icons';
-import { Sparkles, ArrowDown, Droplets, Compass, Flame, Cake, Heart, Feather } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
-
-const iconMap = {
-  Send: IconTelegram,
-  Youtube: IconYouTube,
-  Instagram: IconInstagram,
-  Video: IconTikTok,
-  PlaySquare: IconVKVideo,
-};
+import { ArrowDown, Droplets, ArrowUpRight } from 'lucide-react';
 
 export default function Hero({ onOpenBirthday }) {
-  const { hero, socials, manifesto } = SITE_DATA;
+  const { hero, socials } = SITE_DATA;
   const [isSpraying, setIsSpraying] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
   const triggerSpray = () => {
     soundEngine.playSpray();
     setIsSpraying(true);
-    setTimeout(() => setIsSpraying(false), 1300);
+    setTimeout(() => setIsSpraying(false), 1400);
   };
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 px-4 sm:px-8 max-w-6xl mx-auto">
-      {/* Top Lookbook Editorial Status Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-stone-200/80">
-        <div className="flex items-center gap-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100/90 border border-stone-200 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-stone-700">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3] animate-pulse" />
-            <span>{hero.editorialIssue}</span>
-          </div>
-
-          {/* Birthday Wax Seal pill */}
-          <button
-            onClick={() => {
-              soundEngine.playChime(659, 1.4);
-              if (onOpenBirthday) onOpenBirthday();
-            }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#fdf2f7] to-[#fef8ee] border border-[#f878b3]/40 hover:border-[#f878b3] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e8559a] transition-all hover:scale-105 cursor-pointer shadow-xs"
-            title="Открыть праздничную капсулу 14 Ноября"
-          >
-            <Cake className="w-3.5 h-3.5 text-[#e8559a]" />
-            <span>14 Ноября</span>
-          </button>
+    <section className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-12 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
+      {/* 1. Archival Lookbook Header Ledger */}
+      <div className="flex items-center justify-between pb-6 border-b border-stone-200/80 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.28em] text-stone-500">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
+          <span>N° 01 &bull; L'ART OLFATIF</span>
         </div>
-
-        <div className="hidden sm:flex items-center gap-3 text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-stone-500 font-mono">
-          <span className="font-light">{hero.coordinates}</span>
+        <div className="hidden sm:block text-stone-400">
+          GRASSE &bull; PARIS &bull; MOSCOU
+        </div>
+        <div className="flex items-center gap-2">
+          <span>ÉDITION PRIVÉE 2026</span>
         </div>
       </div>
 
-      {/* Editorial Lookbook Layout: French High-Fashion Magazine Composition */}
-      <div className="my-auto py-8 sm:py-12">
-        {/* Grand Editorial Header */}
-        <div className="mb-8 sm:mb-12">
-          <div className="flex items-center gap-2.5 mb-3">
-            <span className="h-[1px] w-8 bg-[#f878b3]" />
-            <span className="text-xs uppercase tracking-[0.28em] font-semibold text-[#e8559a]">
-              Парфюмерный исследователь &bull; SLUU Aromatherapy
-            </span>
+      {/* 2. Grand Masthead Typographic Display */}
+      <div className="pt-10 sm:pt-14 pb-8 sm:pb-12 border-b border-stone-200/60">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
+          <div className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.3em] text-[#e8559a] font-medium">
+            Парфюмерный исследователь &bull; Создательница SLUU
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-            <div className="lg:col-span-8">
-              <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal leading-[0.92] tracking-tight text-stone-900">
-                Настя <span className="italic font-light text-stone-700">Сивец</span>
-              </h1>
-            </div>
-
-            <div className="lg:col-span-4 lg:text-right">
-              <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-stone-500">
-                Ольфакторный исследователь <br />& основательница бренда SLUU
-              </p>
-            </div>
+          <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-stone-400">
+            {hero.coordinates || "43°39′36″N 6°55′30″E • Grasse"}
           </div>
         </div>
 
-        {/* Magazine Spread Content: Asymmetric Lookbook Frame */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          {/* Left Column: Portrait presentation with archival matting */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <div className="relative rounded-3xl sm:rounded-[2.5rem] p-3 sm:p-4 bg-white/95 border border-stone-200/90 shadow-xl shadow-stone-900/5 group">
-              {/* Outer Matting Accent */}
-              <div className="relative w-full aspect-[4/5] rounded-2xl sm:rounded-[2rem] overflow-hidden bg-stone-100">
-                <img
-                  src={hero.image}
-                  alt="Настя Сивец — парфюмерный исследователь"
-                  fetchPriority="high"
-                  width={600}
-                  height={750}
-                  onLoad={() => setImgLoaded(true)}
-                  className={`w-full h-full object-cover object-top filter contrast-[1.02] brightness-[1.02] group-hover:scale-[1.03] transition-all duration-700 ease-out ${
-                    imgLoaded ? 'opacity-100' : 'opacity-80'
-                  }`}
-                />
+        <h1 className="font-serif text-[13vw] sm:text-[11vw] lg:text-[7.5rem] xl:text-[8.5rem] font-light leading-[0.88] tracking-tight text-stone-900 select-none">
+          НАСТЯ <span className="italic font-extralight text-stone-400">СИВЕЦ</span>
+        </h1>
+      </div>
 
-                {/* Delicate Sunlit Warm Sheen */}
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-stone-100/10 pointer-events-none" />
+      {/* 3. Grand Asymmetric Lookbook Composition */}
+      <div className="py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Left Column: Natural Unconstrained Museum-Grade Portrait */}
+        <div className="lg:col-span-6 xl:col-span-6 relative">
+          <div className="relative aspect-[3/4] sm:aspect-[4/5] max-h-[720px] overflow-hidden bg-stone-100 group shadow-sm">
+            <img
+              src={hero.image}
+              alt="Настя Сивец — парфюмерный исследователь"
+              fetchPriority="high"
+              width={800}
+              height={1000}
+              onLoad={() => setImgLoaded(true)}
+              className={`w-full h-full object-cover object-top filter contrast-[1.02] brightness-[1.01] transition-all duration-1000 ease-out group-hover:scale-[1.02] ${
+                imgLoaded ? 'opacity-100' : 'opacity-85'
+              }`}
+            />
 
-                {/* Mist Spray Effect */}
-                {isSpraying && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-                    <div className="w-64 h-64 rounded-full bg-radial from-[#f878b3]/60 via-[#f878b3]/25 to-transparent animate-mist" />
-                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-xs font-mono uppercase tracking-widest text-white bg-stone-900/75 px-3 py-1.5 rounded-full backdrop-blur-md shadow-lg animate-pulse">
-                      ✨ Ольфакторный шлейф
-                    </div>
-                  </div>
-                )}
-
-                {/* Interactive Atomizer Spray Button */}
-                <button
-                  onClick={triggerSpray}
-                  className="absolute top-3.5 right-3.5 z-30 px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-stone-800 border border-stone-200 shadow-md backdrop-blur-md text-[11px] font-medium tracking-wider flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-                  title="Нажмите, чтобы распылить аромат"
-                >
-                  <Droplets className="w-3.5 h-3.5 text-[#e8559a]" />
-                  <span>Распылить</span>
-                </button>
-
-                {/* Monogram Stamp Top Left */}
-                <div className="absolute top-3.5 left-3.5 z-20 px-3 py-1 rounded-full bg-white/85 backdrop-blur-md border border-stone-200/80 text-[10px] font-mono uppercase tracking-widest text-stone-700 font-semibold shadow-xs">
-                  NASTYA SIVETS
-                </div>
-
-                {/* Bottom Overlay Pill */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3.5 rounded-2xl bg-white/90 backdrop-blur-md border border-stone-200/80 text-xs text-stone-800 flex items-center justify-between shadow-sm">
-                  <div>
-                    <div className="font-serif text-sm font-semibold tracking-wide text-stone-900">
-                      Настя Сивец
-                    </div>
-                    <div className="text-[11px] text-stone-500">Парфюмерный исследователь</div>
-                  </div>
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#e8559a] font-bold">
-                    @sivets
-                  </span>
+            {/* Scent Mist Bloom Animation Overlay */}
+            {isSpraying && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                <div className="w-80 h-80 rounded-full bg-radial from-[#f878b3]/50 via-[#f878b3]/20 to-transparent animate-mist" />
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.25em] text-white bg-stone-900/85 px-4 py-2 rounded-full backdrop-blur-md shadow-lg">
+                  ✨ Ольфакторный шлейф
                 </div>
               </div>
+            )}
+
+            {/* Refined Atomizer Spray Trigger */}
+            <button
+              onClick={triggerSpray}
+              className="absolute bottom-5 right-5 z-20 px-4 py-2.5 rounded-full bg-stone-900/85 hover:bg-stone-900 text-white backdrop-blur-md text-[11px] font-mono uppercase tracking-[0.2em] flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+              title="Распылить авторский аромат Насти Сивец"
+            >
+              <Droplets className="w-3.5 h-3.5 text-[#f878b3]" />
+              <span>Распылить аромат</span>
+            </button>
+          </div>
+
+          {/* Museum Caption */}
+          <div className="mt-3.5 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.22em] text-stone-400">
+            <span>FIG. 01 — NASTYA SIVETS</span>
+            <span>SLUU ATELIER &bull; ARCHIVE 2026</span>
+          </div>
+        </div>
+
+        {/* Right Column: Editorial Bio, Curated Accords & Pure Architectural Navigation */}
+        <div className="lg:col-span-6 xl:col-span-6 space-y-10 lg:pt-4">
+          {/* Editorial Lead Paragraphs */}
+          <div className="space-y-6">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[2.25rem] text-stone-900 font-light leading-[1.25]">
+              Исследование невидимой архитектуры ароматов, редких селективных формул и ольфакторной памяти.
+            </h2>
+            <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
+              {hero.shortBio}
+            </p>
+          </div>
+
+          {/* Curated Scent Chords (High-Fashion Index Ledger, no tacky pills) */}
+          <div className="pt-6 border-t border-stone-200/80 space-y-2.5">
+            <div className="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-mono">
+              Ольфакторный фокус &bull; Авторские аккорды:
+            </div>
+            <div className="text-sm text-stone-800 font-serif italic tracking-wide leading-relaxed">
+              Filippo Sorcinelli &bull; Zoologist &bull; Orris Butter &bull; Lactonic Accords &bull; Iso E Super &bull; Ambroxan &bull; Byredo &bull; Niche Layering
             </div>
           </div>
 
-          {/* Right Column: Editorial Narrative, Manifesto & Actions */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="space-y-6">
-              <p className="text-base sm:text-xl text-stone-700 font-light leading-relaxed">
-                {hero.shortBio}
-              </p>
+          {/* Architectural Action Links */}
+          <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a
+              href="#pyramid"
+              onClick={() => soundEngine.playClick()}
+              className="editorial-btn-dark px-8 py-4 rounded-full flex items-center justify-center gap-2.5 shadow-sm text-center"
+            >
+              <span>Атлас редких нот</span>
+              <ArrowDown className="w-3.5 h-3.5 text-[#f878b3]" />
+            </a>
 
-              {/* Editorial Manifesto Quote Box (French Salon Style) */}
-              <div className="relative p-6 sm:p-7 rounded-3xl bg-white/90 border border-stone-200/90 shadow-sm">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#e8559a] mb-2.5">
-                  <Feather className="w-3.5 h-3.5" />
-                  <span>Ольфакторный манифест</span>
-                </div>
-                <p className="font-serif italic text-lg sm:text-xl text-stone-800 leading-snug mb-3">
-                  &laquo;{manifesto.quote}&raquo;
-                </p>
-                <div className="text-[11px] font-mono uppercase tracking-wider text-stone-500">
-                  — {manifesto.author}, {manifesto.role}
-                </div>
-              </div>
+            <a
+              href="#education"
+              onClick={() => soundEngine.playClick()}
+              className="editorial-btn-light px-7 py-4 rounded-full flex items-center justify-center gap-2.5 shadow-2xs text-center"
+            >
+              <span>Курс с Синхронизацией</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#c5a059]" />
+            </a>
 
-              {/* Action CTAs in Luminous Luxury Style */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
-                <a
-                  href="#course"
-                  onClick={() => soundEngine.playClick()}
-                  className="btn-glow-rose px-7 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold inline-flex items-center gap-2 shadow-md"
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                  <span>Курс с Синхронизацией</span>
-                </a>
+            <a
+              href="#sluu"
+              onClick={() => soundEngine.playClick()}
+              className="px-6 py-4 text-stone-600 hover:text-stone-900 text-xs font-mono uppercase tracking-[0.2em] transition-colors underline underline-offset-8 decoration-stone-300 hover:decoration-[#f878b3] text-center"
+            >
+              Ателье SLUU &rarr;
+            </a>
+          </div>
 
-                <a
-                  href="#pyramid"
-                  onClick={() => soundEngine.playClick()}
-                  className="btn-luxury-glass px-6 py-3.5 rounded-full text-xs uppercase tracking-wider font-medium inline-flex items-center gap-2 shadow-xs"
-                >
-                  <Compass className="w-4 h-4 text-[#c5a059]" />
-                  <span>Пирамида нот</span>
-                </a>
-
-                <a
-                  href="#sluu"
-                  onClick={() => soundEngine.playClick()}
-                  className="btn-luxury-glass px-6 py-3.5 rounded-full text-xs uppercase tracking-wider font-medium inline-flex items-center gap-2 shadow-xs"
-                >
-                  <Flame className="w-4 h-4 text-[#e8559a]" />
-                  <span>Бренд SLUU</span>
-                </a>
+          {/* Mini Credential Summary */}
+          <div className="pt-8 border-t border-stone-200/80 grid grid-cols-2 gap-6 text-xs">
+            <div>
+              <div className="font-serif text-2xl font-light text-stone-900 mb-0.5">48 000+</div>
+              <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-stone-400">
+                Читателей в Telegram
               </div>
             </div>
-
-            {/* Olfactive Chords / Table of Contents */}
-            <div className="mt-8 pt-6 border-t border-stone-200/80">
-              <div className="text-[10px] uppercase tracking-widest text-stone-500 font-mono mb-2">
-                Ольфакторный фокус & любимые аккорды:
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {hero.perfumeChords?.map((chord, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 rounded-full bg-white/80 border border-stone-200/80 text-xs font-mono text-stone-700 shadow-2xs hover:border-[#f878b3]/50 transition-colors"
-                  >
-                    {chord}
-                  </span>
-                ))}
+            <div>
+              <div className="font-serif text-2xl font-light text-stone-900 mb-0.5">120 000+</div>
+              <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-stone-400">
+                Просмотров расследований
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Editorial Bar: Socials + Scroll Cue */}
-      <div className="pt-5 border-t border-stone-200/80 flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Social Badges */}
-        <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-2.5">
-          {socials.map((soc) => {
-            const Icon = iconMap[soc.icon] || IconTelegram;
-            return (
-              <a
-                key={soc.name}
-                href={soc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundEngine.playClick()}
-                className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 hover:bg-white border border-stone-200 hover:border-[#f878b3]/50 text-xs font-medium text-stone-700 hover:text-stone-900 transition-all hover:-translate-y-0.5 shadow-2xs"
-              >
-                <Icon className="w-3.5 h-3.5 text-[#e8559a] group-hover:scale-110 transition-transform" />
-                <span>{soc.name}</span>
-                <span className="text-[10px] font-mono text-stone-400 group-hover:text-stone-600 hidden sm:inline">
-                  {soc.count}
-                </span>
-              </a>
-            );
-          })}
+      {/* 4. Bottom Lookbook Ledger: Socials & Chapter 01 Prompt */}
+      <div className="pt-6 border-t border-stone-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono uppercase tracking-[0.2em] text-stone-500">
+        <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+          {socials.map((soc) => (
+            <a
+              key={soc.name}
+              href={soc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundEngine.playClick()}
+              className="text-stone-600 hover:text-stone-900 transition-colors flex items-center gap-1.5"
+            >
+              <span>{soc.name}</span>
+              <span className="text-[10px] text-stone-400 lowercase">({soc.handle})</span>
+            </a>
+          ))}
         </div>
 
-        {/* Scroll cue */}
         <a
-          href="#pyramid"
+          href="#persona"
           onClick={() => soundEngine.playClick()}
-          className="hidden md:flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-stone-500 hover:text-stone-900 transition-colors font-mono"
+          className="hidden md:flex items-center gap-2 text-stone-400 hover:text-stone-800 transition-colors"
         >
-          <span>Исследовать коллекцию</span>
-          <ArrowDown className="w-3.5 h-3.5 text-[#e8559a] animate-bounce" />
+          <span>Chapitre 01 &bull; Persona</span>
+          <ArrowDown className="w-3.5 h-3.5 text-[#e8559a]" />
         </a>
       </div>
     </section>

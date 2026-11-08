@@ -88,10 +88,10 @@ export default function BirthdayModal({ isOpen, onClose }) {
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/25 backdrop-blur-md animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/35 backdrop-blur-md animate-in fade-in duration-300"
     >
       <div
-        className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto no-scrollbar rounded-[2.5rem] p-6 sm:p-10 bg-white/98 border border-stone-200/90 shadow-2xl shadow-stone-900/20 text-center animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto no-scrollbar rounded-[2rem] p-6 sm:p-10 bg-white border border-stone-200/90 shadow-2xl shadow-stone-900/15 text-center animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ambient Glow */}
@@ -107,7 +107,7 @@ export default function BirthdayModal({ isOpen, onClose }) {
         </button>
 
         {/* Birthday Date Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#fdf2f7] to-[#fef8ee] border border-[#f878b3]/40 text-xs font-mono font-bold uppercase tracking-widest text-[#e8559a] mb-4 shadow-xs">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#fdf2f7] to-[#fef8ee] border border-[#f878b3]/40 text-xs font-mono font-bold uppercase tracking-widest text-[#e8559a] mb-4 shadow-2xs">
           <Cake className="w-4 h-4 text-[#e8559a]" />
           <span>14 Ноября • С Днем Рождения, Настя!</span>
         </div>
@@ -185,9 +185,9 @@ export default function BirthdayModal({ isOpen, onClose }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundEngine.playClick()}
-              className="py-2 px-4 rounded-xl bg-[#f878b3] hover:bg-[#e8559a] text-white text-xs font-mono font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm"
+              className="editorial-btn-dark py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 shadow-xs"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5 text-[#f878b3]" />
               <span>В Telegram Насте</span>
             </a>
           </div>
@@ -197,15 +197,15 @@ export default function BirthdayModal({ isOpen, onClose }) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={triggerConfetti}
-            className="btn-glow-rose w-full sm:w-auto py-3.5 px-7 rounded-full text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 shadow-md cursor-pointer"
+            className="editorial-btn-dark w-full sm:w-auto py-3.5 px-7 rounded-full flex items-center justify-center gap-2 shadow-sm cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-white" />
+            <Sparkles className="w-4 h-4 text-[#f878b3]" />
             <span>Запустить салют конфетти!</span>
           </button>
 
           <button
             onClick={onClose}
-            className="btn-luxury-glass w-full sm:w-auto py-3.5 px-6 rounded-full text-xs font-mono uppercase tracking-widest cursor-pointer shadow-xs"
+            className="editorial-btn-light w-full sm:w-auto py-3.5 px-6 rounded-full cursor-pointer shadow-2xs"
           >
             <span>Насладиться сайтом</span>
           </button>

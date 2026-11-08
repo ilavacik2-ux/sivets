@@ -1,96 +1,176 @@
-import React, { useState, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, ExternalLink, ArrowRight, Check } from 'lucide-react';
-import { SITE_DATA } from '../data/content';
+import React, { useState, useEffect, useRef } from 'react';
+import { MessageCircle, X, Send, ExternalLink, ArrowRight, Check, Bot, User, RefreshCw } from 'lucide-react';
+import { soundEngine } from '../utils/audio';
 
 export default function SupportBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [showPrompt, setShowPrompt] = useState(true);
   const [hasUnread, setHasUnread] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
   const [chatHistory, setChatHistory] = useState([
     {
+      id: 1,
       sender: 'bot',
-      text: 'Добрый день! Я ассистент Насти Сивец. С удовольствием помогу вам с любым вопросом по материалам, оплате или сотрудничеству.',
+      text: 'Добрый день! Я виртуальный ассистент Насти Сивец. С удовольствием отвечу на любые вопросы по онлайн-курсу, лекциям, аудиогидам или бренду SLUU.',
       time: 'сейчас'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
+  const messagesEndRef = useRef(null);
 
-  // Auto-hide prompt bubble after user scrolls or after some seconds
+  // Auto-scroll on new message or when typing
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      // Keep prompt visible initially as requested by user
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (isOpen) {
+      scrollToBottom();
+    }
+  }, [chatHistory, isTyping, isOpen]);
 
   const handleOpen = () => {
+    soundEngine.playClick();
     setIsOpen(true);
     setShowPrompt(false);
     setHasUnread(false);
   };
 
-  const handleQuickQuestion = (type) => {
-    handleOpen();
+  // Smart knowledge base responder
+  const generateBotReply = (query) => {
+    const q = query.toLowerCase().trim();
 
-    let userText = '';
-    let botReply = '';
-    let actionLink = null;
-    let actionLabel = null;
-
-    if (type === 'materials') {
-      userText = 'Вопрос по материалам';
-      botReply = 'Все авторские лекции и аудиогиды открываются моментально после оплаты. Доступ бессрочный. Если у вас возникла сложность с получением ссылки или открытием аудио — напишите напрямую нашему менеджеру в Telegram, мы решим за 2 минуты!';
-      actionLink = 'https://t.me/sivets_requestsbot';
-      actionLabel = 'Написать менеджеру в Telegram';
-    } else if (type === 'payment') {
-      userText = 'Вопрос по оплате';
-      botReply = 'Оплата онлайн-курса «Синхронизации» проходит на официальной платформе Синхронизации (не забудьте промокод «НИШЕВЫМ» на скидку 15%). Лекции и аудиогиды оплачиваются российскими и зарубежными картами. Нужна помощь с оплатой из-за рубежа?';
-      actionLink = 'https://t.me/sivets_requestsbot';
-      actionLabel = 'Помощь с оплатой в Telegram';
-    } else if (type === 'sluu') {
-      userText = 'Заказ SLUU Aromatherapy';
-      botReply = 'Вся линейка ароматерапии SLUU (соевые свечи, диффузоры, интерьерные мисты) доступна в официальном магазине sluu.club, а также на Ozon и Wildberries с быстрой доставкой.';
-      actionLink = 'https://sluu.club/shop?utm_source=site_nastya';
-      actionLabel = 'Перейти в магазин SLUU';
+    if (q.includes('привет') || q.includes('здравствуй') || q.includes('добрый день') || q.includes('хай') || q.includes('салют')) {
+      return {
+        text: 'Здравствуйте! Рада вас приветствовать. О чем рассказать подробнее: о курсе с Синхронизацией, авторских лекциях или ароматерапии SLUU?',
+        actionLabel: 'Смотреть курс',
+        actionLink: '#course'
+      };
     }
 
-    setChatHistory((prev) => [
-      ...prev,
-      { sender: 'user', text: userText, time: 'сейчас' },
-      { sender: 'bot', text: botReply, actionLink, actionLabel, time: 'сейчас' }
-    ]);
+    if (q.includes('материал') || q.includes('лекци') || q.includes('доступ') || q.includes('гардероб') || q.includes('лееринг')) {
+      return {
+        text: 'Авторские лекции Насти посвящены искусству лееринга (как безошибочно смешивать парфюмы, 2 500 ₽) и созданию идеального парфюмерного гардероба (1 500 ₽). Доступ открывается сразу после оплаты бессрочно.',
+        actionLabel: 'Перейти к лекциям',
+        actionLink: '#course'
+      };
+    }
+
+    if (q.includes('оплат') || q.includes('купить') || q.includes('карт') || q.includes('за рубеж') || q.includes('цена') || q.includes('стоим') || q.includes('скидк') || q.includes('промокод')) {
+      return {
+        text: 'Оплата лекций и аудиогида проходит моментально онлайн российскими и зарубежными картами. На курс «Синхронизации» действует секретный промокод «НИШЕВЫМ» на скидку 15%!',
+        actionLabel: 'Скопировать промокод',
+        actionLink: '#course'
+      };
+    }
+
+    if (q.includes('аудиогид') || q.includes('квентин') || q.includes('наушник') || q.includes('бутик')) {
+      return {
+        text: 'Парфюмерный аудиогид «Красота невидимого» (30-40 мин) со скидкой 990 ₽ (вместо 1 350 ₽). Включайте в наушниках в магазине, чтобы сразу тестировать шедевры без суеты.',
+        actionLabel: 'Слушать аудиогид',
+        actionLink: 'https://nastyasivets.com/page128351466.html'
+      };
+    }
+
+    if (q.includes('sluu') || q.includes('слу') || q.includes('свеч') || q.includes('диффузор') || q.includes('мист') || q.includes('магазин') || q.includes('ozon') || q.includes('wb') || q.includes('вайлдбер')) {
+      return {
+        text: 'SLUU Aromatherapy — авторский бренд Насти Сивец: 100% соевые свечи с деревянным фитилем, интерьерные диффузоры и ботанические мисты. Заказывайте на sluu.club, Ozon и Wildberries!',
+        actionLabel: 'Магазин sluu.club',
+        actionLink: 'https://sluu.club/shop?utm_source=site_nastya'
+      };
+    }
+
+    if (q.includes('оберег') || q.includes('мерч') || q.includes('хейтер')) {
+      return {
+        text: '«Оберег от хейтеров» — культовый лимитированный талисман Насти Сивец для защиты вашего ольфакторного дзена. Тираж строго ограничен!',
+        actionLabel: 'Заказать оберег',
+        actionLink: 'https://nastyasivets.com/page217407809.html'
+      };
+    }
+
+    if (q.includes('день рождени') || q.includes('14 ноября') || q.includes('др') || q.includes('поздрав')) {
+      return {
+        text: 'День рождения Насти — 14 ноября! Спасибо за внимание и теплоту! ✨',
+        actionLabel: 'Поздравить в Telegram',
+        actionLink: 'https://t.me/nastyasivets'
+      };
+    }
+
+    if (q.includes('менеджер') || q.includes('человек') || q.includes('сотрудничеств') || q.includes('pr') || q.includes('реклам') || q.includes('связаться') || q.includes('телефон') || q.includes('почт')) {
+      return {
+        text: 'По вопросам рекламы, интеграций, участия в мероприятиях или решения сложных вопросов с оплатой — напишите напрямую в Telegram-бот команды Насти:',
+        actionLabel: 'Написать в Telegram @sivets_requestsbot',
+        actionLink: 'https://t.me/sivets_requestsbot'
+      };
+    }
+
+    // Default thoughtful reply
+    return {
+      text: `Благодарю за вопрос «${query}»! Я передала его команде Насти. Чтобы получить персональный ответ за пару минут, нажмите кнопку ниже для перехода в Telegram-бот заботы:`,
+      actionLabel: 'Открыть Telegram-бот поддержки',
+      actionLink: 'https://t.me/sivets_requestsbot'
+    };
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
+  const handleSendMessage = (textToSend) => {
+    const text = (textToSend || inputValue).trim();
+    if (!text) return;
 
-    const userText = inputValue;
+    soundEngine.playClick();
     setInputValue('');
 
-    setChatHistory((prev) => [
-      ...prev,
-      { sender: 'user', text: userText, time: 'сейчас' },
-      {
+    const userMsg = {
+      id: Date.now(),
+      sender: 'user',
+      text: text,
+      time: 'сейчас'
+    };
+
+    setChatHistory((prev) => [...prev, userMsg]);
+    setIsTyping(true);
+
+    // Natural assistant typing latency
+    setTimeout(() => {
+      const replyData = generateBotReply(text);
+      soundEngine.playChime(659, 0.4);
+      setIsTyping(false);
+
+      const botMsg = {
+        id: Date.now() + 1,
         sender: 'bot',
-        text: 'Спасибо за сообщение! Чтобы оперативно получить персональный ответ от команды Насти, нажмите кнопку ниже для перехода в Telegram-бот поддержки:',
-        actionLink: 'https://t.me/sivets_requestsbot',
-        actionLabel: 'Открыть Telegram-бот поддержки',
+        text: replyData.text,
+        actionLink: replyData.actionLink,
+        actionLabel: replyData.actionLabel,
         time: 'сейчас'
-      }
-    ]);
+      };
+
+      setChatHistory((prev) => [...prev, botMsg]);
+    }, 600);
+  };
+
+  const handleQuickQuestion = (type) => {
+    handleOpen();
+    if (type === 'materials') {
+      handleSendMessage('Вопрос по материалам и лекциям');
+    } else if (type === 'payment') {
+      handleSendMessage('Вопрос по оплате и скидкам');
+    } else if (type === 'sluu') {
+      handleSendMessage('Где купить продукцию SLUU?');
+    } else if (type === 'manager') {
+      handleSendMessage('Связаться с менеджером');
+    }
   };
 
   return (
-    <aside aria-label="Служба заботы" className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
+    <aside aria-label="Служба заботы Насти" className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
       {/* Speech Bubble & Quick Chips (shown when closed) */}
       {!isOpen && showPrompt && (
         <div className="mb-3 flex flex-col items-end gap-2 animate-in fade-in slide-in-from-bottom-3 duration-300">
           {/* Main Speech Card */}
-          <div className="relative rounded-2xl bg-white px-4 py-3 text-xs sm:text-sm font-medium text-stone-800 shadow-xl border border-stone-200/80 max-w-[240px] text-right">
+          <div className="relative rounded-2xl bg-white px-4 py-3 text-xs sm:text-sm font-medium text-stone-800 shadow-xl border border-stone-200/80 max-w-[250px] text-right">
             <button
               onClick={() => setShowPrompt(false)}
-              className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 flex items-center justify-center text-[10px]"
+              className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-stone-100 text-stone-500 hover:bg-stone-200 flex items-center justify-center text-[10px] cursor-pointer"
               aria-label="Скрыть"
             >
               <X className="w-3 h-3" />
@@ -134,9 +214,9 @@ export default function SupportBot() {
 
       {/* Expanded Interactive Chat Modal */}
       {isOpen && (
-        <div className="w-[90vw] sm:w-[380px] h-[520px] max-h-[85vh] rounded-3xl bg-white border border-stone-200/90 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="w-[92vw] sm:w-[400px] h-[550px] max-h-[85vh] rounded-3xl bg-white border border-stone-200/90 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
           {/* Chat Header */}
-          <div className="px-5 py-4 bg-[#FAF8F5] border-b border-stone-200 flex items-center justify-between">
+          <div className="px-5 py-4 bg-[#FAF8F5] border-b border-stone-200 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img
@@ -158,7 +238,7 @@ export default function SupportBot() {
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-full text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors"
+              className="p-1.5 rounded-full text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors cursor-pointer"
               aria-label="Закрыть чат"
             >
               <X className="w-5 h-5" />
@@ -167,25 +247,25 @@ export default function SupportBot() {
 
           {/* Messages Feed */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3 font-sans text-xs sm:text-sm bg-[#FCFBFA]">
-            {chatHistory.map((msg, index) => (
+            {chatHistory.map((msg) => (
               <div
-                key={index}
-                className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
+                key={msg.id}
+                className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} animate-in fade-in duration-200`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 leading-relaxed shadow-sm ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 leading-relaxed shadow-xs ${
                     msg.sender === 'user'
-                      ? 'bg-[#F878B3] text-white rounded-br-sm'
-                      : 'bg-white text-stone-800 border border-stone-200/70 rounded-bl-sm'
+                      ? 'bg-[#F878B3] text-white rounded-br-xs'
+                      : 'bg-white text-stone-800 border border-stone-200/80 rounded-bl-xs'
                   }`}
                 >
                   <p>{msg.text}</p>
 
-                  {/* Direct Action Button in Bot Reply */}
+                  {/* Direct Action Link in Bot Reply */}
                   {msg.actionLink && (
                     <a
                       href={msg.actionLink}
-                      target="_blank"
+                      target={msg.actionLink.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
                       className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F878B3]/15 hover:bg-[#F878B3] text-stone-900 hover:text-white font-semibold text-xs transition-colors"
                     >
@@ -199,55 +279,69 @@ export default function SupportBot() {
                 </span>
               </div>
             ))}
+
+            {/* Typing Indicator */}
+            {isTyping && (
+              <div className="flex items-center gap-2 text-stone-500 text-xs bg-white px-3.5 py-2 rounded-2xl w-fit border border-stone-200/60 shadow-2xs animate-in fade-in">
+                <span className="text-[11px] font-medium">Ассистент печатает</span>
+                <span className="flex gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F878B3] animate-bounce" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F878B3] animate-bounce [animation-delay:0.2s]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F878B3] animate-bounce [animation-delay:0.4s]" />
+                </span>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Choice Buttons inside Chat */}
-          <div className="px-3 py-2 bg-white border-t border-stone-100 flex gap-2 overflow-x-auto no-scrollbar">
+          <div className="px-3 py-2 bg-white border-t border-stone-100 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
             <button
               onClick={() => handleQuickQuestion('materials')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors"
+              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
-              Материалы
+              📚 Материалы
             </button>
             <button
               onClick={() => handleQuickQuestion('payment')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors"
+              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
-              Оплата
+              💳 Оплата
             </button>
             <button
               onClick={() => handleQuickQuestion('sluu')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors"
+              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
-              SLUU
+              🌿 SLUU
             </button>
-            <a
-              href="https://t.me/sivets_requestsbot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-[#F878B3]/10 text-[#F878B3] hover:bg-[#F878B3] hover:text-white transition-colors flex items-center gap-1"
+            <button
+              onClick={() => handleQuickQuestion('manager')}
+              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-[#F878B3]/10 text-[#F878B3] hover:bg-[#F878B3] hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
             >
-              <span>Telegram</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+              <span>💬 Менеджер</span>
+            </button>
           </div>
 
           {/* Chat Input */}
           <form
-            onSubmit={handleSendMessage}
-            className="p-3 bg-white border-t border-stone-200 flex items-center gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSendMessage();
+            }}
+            className="p-3 bg-white border-t border-stone-200 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Напишите ваш вопрос..."
+              placeholder="Спросите о курсе, лекциях, SLUU..."
               className="flex-1 px-4 py-2 rounded-full bg-stone-100 text-xs sm:text-sm text-stone-800 placeholder-stone-400 outline-none focus:ring-1 focus:ring-[#F878B3]"
             />
             <button
               type="submit"
               className="w-9 h-9 rounded-full bg-[#F878B3] hover:bg-[#f762a6] text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
-              aria-label="Отправить"
+              aria-label="Отправить сообщение"
             >
               <Send className="w-4 h-4 ml-0.5" />
             </button>

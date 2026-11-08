@@ -58,7 +58,7 @@ export default function EducationAndMasterclasses() {
           </h2>
         </div>
         <div className="text-xs uppercase tracking-[0.16em] text-stone-400 font-sans font-medium sm:text-right">
-          Синхронизация &bull; Частный архив материалов
+          Синхронизация &bull; Лекторий
         </div>
       </div>
 
@@ -211,161 +211,223 @@ export default function EducationAndMasterclasses() {
         </div>
       </div>
 
-      {/* Part 2: Private Masterclasses & Audio Guide Brochure */}
+      {/* Part 2: Educational Materials, Audio Guide & Merch */}
       <div>
         <div className="mb-10">
-          <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#e8559a] font-semibold mb-2">
-            ПРИВАТНЫЙ АРХИВ МАТЕРИАЛОВ
+          <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-stone-400 font-medium mb-2">
+            АВТОРСКИЕ МАТЕРИАЛЫ &bull; БУТИК
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900">
             Авторские лекции, аудиогид & лимитированный артефакт
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Lecture 1: Layering */}
-          <div className="editorial-card p-7 rounded-2xl flex flex-col justify-between">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 1. Lecture 1: Layering */}
+          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg group flex flex-col justify-between">
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-3">
-                {lectures[0].format}
+              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
+                <img
+                  src={lectures[0].image}
+                  alt={lectures[0].title}
+                  loading="lazy"
+                  width={400}
+                  height={275}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+                <div className="absolute top-3 left-3 text-[10px] font-sans font-medium uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                  {lectures[0].format}
+                </div>
               </div>
-              <h4 className="font-serif text-xl font-normal text-stone-900 mb-2">
-                {lectures[0].title}
-              </h4>
-              <p className="text-xs text-stone-600 font-light leading-relaxed mb-4">
-                {lectures[0].description}
-              </p>
-            </div>
-            <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-              <span className="font-mono text-sm font-semibold text-stone-900">
-                {lectures[0].price}
-              </span>
-              <a
-                href={lectures[0].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundEngine.playClick()}
-                className="text-xs font-mono uppercase tracking-wider text-[#e8559a] hover:text-stone-900 transition-colors flex items-center gap-1"
-              >
-                <span>Доступ</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
 
-          {/* Lecture 2: Wardrobe */}
-          <div className="editorial-card p-7 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div className="text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-3">
-                {lectures[1].format}
+              <div className="p-5 sm:p-6 space-y-2">
+                <h4 className="font-serif text-lg sm:text-xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                  {lectures[0].title}
+                </h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed line-clamp-3">
+                  {lectures[0].description}
+                </p>
               </div>
-              <h4 className="font-serif text-xl font-normal text-stone-900 mb-2">
-                {lectures[1].title}
-              </h4>
-              <p className="text-xs text-stone-600 font-light leading-relaxed mb-4">
-                {lectures[1].description}
-              </p>
             </div>
-            <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-              <span className="font-mono text-sm font-semibold text-stone-900">
-                {lectures[1].price}
-              </span>
-              <a
-                href={lectures[1].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundEngine.playClick()}
-                className="text-xs font-mono uppercase tracking-wider text-[#e8559a] hover:text-stone-900 transition-colors flex items-center gap-1"
-              >
-                <span>Доступ</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
 
-          {/* Audio Guide with interactive sample */}
-          <div className="editorial-card p-7 rounded-2xl flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-[#c5a059] mb-3">
-                <span className="flex items-center gap-1">
-                  <Headphones className="w-3.5 h-3.5" />
-                  <span>В наушниках</span>
+            <div className="p-5 sm:p-6 pt-0 mt-auto">
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <span className="font-mono text-base font-semibold text-stone-900">
+                  {lectures[0].price}
                 </span>
+                <a
+                  href={lectures[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundEngine.playClick()}
+                  className="editorial-btn-dark px-4 py-2 rounded-lg flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-xs"
+                >
+                  <span>Доступ</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Lecture 2: Wardrobe */}
+          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg group flex flex-col justify-between">
+            <div>
+              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
+                <img
+                  src={lectures[1].image}
+                  alt={lectures[1].title}
+                  loading="lazy"
+                  width={400}
+                  height={275}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+                <div className="absolute top-3 left-3 text-[10px] font-sans font-medium uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                  {lectures[1].format}
+                </div>
+              </div>
+
+              <div className="p-5 sm:p-6 space-y-2">
+                <h4 className="font-serif text-lg sm:text-xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                  {lectures[1].title}
+                </h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed line-clamp-3">
+                  {lectures[1].description}
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-6 pt-0 mt-auto">
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <span className="font-mono text-base font-semibold text-stone-900">
+                  {lectures[1].price}
+                </span>
+                <a
+                  href={lectures[1].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundEngine.playClick()}
+                  className="editorial-btn-dark px-4 py-2 rounded-lg flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-xs"
+                >
+                  <span>Доступ</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Audio Guide with Interactive Sample */}
+          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg group flex flex-col justify-between">
+            <div>
+              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
+                <img
+                  src={audioGuides[0].image}
+                  alt={audioGuides[0].title}
+                  loading="lazy"
+                  width={400}
+                  height={275}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+                <div className="absolute top-3 left-3 text-[10px] font-sans font-medium uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                  В наушниках &bull; 35 мин
+                </div>
+
                 <button
                   onClick={toggleAudioDemo}
-                  className="px-2.5 py-0.5 rounded-full bg-stone-100 hover:bg-[#fdf2f7] text-stone-700 hover:text-[#e8559a] text-[10px] font-mono flex items-center gap-1 cursor-pointer transition-colors"
-                  title="Прослушать фрагмент атмосферы"
+                  className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-stone-900 shadow-md backdrop-blur-md text-[11px] font-sans font-medium flex items-center gap-1.5 cursor-pointer transition-all hover:scale-105"
+                  title={isPlayingDemo ? "Остановить фрагмент" : "Прослушать фрагмент атмосферы"}
                 >
                   {isPlayingDemo ? (
                     <>
-                      <Pause className="w-3 h-3 text-[#e8559a]" />
-                      <span>{demoSec}s</span>
+                      <Pause className="w-3 h-3 text-[#e8559a] fill-current" />
+                      <span className="text-[#e8559a] font-mono text-[10px] font-semibold">{demoSec}s</span>
                     </>
                   ) : (
                     <>
-                      <Play className="w-3 h-3 text-[#e8559a]" />
-                      <span>Тест 25s</span>
+                      <Play className="w-3 h-3 text-stone-900 fill-current ml-0.5" />
+                      <span className="text-[10px] font-mono">Тест 25s</span>
                     </>
                   )}
                 </button>
               </div>
-              <h4 className="font-serif text-xl font-normal text-stone-900 mb-2">
-                {audioGuides[0].title}
-              </h4>
-              <p className="text-xs text-stone-600 font-light leading-relaxed mb-4">
-                {audioGuides[0].description}
-              </p>
-            </div>
-            <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-              <div>
-                <span className="font-mono text-sm font-semibold text-stone-900">
-                  {audioGuides[0].price}
-                </span>
-                <span className="text-[10px] font-mono text-stone-400 line-through ml-1.5">
-                  {audioGuides[0].oldPrice}
-                </span>
+
+              <div className="p-5 sm:p-6 space-y-2">
+                <h4 className="font-serif text-lg sm:text-xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                  {audioGuides[0].title}
+                </h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed line-clamp-3">
+                  {audioGuides[0].description}
+                </p>
               </div>
-              <a
-                href={audioGuides[0].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundEngine.playClick()}
-                className="text-xs font-mono uppercase tracking-wider text-[#e8559a] hover:text-stone-900 transition-colors flex items-center gap-1"
-              >
-                <span>Купить</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
+            </div>
+
+            <div className="p-5 sm:p-6 pt-0 mt-auto">
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <div>
+                  <span className="font-mono text-base font-semibold text-stone-900">
+                    {audioGuides[0].price}
+                  </span>
+                  <span className="text-[10px] font-mono text-stone-400 line-through ml-1.5">
+                    {audioGuides[0].oldPrice}
+                  </span>
+                </div>
+                <a
+                  href={audioGuides[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundEngine.playClick()}
+                  className="editorial-btn-dark px-4 py-2 rounded-lg flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-xs"
+                >
+                  <span>Купить</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Artifact: Оберег от хейтеров */}
-          <div className="editorial-card p-7 rounded-2xl flex flex-col justify-between">
+          {/* 4. Artifact: Оберег от хейтеров */}
+          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg group flex flex-col justify-between">
             <div>
-              <div className="text-[10px] font-mono uppercase tracking-wider text-[#e8559a] mb-3 flex items-center gap-1">
-                <Shield className="w-3.5 h-3.5" />
-                <span>Лимитированный тираж</span>
+              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
+                <img
+                  src={merch.image}
+                  alt={merch.title}
+                  loading="lazy"
+                  width={400}
+                  height={275}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+                <div className="absolute top-3 left-3 text-[10px] font-sans font-medium uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md flex items-center gap-1">
+                  <Shield className="w-3 h-3 text-[#f878b3]" />
+                  <span>Лимитированный тираж</span>
+                </div>
               </div>
-              <h4 className="font-serif text-xl font-normal text-stone-900 mb-2">
-                {merch.title}
-              </h4>
-              <p className="text-xs text-stone-600 font-light leading-relaxed mb-4">
-                {merch.description}
-              </p>
+
+              <div className="p-5 sm:p-6 space-y-2">
+                <h4 className="font-serif text-lg sm:text-xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                  {merch.title}
+                </h4>
+                <p className="text-xs text-stone-600 font-light leading-relaxed line-clamp-3">
+                  {merch.description}
+                </p>
+              </div>
             </div>
-            <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-              <span className="font-mono text-xs text-stone-500">
-                Коллекционный талисман
-              </span>
-              <a
-                href={merch.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundEngine.playClick()}
-                className="text-xs font-mono uppercase tracking-wider text-[#e8559a] hover:text-stone-900 transition-colors flex items-center gap-1"
-              >
-                <span>Заказать</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </a>
+
+            <div className="p-5 sm:p-6 pt-0 mt-auto">
+              <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                <span className="font-mono text-xs font-medium text-stone-500">
+                  {merch.price}
+                </span>
+                <a
+                  href={merch.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundEngine.playClick()}
+                  className="editorial-btn-dark px-4 py-2 rounded-lg flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-xs"
+                >
+                  <span>Заказать</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   const { legal } = SITE_DATA;
@@ -34,6 +34,17 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-6">
+          <a
+            href="https://t.me/parfoutlet"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEngine.playClick()}
+            className="text-stone-600 hover:text-[#e8559a] underline underline-offset-4 transition-colors font-mono text-[11px] uppercase tracking-wider inline-flex items-center gap-1"
+          >
+            <span>Парфюмерный аутлет</span>
+            <ArrowUpRight className="w-3 h-3 text-stone-400" />
+          </a>
+
           <a
             href={legal.offerUrl}
             target="_blank"

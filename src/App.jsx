@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FragranceAura from './components/FragranceAura';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -6,15 +6,10 @@ import OlfactivePersona from './components/OlfactivePersona';
 import VideoSection from './components/VideoSection';
 import EducationAndMasterclasses from './components/EducationAndMasterclasses';
 import SluuBrand from './components/SluuBrand';
-import PerfumeOutlet from './components/PerfumeOutlet';
-import BirthdayCapsule from './components/BirthdayCapsule';
 import Collaboration from './components/Collaboration';
 import Footer from './components/Footer';
-import BirthdayModal from './components/BirthdayModal';
 
 export default function App() {
-  const [birthdayOpen, setBirthdayOpen] = useState(false);
-
   return (
     <div className="relative min-h-screen bg-[#FAF8F5] text-[#1C1917] selection:bg-[#F878B3] selection:text-white overflow-hidden">
       {/* Subtle warm architectural ambient light */}
@@ -28,43 +23,31 @@ export default function App() {
       <FragranceAura />
 
       {/* Floating Architectural Header */}
-      <Navbar onOpenBirthday={() => setBirthdayOpen(true)} />
+      <Navbar />
 
-      {/* High-Fashion Editorial Monograph Experience */}
+      {/* Editorial Content Experience */}
       <main className="relative z-10">
         {/* Editorial Hero Monograph */}
-        <Hero onOpenBirthday={() => setBirthdayOpen(true)} />
+        <Hero />
 
         {/* Section: The Olfactive Persona */}
         <OlfactivePersona />
 
-        {/* Education & Masterclasses (Course) */}
+        {/* Education & Masterclasses (Course, Lectures, Audio Guide & Merch) */}
         <EducationAndMasterclasses />
 
         {/* Section: Selected Video Investigations */}
         <VideoSection />
 
-        {/* Chapter 05: SLUU Aromatherapy Atelier */}
+        {/* SLUU Aromatherapy Atelier */}
         <SluuBrand />
 
-        {/* Chapter 06: Perfume Outlet */}
-        <PerfumeOutlet />
-
-        {/* Chapter 07: 14 November Capsule */}
-        <BirthdayCapsule onOpenBirthday={() => setBirthdayOpen(true)} />
-
-        {/* Chapter 08: PR & Collaboration */}
+        {/* PR & Collaboration */}
         <Collaboration />
       </main>
 
       {/* Footer & Colophon */}
       <Footer />
-
-      {/* Interactive November 14 Birthday Experience Modal */}
-      <BirthdayModal
-        isOpen={birthdayOpen}
-        onClose={() => setBirthdayOpen(false)}
-      />
     </div>
   );
 }

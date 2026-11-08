@@ -4,7 +4,7 @@ import { soundEngine } from '../utils/audio';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { IconTelegram, IconYouTube, IconInstagram, IconTikTok, IconVKVideo } from './Icons';
 
-export default function Hero({ onOpenBirthday }) {
+export default function Hero() {
   const { hero, socials } = SITE_DATA;
   const [imgLoaded, setImgLoaded] = useState(false);
 

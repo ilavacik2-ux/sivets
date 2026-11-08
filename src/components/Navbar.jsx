@@ -12,7 +12,6 @@ export default function Navbar() {
     { id: 'course', label: 'Курс', href: '#course' },
     { id: 'videos', label: 'Видео', href: '#videos' },
     { id: 'sluu', label: 'SLUU', href: '#sluu' },
-    { id: 'outlet', label: 'Аутлет', href: '#outlet' },
     { id: 'cooperation', label: 'Контакты', href: '#cooperation' },
   ];
 

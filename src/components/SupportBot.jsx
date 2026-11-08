@@ -58,8 +58,8 @@ export default function SupportBot() {
 
     if (q.includes('оплат') || q.includes('купить') || q.includes('карт') || q.includes('за рубеж') || q.includes('цена') || q.includes('стоим') || q.includes('скидк') || q.includes('промокод')) {
       return {
-        text: 'Оплата лекций и аудиогида проходит моментально онлайн российскими и зарубежными картами. На курс «Синхронизации» действует секретный промокод «НИШЕВЫМ» на скидку 15%!',
-        actionLabel: 'Скопировать промокод',
+        text: 'Оплата лекций и аудиогида проходит моментально онлайн российскими и зарубежными картами. Скидка 15% на флагманский курс «Синхронизации» действует автоматически при переходе по ссылке!',
+        actionLabel: 'Курс со скидкой 15%',
         actionLink: '#course'
       };
     }
@@ -72,9 +72,9 @@ export default function SupportBot() {
       };
     }
 
-    if (q.includes('sluu') || q.includes('слу') || q.includes('свеч') || q.includes('диффузор') || q.includes('мист') || q.includes('магазин') || q.includes('ozon') || q.includes('wb') || q.includes('вайлдбер')) {
+    if (q.includes('sluu') || q.includes('слу') || q.includes('масл') || q.includes('бленд') || q.includes('магазин') || q.includes('ozon') || q.includes('wb') || q.includes('вайлдбер')) {
       return {
-        text: 'SLUU Aromatherapy — авторский бренд Насти Сивец: 100% соевые свечи с деревянным фитилем, интерьерные диффузоры и ботанические мисты. Заказывайте на sluu.club, Ozon и Wildberries!',
+        text: 'SLUU Aromatherapy — авторский бренд Насти Сивец: 100% натуральные бленды эфирных масел терапевтического класса для фокуса, снятия стресса и сна. Заказывайте на sluu.club, Ozon и Wildberries!',
         actionLabel: 'Магазин sluu.club',
         actionLink: 'https://sluu.club/shop?utm_source=site_nastya'
       };

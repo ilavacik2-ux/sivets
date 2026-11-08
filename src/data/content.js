@@ -18,7 +18,7 @@ export const SITE_DATA = {
   socials: [
     { name: "Telegram", handle: "@nastyasivets", url: "https://t.me/nastyasivets", icon: "Send", count: "48K+ подписчиков" },
     { name: "YouTube", handle: "@nastyasivets", url: "https://www.youtube.com/@nastyasivets", icon: "Youtube", count: "120K+ просмотров" },
-    { name: "Instagram", handle: "@sivets", url: "https://www.instagram.com/sivets/", icon: "Instagram", count: "Личный блог" },
+    { name: "Instagram*", handle: "@sivets", url: "https://www.instagram.com/sivets/", icon: "Instagram", count: "Личный блог" },
     { name: "TikTok", handle: "@nastyasivets", url: "https://www.tiktok.com/@nastyasivets", icon: "Video", count: "Shorts & тренды" },
     { name: "VK Видео", handle: "@nastyasivets", url: "https://vkvideo.ru/@nastyasivets", icon: "PlaySquare", count: "Эксклюзивы" }
   ],
@@ -183,8 +183,6 @@ export const SITE_DATA = {
     subtitle: "Совместно с ведущим лекторием «Синхронизация»",
     description: "Большой практический курс: как понимать нишевые ароматы, строить свой ольфакторный гардероб, читать ноты и разбираться в парфюмерии на уровне эксперта.",
     image: "https://static.tildacdn.com/tild6164-3137-4362-b836-326238653934/Slide_16_9_-_43.png",
-    promocode: "нишевым",
-    promoLabel: "Скидка по промокоду",
     discount: "-15%",
     link: "https://online.synchronize.ru/fashionanddesign/perfume?utm_source=instagram&utm_medium=social_video&utm_campaign=online&utm_content=perfume&utm_term=141026&promocode=%D0%BD%D0%B8%D1%88%D0%B5%D0%B2%D1%8B%D0%BC",
     badge: "Хит обучения • Синхронизация",

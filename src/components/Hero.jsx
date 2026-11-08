@@ -15,6 +15,7 @@ export default function Hero() {
       case 'YouTube':
         return <IconYouTube className="w-4 h-4 text-[#FF0000]" />;
       case 'Instagram':
+      case 'Instagram*':
         return <IconInstagram className="w-4 h-4 text-[#E4405F]" />;
       case 'TikTok':
         return <IconTikTok className="w-4 h-4 text-stone-900" />;

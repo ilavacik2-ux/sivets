@@ -66,13 +66,20 @@ export default function Footer({ onOpenOffer }) {
         </div>
       </div>
 
-      <div className="pt-8 border-t border-stone-200/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] sm:text-[11px] font-sans text-stone-400">
-        <div>&copy; {new Date().getFullYear()} Настя Сивец. Все права защищены.</div>
-        <div className="flex items-center gap-2 text-stone-500 font-sans text-[11px]">
-          <span>НАСТЯ СИВЕЦ</span>
-          <span>&bull;</span>
-          <span>SLUU AROMATHERAPY</span>
+      {/* Legal Footnote & Disclaimer */}
+      <div className="pt-6 border-t border-stone-200/50 space-y-3 text-[10px] sm:text-[11px] font-sans text-stone-400">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>&copy; {new Date().getFullYear()} Настя Сивец. Все права защищены.</div>
+          <div className="flex items-center gap-2 text-stone-500 font-sans text-[11px]">
+            <span>НАСТЯ СИВЕЦ</span>
+            <span>&bull;</span>
+            <span>SLUU AROMATHERAPY</span>
+          </div>
         </div>
+
+        <p className="text-[10px] text-stone-400 font-light leading-relaxed max-w-4xl">
+          * Деятельность организации Meta Platforms Inc. (включая социальную сеть Instagram) признана экстремистской и запрещена на территории Российской Федерации. Все платежи на сайте обрабатываются через защищенный платежный шлюз с шифрованием данных по стандарту PCI DSS.
+        </p>
       </div>
     </footer>
   );

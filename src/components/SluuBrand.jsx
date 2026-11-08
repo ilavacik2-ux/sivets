@@ -40,54 +40,15 @@ export default function SluuBrand() {
   return (
     <section id="sluu" className="py-24 sm:py-32 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.22em] text-[#e8559a] mb-2 font-semibold">
-            <Flame className="w-3.5 h-3.5" />
-            <span>Ароматерапия & Дом</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
-            Ателье SLUU <span className="italic font-light text-stone-500">Aromatherapy</span>
+            SLUU <span className="italic font-light text-stone-500">Aromatherapy</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-[0.16em] text-stone-400 font-sans font-medium sm:text-right">
-          Бренд Насти Сивец &bull; sluu.club
-        </div>
-      </div>
-
-      {/* Brand Philosophy Editorial Intro */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 items-start">
-        <div className="lg:col-span-6 space-y-4">
-          <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-stone-400 font-medium">
-            ФИЛОСОФИЯ ПРОСТРАНСТВА
-          </div>
-          <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900 leading-tight">
-            {sluuBrand.tagline}
-          </h3>
-          <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
-            {sluuBrand.description}
-          </p>
-        </div>
-
-        {/* 3 Pillars in Clean Aesthetic Cards */}
-        <div className="lg:col-span-6 grid grid-cols-1 gap-3.5 pt-1">
-          {sluuBrand.pillars?.map((pil, idx) => (
-            <div
-              key={idx}
-              className="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs transition-all hover:border-stone-300"
-            >
-              <div className="flex items-center gap-2.5 text-xs font-sans uppercase tracking-wider text-stone-900 font-semibold mb-1.5">
-                <span className="w-5 h-5 rounded-full bg-[#fdf2f7] text-[#e8559a] text-[10px] flex items-center justify-center font-bold">
-                  {idx + 1}
-                </span>
-                <span>{pil.title}</span>
-              </div>
-              <p className="text-xs text-stone-600 font-light leading-relaxed pl-7">
-                {pil.desc}
-              </p>
-            </div>
-          ))}
-        </div>
+        <p className="text-sm sm:text-base text-stone-600 font-light max-w-md sm:text-right">
+          {sluuBrand.description}
+        </p>
       </div>
 
       {/* Prominent Direct Store & Marketplace Access Strip */}

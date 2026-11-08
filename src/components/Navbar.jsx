@@ -40,24 +40,24 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 pt-4 transition-all duration-300">
       <nav
-        className={`max-w-6xl mx-auto rounded-full transition-all duration-300 px-6 sm:px-8 py-3.5 flex items-center justify-between border ${
+        className={`max-w-5xl mx-auto rounded-full transition-all duration-300 px-6 sm:px-8 py-3 flex items-center justify-between border ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-2xl border-stone-200/90 shadow-md shadow-stone-900/5'
-            : 'bg-white/80 backdrop-blur-xl border-stone-200/60 shadow-2xs'
+            ? 'bg-white/90 backdrop-blur-2xl border-stone-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)]'
+            : 'bg-[#FAF8F5]/80 backdrop-blur-xl border-stone-200/50 shadow-2xs'
         }`}
       >
         {/* Brand Typographic Monogram */}
         <a
           href="#"
           onClick={() => soundEngine.playClick()}
-          className="group flex items-center gap-2.5 text-xs sm:text-sm tracking-[0.22em] uppercase font-medium text-stone-900 transition-opacity hover:opacity-80"
+          className="group flex items-center gap-2 text-xs sm:text-sm font-serif tracking-[0.2em] uppercase text-stone-900 transition-opacity hover:opacity-75"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
-          <span className="font-semibold text-stone-900">NASTYA SIVETS</span>
+          <span className="font-medium">НАСТЯ СИВЕЦ</span>
         </a>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-7 text-[12px] font-sans font-medium tracking-[0.12em] uppercase text-stone-600">
+        <div className="hidden md:flex items-center gap-8 text-[12px] font-sans tracking-[0.16em] uppercase text-stone-600">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -65,11 +65,16 @@ export default function Navbar() {
                 key={link.id}
                 href={link.href}
                 onClick={() => soundEngine.playClick()}
-                className={`transition-colors py-1 relative ${
-                  isActive ? 'text-[#e8559a] font-semibold' : 'hover:text-stone-900'
+                className={`transition-all py-1 relative ${
+                  isActive
+                    ? 'text-stone-900 font-semibold'
+                    : 'text-stone-600 hover:text-stone-900'
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {isActive && (
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-[1.5px] bg-[#f878b3] rounded-full" />
+                )}
               </a>
             );
           })}
@@ -80,7 +85,7 @@ export default function Navbar() {
           <a
             href="#cooperation"
             onClick={() => soundEngine.playClick()}
-            className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-sans font-medium uppercase tracking-[0.14em] px-4 py-1.5 rounded-full border border-stone-200 text-stone-700 hover:text-stone-900 hover:border-stone-400 bg-white transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-sans font-medium uppercase tracking-[0.14em] px-4 py-1.5 rounded-full border border-stone-200/90 text-stone-700 hover:text-stone-900 hover:border-stone-400 bg-white/90 transition-all cursor-pointer shadow-2xs"
           >
             Связаться
           </a>

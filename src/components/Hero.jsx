@@ -26,9 +26,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-12 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
+    <section className="relative min-h-screen flex flex-col justify-between pt-36 sm:pt-44 pb-12 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
       {/* 1. Grand Masthead Typographic Display */}
-      <div className="pt-4 sm:pt-8 pb-8 sm:pb-12 border-b border-stone-200/60">
+      <div className="pt-2 sm:pt-4 pb-8 sm:pb-12 border-b border-stone-200/60">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
           <div className="text-[12px] sm:text-xs font-sans uppercase tracking-[0.24em] text-[#e8559a] font-semibold">
             Парфюмерный исследователь &bull; Создательница SLUU
@@ -56,12 +56,6 @@ export default function Hero() {
                 imgLoaded ? 'opacity-100' : 'opacity-85'
               }`}
             />
-          </div>
-
-          {/* Museum Caption */}
-          <div className="mt-3.5 flex items-center justify-between text-[11px] font-sans uppercase tracking-[0.2em] text-stone-400 font-medium">
-            <span>NASTYA SIVETS</span>
-            <span>SLUU ATELIER</span>
           </div>
         </div>
 
@@ -154,15 +148,6 @@ export default function Hero() {
             </a>
           ))}
         </div>
-
-        <a
-          href="#persona"
-          onClick={() => soundEngine.playClick()}
-          className="hidden md:inline-flex items-center gap-2 text-stone-400 hover:text-stone-800 transition-colors text-xs font-sans font-medium uppercase tracking-[0.14em]"
-        >
-          <span>Исследовать далее</span>
-          <ArrowDown className="w-3.5 h-3.5 text-[#e8559a]" />
-        </a>
       </div>
     </section>
   );

@@ -1,79 +1,172 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Montserrat", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-rose-gold: #f878b3;
+  --color-champagne: #e5c18a;
+  --color-obsidian: #09080a;
+}
+
 @layer base {
   :root {
-    --color-sand: #e9e5e4;
-    --color-sand-light: #f5f2f1;
-    --color-sand-card: #f9f7f6;
-    --color-dark: #141313;
-    --color-pink: #f878b3;
-    --color-pink-glow: rgba(248, 120, 179, 0.25);
+    --bg-dark: #09080a;
+    --bg-surface: #121014;
+    --bg-card: rgba(18, 16, 21, 0.78);
+    --color-rose: #f878b3;
+    --color-rose-glow: rgba(248, 120, 179, 0.35);
+    --color-gold: #e5c18a;
+    --color-gold-glow: rgba(229, 193, 138, 0.25);
+    --text-primary: #f5f2f1;
+    --text-secondary: #9e9799;
   }
 
   body {
-    background-color: var(--color-sand);
-    color: var(--color-dark);
-    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
     overflow-x: hidden;
+    min-height: 100vh;
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif) !important;
+    letter-spacing: -0.015em;
   }
 }
 
-/* Glassmorphism Luxury Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+/* Haute Parfumerie Glassmorphism */
+.glass-luxury {
+  background: rgba(18, 15, 20, 0.75);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
 }
 
-.glass-panel-dark {
-  background: rgba(20, 19, 19, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+.glass-luxury-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-luxury-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(248, 120, 179, 0.3);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 35px -5px rgba(248, 120, 179, 0.18);
 }
 
-.glass-pill {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+.glass-pill-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Luxury button styling */
-.btn-pink {
-  background-color: #f878b3;
-  color: #121111;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Liquid gold & Rose Quartz luxury buttons */
+.btn-glow-rose {
+  background: linear-gradient(135deg, #f878b3 0%, #e8559a 100%);
+  color: #0d0b0d;
+  font-weight: 600;
+  box-shadow: 0 0 25px -4px rgba(248, 120, 179, 0.45);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn-pink:hover {
-  background-color: #f762a6;
+.btn-glow-rose:hover {
+  background: linear-gradient(135deg, #ff8bc1 0%, #f878b3 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(248, 120, 179, 0.4);
+  box-shadow: 0 0 35px 2px rgba(248, 120, 179, 0.65);
 }
-.btn-pink:active {
+.btn-glow-rose:active {
   transform: translateY(0);
 }
 
-.btn-luxury-dark {
-  background-color: #141313;
+.btn-luxury-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #f5f2f1;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn-luxury-dark:hover {
-  background-color: #262424;
+.btn-luxury-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(20, 19, 19, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* Custom horizontal scroll bar */
+.btn-gold {
+  background: linear-gradient(135deg, #f5d8a9 0%, #d4af37 100%);
+  color: #0b090c;
+  font-weight: 600;
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.4);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px 2px rgba(212, 175, 55, 0.6);
+}
+
+/* Typography Editorial Accents */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fbeec8 0%, #e5c18a 50%, #c49658 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-rose-gradient {
+  background: linear-gradient(135deg, #ffd3e6 0%, #f878b3 60%, #e24991 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-silver-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #d8d4d5 60%, #999395 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle Shimmer keyframe */
+@keyframes shimmerPass {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #f5f2f1 0%, #ffd3e6 50%, #f5f2f1 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerPass 6s infinite ease-in-out;
+}
+
+/* Ambient liquid sway animation */
+@keyframes liquidSway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(1deg); }
+}
+
+.animate-liquid-sway {
+  animation: liquidSway 6s ease-in-out infinite;
+}
+
+/* Flacon mist spray effect */
+@keyframes mistFade {
+  0% {
+    opacity: 0.95;
+    transform: scale(0.6) translateY(0);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8) translateY(-90px);
+    filter: blur(20px);
+  }
+}
+
+.animate-mist {
+  animation: mistFade 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -82,23 +175,7 @@
   scrollbar-width: none;
 }
 
-/* Subtle glow animations */
-@keyframes auraPulse {
-  0%, 100% {
-    transform: scale(1) translate(0, 0);
-    opacity: 0.4;
-  }
-  50% {
-    transform: scale(1.08) translate(15px, -15px);
-    opacity: 0.65;
-  }
-}
-
-.animate-aura {
-  animation: auraPulse 12s ease-in-out infinite;
-}
-
-/* Smooth motion preferences */
+/* Smooth motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;

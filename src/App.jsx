@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FragranceAura from './components/FragranceAura';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,8 +8,11 @@ import EducationAndMasterclasses from './components/EducationAndMasterclasses';
 import SluuBrand from './components/SluuBrand';
 import Collaboration from './components/Collaboration';
 import Footer from './components/Footer';
+import PublicOfferModal from './components/PublicOfferModal';
+import SupportBot from './components/SupportBot';
 
 export default function App() {
+  const [isOfferOpen, setIsOfferOpen] = useState(false);
   return (
     <div className="relative min-h-screen bg-[#FAF8F5] text-[#1C1917] selection:bg-[#F878B3] selection:text-white overflow-hidden">
       {/* Subtle warm architectural ambient light */}
@@ -47,7 +50,16 @@ export default function App() {
       </main>
 
       {/* Footer & Colophon */}
-      <Footer />
+      <Footer onOpenOffer={() => setIsOfferOpen(true)} />
+
+      {/* Floating Interactive Care / Support Bot (just like on Nastya's site) */}
+      <SupportBot />
+
+      {/* Public Legal Offer Modal */}
+      <PublicOfferModal
+        isOpen={isOfferOpen}
+        onClose={() => setIsOfferOpen(false)}
+      />
     </div>
   );
 }

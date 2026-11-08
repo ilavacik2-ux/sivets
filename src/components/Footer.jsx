@@ -3,7 +3,7 @@ import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onOpenOffer }) {
   const { legal } = SITE_DATA;
 
   const scrollToTop = () => {
@@ -45,15 +45,15 @@ export default function Footer() {
             <ArrowUpRight className="w-3 h-3 text-stone-400" />
           </a>
 
-          <a
-            href={legal.offerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => soundEngine.playClick()}
-            className="text-stone-600 hover:text-stone-900 underline underline-offset-4 transition-colors font-mono text-[11px] uppercase tracking-wider"
+          <button
+            onClick={() => {
+              soundEngine.playClick();
+              if (onOpenOffer) onOpenOffer();
+            }}
+            className="text-stone-600 hover:text-stone-900 underline underline-offset-4 transition-colors font-mono text-[11px] uppercase tracking-wider cursor-pointer"
           >
             Публичная оферта
-          </a>
+          </button>
 
           <button
             onClick={scrollToTop}

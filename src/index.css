@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-sand: #e9e5e4;
+    --color-sand-light: #f5f2f1;
+    --color-sand-card: #f9f7f6;
+    --color-dark: #141313;
+    --color-pink: #f878b3;
+    --color-pink-glow: rgba(248, 120, 179, 0.25);
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-dark);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* Glassmorphism Luxury Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-panel-dark {
+  background: rgba(20, 19, 19, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Luxury button styling */
+.btn-pink {
+  background-color: #f878b3;
+  color: #121111;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-pink:hover {
+  background-color: #f762a6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(248, 120, 179, 0.4);
+}
+.btn-pink:active {
+  transform: translateY(0);
+}
+
+.btn-luxury-dark {
+  background-color: #141313;
+  color: #f5f2f1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-luxury-dark:hover {
+  background-color: #262424;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(20, 19, 19, 0.3);
+}
+
+/* Custom horizontal scroll bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle glow animations */
+@keyframes auraPulse {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.08) translate(15px, -15px);
+    opacity: 0.65;
+  }
+}
+
+.animate-aura {
+  animation: auraPulse 12s ease-in-out infinite;
+}
+
+/* Smooth motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

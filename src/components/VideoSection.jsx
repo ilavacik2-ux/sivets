@@ -22,9 +22,9 @@ export default function VideoSection() {
   const featuredVideo = videos[0]; // Sadovod investigation
 
   return (
-    <section id="videos" className="py-24 sm:py-32 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="videos" className="py-16 sm:py-20 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Chapter Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
         <div>
           <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] mb-2 font-bold">
             <Film className="w-4 h-4" />
@@ -58,8 +58,8 @@ export default function VideoSection() {
 
       {/* Featured Investigation: Widescreen Billboard */}
       {activeFilter === 'all' && (
-        <div className="mb-20 pb-20 border-b border-stone-200/80">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="mb-14 pb-14 border-b border-stone-200/80">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Cinematic Widescreen Frame */}
             <div className="lg:col-span-7">
               <a
@@ -87,7 +87,7 @@ export default function VideoSection() {
             </div>
 
             {/* Editorial Information */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-5">
               <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#e8559a] font-bold">
                 ГЛАВНОЕ РАССЛЕДОВАНИЕ &bull; СПЕЦПРОЕКТ
               </div>
@@ -100,6 +100,10 @@ export default function VideoSection() {
                 Глубокое исследование теневого рынка парфюмерии: почему копии стали визуально неотличимы от оригинала, как молекулярная экспертиза раскрывает подделки и что попадает в дыхательные пути при использовании реплик.
               </p>
 
+              <div className="text-xs font-mono text-stone-500 font-medium pt-1">
+                {featuredVideo.stats || '120 000+ просмотров • Лабораторный тест'}
+              </div>
+
               {/* Watch Actions */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
@@ -107,7 +111,7 @@ export default function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-7 py-4 rounded-full flex items-center gap-2.5 shadow-xs cursor-pointer hover:scale-105 transition-all text-xs sm:text-sm font-semibold"
+                  className="editorial-btn-dark px-7 py-3.5 rounded-full flex items-center gap-2.5 shadow-xs cursor-pointer hover:scale-105 transition-all text-xs sm:text-sm font-semibold whitespace-nowrap"
                 >
                   <IconYouTube className="w-4 h-4 text-red-500" />
                   <span>Смотреть на YouTube</span>
@@ -119,7 +123,7 @@ export default function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-light px-7 py-4 rounded-full flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-all shadow-2xs text-xs sm:text-sm font-semibold"
+                  className="editorial-btn-light px-7 py-3.5 rounded-full flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-all shadow-2xs text-xs sm:text-sm font-semibold whitespace-nowrap"
                 >
                   <IconVKVideo className="w-4 h-4 text-[#0077FF]" />
                   <span>VK Видео</span>
@@ -131,8 +135,8 @@ export default function VideoSection() {
         </div>
       )}
 
-      {/* Film Catalog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+      {/* Film Catalog Grid (Balanced, Rich, No Awkward Empty Voids) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {filteredVideos.map((vid) => (
           <div key={vid.id} className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group p-5 sm:p-6">
             <div>
@@ -168,19 +172,34 @@ export default function VideoSection() {
                 </span>
               </div>
 
-              <h3 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug mb-3 group-hover:text-[#e8559a] transition-colors">
+              <h3 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug mb-2.5 group-hover:text-[#e8559a] transition-colors">
                 {vid.title}
               </h3>
+
+              {/* Engaging Synopsis to eliminate empty space */}
+              {vid.synopsis && (
+                <p className="text-sm text-stone-600 font-normal leading-relaxed mb-3">
+                  {vid.synopsis}
+                </p>
+              )}
+
+              {/* Highlights tags */}
+              {vid.highlights && (
+                <div className="text-xs font-sans text-stone-400 font-medium mb-3 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
+                  <span>{vid.highlights}</span>
+                </div>
+              )}
             </div>
 
             {/* Clear, Prominent Interactive Platform Buttons */}
-            <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-stone-100 mt-2">
+            <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-stone-100 mt-auto">
               <a
                 href={vid.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-900 hover:text-red-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105"
+                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-900 hover:text-red-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
                 title="Смотреть на YouTube"
               >
                 <IconYouTube className="w-4 h-4 text-red-600 group-hover/btn:scale-110 transition-transform" />
@@ -193,7 +212,7 @@ export default function VideoSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-900 hover:text-blue-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105"
+                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-900 hover:text-blue-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
                 title="Смотреть в VK Видео"
               >
                 <IconVKVideo className="w-4 h-4 text-[#0077FF] group-hover/btn:scale-110 transition-transform" />

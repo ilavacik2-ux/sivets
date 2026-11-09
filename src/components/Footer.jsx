@@ -12,7 +12,7 @@ export default function Footer({ onOpenOffer }) {
   };
 
   return (
-    <footer className="mt-28 border-t border-stone-200/80 py-16 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto text-sm text-stone-600 font-normal">
+    <footer className="mt-16 sm:mt-20 border-t border-stone-200/80 py-14 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto text-sm text-stone-600 font-normal">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
         <div>
           <div className="font-mono text-sm font-bold text-stone-900 tracking-[0.16em] uppercase mb-2 flex items-center gap-2">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { Headphones, Shield, ArrowUpRight, Play, Pause } from 'lucide-react';
+import { Shield, ArrowUpRight, Play, Pause, Check } from 'lucide-react';
 
 export default function EducationAndMasterclasses() {
   const { course, lectures, audioGuides, merch } = SITE_DATA;
@@ -35,10 +35,91 @@ export default function EducationAndMasterclasses() {
     }
   };
 
+  const boutiqueItems = [
+    {
+      id: 'lecture-layering',
+      title: lectures[0].title,
+      format: lectures[0].format,
+      badge: 'Авторский практикум',
+      description: lectures[0].description,
+      topics: lectures[0].topics || [
+        'Принципы сочетания сложных формул и молекул',
+        'Контраст и гармония базовых аккордов',
+        'Авторские рецепты многослойных миксов',
+        'Секреты стойкости шлейфа без удушья'
+      ],
+      price: lectures[0].price,
+      note: 'Бессрочный доступ',
+      btnText: 'Купить лекцию',
+      image: lectures[0].image,
+      link: lectures[0].link,
+      isMerch: false
+    },
+    {
+      id: 'lecture-wardrobe',
+      title: lectures[1].title,
+      format: lectures[1].format,
+      badge: 'Гид по гардеробу',
+      description: lectures[1].description,
+      topics: lectures[1].topics || [
+        'Базовый ольфакторный сет на все сезоны',
+        'Вечерние, дневные и интимные шлейфы',
+        'Флаконы-инвестиции, которые растут в цене',
+        'Как не ошибиться при покупке аромата вслепую'
+      ],
+      price: lectures[1].price,
+      note: 'Бессрочный доступ',
+      btnText: 'Купить лекцию',
+      image: lectures[1].image,
+      link: lectures[1].link,
+      isMerch: false
+    },
+    {
+      id: 'audio-guide',
+      title: 'Парфюмерный аудиогид «Красота невидимого»',
+      format: audioGuides[0].format || 'В наушниках • 35 мин',
+      badge: 'Аудиосопровождение в бутике',
+      description: audioGuides[0].description,
+      topics: audioGuides[0].topics || [
+        'Включай в наушниках прямо в парфюмерном магазине',
+        'Разбор шедевров Квентина Биша и редких компонентов',
+        'Тестирование без спешки и давления продавцов',
+        'Готовый маршрут по ключевым нотам'
+      ],
+      price: audioGuides[0].price,
+      oldPrice: audioGuides[0].oldPrice,
+      discount: 'Скидка -27%',
+      btnText: 'Купить аудиогид',
+      image: audioGuides[0].image,
+      link: audioGuides[0].link,
+      hasAudioTest: true,
+      isMerch: false
+    },
+    {
+      id: 'merch-obereg',
+      title: merch.title,
+      format: merch.tagline || 'Лимитированный тираж',
+      badge: merch.badge || 'Коллекционный артефакт',
+      description: merch.description,
+      topics: merch.topics || [
+        'Культовый лимитированный талисман от Насти Сивец',
+        'Защита личного ольфакторного пространства от токсичности',
+        'Премиальный подарочный футляр ручной работы',
+        'Символ независимого парфюмерного вкуса'
+      ],
+      price: merch.price || '1 490 ₽',
+      note: 'Ограниченный тираж',
+      btnText: 'Заказать оберег',
+      image: merch.image,
+      link: merch.link,
+      isMerch: true
+    }
+  ];
+
   return (
-    <section id="education" className="py-24 sm:py-32 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="education" className="py-16 sm:py-20 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
         <div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight [text-wrap:balance]">
             Курс по парфюмерии <span className="italic font-light text-stone-500">& лекторий</span>
@@ -50,10 +131,10 @@ export default function EducationAndMasterclasses() {
       </div>
 
       {/* Part 1: Flagship Course Showcase (Synchronize Collaboration) */}
-      <div id="course" className="mb-20 pb-20 border-b border-stone-200/80 scroll-mt-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <div id="course" className="mb-14 pb-14 border-b border-stone-200/80 scroll-mt-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: Full Uncropped Course Banner & Action */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5">
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-stone-100 rounded-2xl border border-stone-200/80 shadow-sm">
               <img
                 src={course.image}
@@ -65,7 +146,7 @@ export default function EducationAndMasterclasses() {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 sm:p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
               <div>
                 <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#e8559a] font-bold">
                   Спецусловия по ссылке
@@ -80,11 +161,36 @@ export default function EducationAndMasterclasses() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="editorial-btn-dark px-7 py-4 rounded-xl flex items-center justify-center gap-2.5 whitespace-nowrap text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.1em] shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-auto hover:scale-105"
+                className="editorial-btn-dark px-7 py-3.5 rounded-xl flex items-center justify-center gap-2.5 whitespace-nowrap text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.1em] shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-auto hover:scale-105 shrink-0"
               >
                 <span>Записаться на курс</span>
                 <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
               </a>
+            </div>
+
+            {/* Course Features Checklist to fully utilize space */}
+            <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-stone-200/80 space-y-2.5">
+              <div className="text-xs font-sans uppercase tracking-[0.14em] text-stone-600 font-bold">
+                Что входит в обучение:
+              </div>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-stone-700 font-normal">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#e8559a] shrink-0" />
+                  <span>4 тематических модуля</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#e8559a] shrink-0" />
+                  <span>10 практических видеоуроков</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#e8559a] shrink-0" />
+                  <span>Ольфакторные схемы и шпаргалки</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#e8559a] shrink-0" />
+                  <span>Именной сертификат выпускника</span>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -95,7 +201,7 @@ export default function EducationAndMasterclasses() {
                 СОВМЕСТНО С ЛЕКТОРИЕМ «СИНХРОНИЗАЦИЯ»
               </div>
 
-              <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-normal text-stone-900 leading-tight mb-4">
+              <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-normal text-stone-900 leading-tight mb-3">
                 {course.title}
               </h3>
 
@@ -104,17 +210,17 @@ export default function EducationAndMasterclasses() {
               </p>
             </div>
 
-            {/* Clear, well-proportioned 4-module syllabus without squished buttons */}
-            <div className="space-y-4 pt-4 border-t border-stone-200/80">
+            {/* Clear, well-proportioned 4-module syllabus */}
+            <div className="space-y-3.5 pt-4 border-t border-stone-200/80">
               <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] font-bold text-stone-700">
                 ПРОГРАММА ОБУЧЕНИЯ (4 МОДУЛЯ):
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {course.modules.map((mod) => (
                   <div
                     key={mod.num}
-                    className="p-5 rounded-2xl bg-white border border-stone-200/90 space-y-2 shadow-2xs hover:border-stone-400 transition-all"
+                    className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 space-y-1.5 shadow-2xs hover:border-stone-400 transition-all"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-xs sm:text-sm font-sans font-bold text-[#e8559a]">
@@ -135,250 +241,136 @@ export default function EducationAndMasterclasses() {
         </div>
       </div>
 
-      {/* Part 2: Educational Materials, Audio Guide & Merch */}
+      {/* Part 2: Educational Materials, Audio Guide & Merch (Balanced 2x2 Grid, Zero Wasted Space, Zero Price Towers) */}
       <div>
-        <div className="mb-12">
+        <div className="mb-10">
           <h3 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900 tracking-tight">
             Авторские лекции, аудиогид <span className="italic font-light text-stone-500">& артефакт</span>
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* 1. Lecture 1: Layering */}
-          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              {/* Uncropped 16:9 Slide Preview */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
-                <img
-                  src={lectures[0].image}
-                  alt={lectures[0].title}
-                  loading="lazy"
-                  width={500}
-                  height={281}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {boutiqueItems.map((item) => (
+            <div
+              key={item.id}
+              className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between"
+            >
+              <div>
+                {/* Widescreen 16:9 Image Preview with Badges */}
+                <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    width={700}
+                    height={394}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
 
-              <div className="p-6 space-y-3">
-                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
-                  {lectures[0].format}
-                </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
-                  {lectures[0].title}
-                </h4>
-                <p className="text-sm text-stone-700 font-normal leading-relaxed">
-                  {lectures[0].description}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 pt-0 mt-auto">
-              <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
-                    {lectures[0].price}
-                  </span>
-                  <div className="text-xs text-stone-500 font-sans font-medium">
-                    Бессрочный доступ
+                  {/* Format Badge Overlay */}
+                  <div className="absolute top-3 left-3 text-xs font-sans font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                    {item.format}
                   </div>
-                </div>
 
-                <a
-                  href={lectures[0].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
-                >
-                  <span>Купить</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. Lecture 2: Wardrobe */}
-          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              {/* Uncropped 16:9 Slide Preview */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
-                <img
-                  src={lectures[1].image}
-                  alt={lectures[1].title}
-                  loading="lazy"
-                  width={500}
-                  height={281}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-              </div>
-
-              <div className="p-6 space-y-3">
-                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
-                  {lectures[1].format}
-                </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
-                  {lectures[1].title}
-                </h4>
-                <p className="text-sm text-stone-700 font-normal leading-relaxed">
-                  {lectures[1].description}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 pt-0 mt-auto">
-              <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
-                    {lectures[1].price}
-                  </span>
-                  <div className="text-xs text-stone-500 font-sans font-medium">
-                    Бессрочный доступ
-                  </div>
-                </div>
-
-                <a
-                  href={lectures[1].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
-                >
-                  <span>Купить</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. Audio Guide with Interactive Sample */}
-          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              {/* Uncropped 16:9 Slide Preview */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
-                <img
-                  src={audioGuides[0].image}
-                  alt={audioGuides[0].title}
-                  loading="lazy"
-                  width={500}
-                  height={281}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-
-                <button
-                  onClick={toggleAudioDemo}
-                  className="absolute bottom-3 right-3 px-3.5 py-2 rounded-full bg-white/95 hover:bg-white text-stone-900 shadow-md backdrop-blur-md text-xs font-sans font-semibold flex items-center gap-1.5 cursor-pointer transition-all hover:scale-105"
-                  title={isPlayingDemo ? "Остановить фрагмент" : "Прослушать фрагмент атмосферы"}
-                >
-                  {isPlayingDemo ? (
-                    <>
-                      <Pause className="w-3.5 h-3.5 text-[#e8559a] fill-current" />
-                      <span className="text-[#e8559a] font-mono text-xs font-bold">{demoSec}s</span>
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-3.5 h-3.5 text-stone-900 fill-current ml-0.5" />
-                      <span className="text-xs font-mono font-medium">Тест 25s</span>
-                    </>
+                  {/* Audio Test Button (for audio guide) */}
+                  {item.hasAudioTest && (
+                    <button
+                      onClick={toggleAudioDemo}
+                      className="absolute bottom-3 right-3 px-3.5 py-2 rounded-full bg-white/95 hover:bg-white text-stone-900 shadow-md backdrop-blur-md text-xs font-sans font-semibold flex items-center gap-1.5 cursor-pointer transition-all hover:scale-105"
+                      title={isPlayingDemo ? "Остановить фрагмент" : "Прослушать фрагмент атмосферы"}
+                    >
+                      {isPlayingDemo ? (
+                        <>
+                          <Pause className="w-3.5 h-3.5 text-[#e8559a] fill-current" />
+                          <span className="text-[#e8559a] font-mono text-xs font-bold">{demoSec}s</span>
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-3.5 h-3.5 text-stone-900 fill-current ml-0.5" />
+                          <span className="text-xs font-mono font-medium">Тест 25s</span>
+                        </>
+                      )}
+                    </button>
                   )}
-                </button>
-              </div>
-
-              <div className="p-6 space-y-3">
-                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
-                  В наушниках &bull; 35 мин
                 </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
-                  {audioGuides[0].title}
-                </h4>
-                <p className="text-sm text-stone-700 font-normal leading-relaxed">
-                  {audioGuides[0].description}
-                </p>
-              </div>
-            </div>
 
-            <div className="p-6 pt-0 mt-auto">
-              <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
-                <div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
-                      {audioGuides[0].price}
+                {/* Card Content & Detailed Syllabus Breakdown (No Empty Void) */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
+                      {item.badge}
                     </span>
-                    <span className="text-sm font-mono text-stone-400 line-through">
-                      {audioGuides[0].oldPrice}
+                    {item.isMerch && (
+                      <span className="inline-flex items-center gap-1 text-xs text-[#c5a059] font-bold uppercase tracking-wider">
+                        <Shield className="w-3.5 h-3.5" />
+                        <span>Limited Edition</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <h4 className="font-serif text-2xl sm:text-3xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                    {item.title}
+                  </h4>
+
+                  <p className="text-sm sm:text-base text-stone-700 font-normal leading-relaxed">
+                    {item.description}
+                  </p>
+
+                  {/* Highlights Topics Grid - Meaningfully fills space */}
+                  <div className="pt-4 border-t border-stone-100">
+                    <div className="text-xs uppercase tracking-wider text-stone-500 font-sans font-bold mb-2.5">
+                      {item.isMerch ? 'Особенности артефакта:' : 'В программе материала:'}
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-stone-700">
+                      {item.topics.map((topic, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <span className="text-[#e8559a] font-bold text-xs mt-0.5">✦</span>
+                          <span>{topic}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Action Bar (Spacious, No Price Towers, Guaranteed whitespace-nowrap) */}
+              <div className="p-6 sm:p-7 pt-0 mt-auto">
+                <div className="pt-5 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-baseline gap-2.5 whitespace-nowrap shrink-0">
+                    <span className="font-mono text-2xl sm:text-3xl font-bold text-stone-900 whitespace-nowrap">
+                      {item.price}
                     </span>
+                    {item.oldPrice && (
+                      <span className="font-mono text-base text-stone-400 line-through whitespace-nowrap">
+                        {item.oldPrice}
+                      </span>
+                    )}
+                    {item.discount && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold whitespace-nowrap">
+                        {item.discount}
+                      </span>
+                    )}
+                    {!item.oldPrice && (
+                      <span className="text-xs text-stone-500 font-sans font-medium whitespace-nowrap">
+                        {item.note}
+                      </span>
+                    )}
                   </div>
-                  <div className="text-xs text-emerald-600 font-sans font-semibold">
-                    Выгода 360 ₽
-                  </div>
-                </div>
 
-                <a
-                  href={audioGuides[0].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
-                >
-                  <span>Купить</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
-                </a>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => soundEngine.playClick()}
+                    className="editorial-btn-dark px-7 py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer whitespace-nowrap shrink-0 w-full sm:w-auto"
+                  >
+                    <span>{item.btnText}</span>
+                    <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* 4. Artifact: Оберег от хейтеров */}
-          <div className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between">
-            <div>
-              {/* Uncropped 16:9 Image Preview */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
-                <img
-                  src={merch.image}
-                  alt={merch.title}
-                  loading="lazy"
-                  width={500}
-                  height={281}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-              </div>
-
-              <div className="p-6 space-y-3">
-                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-[#e8559a]" />
-                  <span>Лимитированный тираж</span>
-                </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
-                  {merch.title}
-                </h4>
-                <p className="text-sm text-stone-700 font-normal leading-relaxed">
-                  {merch.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 pt-0 mt-auto">
-              <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
-                    1 490 ₽
-                  </span>
-                  <div className="text-xs text-stone-500 font-sans font-medium">
-                    Коллекционный мерч
-                  </div>
-                </div>
-
-                <a
-                  href={merch.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
-                >
-                  <span>Заказать</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

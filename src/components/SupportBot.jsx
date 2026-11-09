@@ -166,29 +166,38 @@ export default function SupportBot() {
       {/* Speech Bubble & Quick Chips (shown when closed) */}
       {!isOpen && showPrompt && (
         <div className="mb-3 flex flex-col items-end gap-2 animate-in fade-in slide-in-from-bottom-3 duration-300">
-          {/* Main Speech Card */}
-          <div className="relative rounded-2xl bg-white px-4 py-3 text-xs sm:text-sm font-medium text-stone-800 shadow-xl border border-stone-200/80 max-w-[250px] text-right">
+          {/* Main Speech Card - Clickable to open chat */}
+          <div
+            onClick={handleOpen}
+            className="relative rounded-2xl bg-white px-4 py-3 text-sm font-medium text-stone-800 shadow-xl border border-stone-200/90 max-w-[270px] text-right cursor-pointer hover:border-stone-400 transition-all hover:scale-[1.02]"
+            title="Нажмите, чтобы открыть диалог"
+          >
             <button
-              onClick={() => setShowPrompt(false)}
-              className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-stone-100 text-stone-500 hover:bg-stone-200 flex items-center justify-center text-[10px] cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowPrompt(false);
+              }}
+              className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-stone-100 text-stone-500 hover:bg-stone-200 flex items-center justify-center text-xs cursor-pointer shadow-xs"
               aria-label="Скрыть"
             >
-              <X className="w-3 h-3" />
+              <X className="w-3.5 h-3.5" />
             </button>
-            <p className="leading-snug">Добрый день! Напишите нам, мы поможем</p>
+            <p className="leading-snug font-semibold text-stone-900">
+              Добрый день! Напишите нам, мы поможем
+            </p>
           </div>
 
           {/* Quick Action Chips exactly like in Nastya's screenshot */}
-          <div className="flex flex-col items-end gap-1.5">
+          <div className="flex flex-col items-end gap-2">
             <button
               onClick={() => handleQuickQuestion('materials')}
-              className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/40 text-xs font-semibold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-4 py-2 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               Вопрос по материалам
             </button>
             <button
               onClick={() => handleQuickQuestion('payment')}
-              className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/40 text-xs font-semibold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-4 py-2 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               Вопрос по оплате
             </button>
@@ -246,17 +255,17 @@ export default function SupportBot() {
           </div>
 
           {/* Messages Feed */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 font-sans text-xs sm:text-sm bg-[#FCFBFA]">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3.5 font-sans text-sm sm:text-base bg-[#FCFBFA]">
             {chatHistory.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} animate-in fade-in duration-200`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 leading-relaxed shadow-xs ${
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed shadow-xs ${
                     msg.sender === 'user'
-                      ? 'bg-[#F878B3] text-white rounded-br-xs'
-                      : 'bg-white text-stone-800 border border-stone-200/80 rounded-bl-xs'
+                      ? 'bg-[#F878B3] text-white font-medium rounded-br-xs'
+                      : 'bg-white text-stone-900 border border-stone-200/90 rounded-bl-xs font-normal'
                   }`}
                 >
                   <p>{msg.text}</p>
@@ -267,14 +276,14 @@ export default function SupportBot() {
                       href={msg.actionLink}
                       target={msg.actionLink.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                      className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F878B3]/15 hover:bg-[#F878B3] text-stone-900 hover:text-white font-semibold text-xs transition-colors"
+                      className="mt-3 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#F878B3]/15 hover:bg-[#F878B3] text-stone-900 hover:text-white font-bold text-xs sm:text-sm transition-colors"
                     >
                       <span>{msg.actionLabel || 'Открыть'}</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
                 </div>
-                <span className="text-[10px] text-stone-400 mt-1 px-1">
+                <span className="text-xs text-stone-400 mt-1 px-1">
                   {msg.time}
                 </span>
               </div>
@@ -282,8 +291,8 @@ export default function SupportBot() {
 
             {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex items-center gap-2 text-stone-500 text-xs bg-white px-3.5 py-2 rounded-2xl w-fit border border-stone-200/60 shadow-2xs animate-in fade-in">
-                <span className="text-[11px] font-medium">Ассистент печатает</span>
+              <div className="flex items-center gap-2 text-stone-600 text-xs sm:text-sm bg-white px-4 py-2.5 rounded-2xl w-fit border border-stone-200/70 shadow-2xs animate-in fade-in">
+                <span className="font-medium">Ассистент печатает</span>
                 <span className="flex gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#F878B3] animate-bounce" />
                   <span className="w-1.5 h-1.5 rounded-full bg-[#F878B3] animate-bounce [animation-delay:0.2s]" />
@@ -296,28 +305,28 @@ export default function SupportBot() {
           </div>
 
           {/* Quick Choice Buttons inside Chat */}
-          <div className="px-3 py-2 bg-white border-t border-stone-100 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
+          <div className="px-3.5 py-2.5 bg-white border-t border-stone-100 flex gap-2.5 overflow-x-auto no-scrollbar shrink-0">
             <button
               onClick={() => handleQuickQuestion('materials')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
+              className="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
               📚 Материалы
             </button>
             <button
               onClick={() => handleQuickQuestion('payment')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
+              className="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
               💳 Оплата
             </button>
             <button
               onClick={() => handleQuickQuestion('sluu')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
+              className="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-100 hover:bg-[#F878B3]/15 hover:text-[#F878B3] transition-colors cursor-pointer"
             >
               🌿 SLUU
             </button>
             <button
               onClick={() => handleQuickQuestion('manager')}
-              className="shrink-0 px-3 py-1 rounded-full text-[11px] font-medium bg-[#F878B3]/10 text-[#F878B3] hover:bg-[#F878B3] hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+              className="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#F878B3]/10 text-[#F878B3] hover:bg-[#F878B3] hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
             >
               <span>💬 Менеджер</span>
             </button>
@@ -329,18 +338,18 @@ export default function SupportBot() {
               e.preventDefault();
               handleSendMessage();
             }}
-            className="p-3 bg-white border-t border-stone-200 flex items-center gap-2 shrink-0"
+            className="p-3.5 bg-white border-t border-stone-200 flex items-center gap-2.5 shrink-0"
           >
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Спросите о курсе, лекциях, SLUU..."
-              className="flex-1 px-4 py-2 rounded-full bg-stone-100 text-xs sm:text-sm text-stone-800 placeholder-stone-400 outline-none focus:ring-1 focus:ring-[#F878B3]"
+              className="flex-1 px-4 py-2.5 rounded-full bg-stone-100 text-sm sm:text-base text-stone-900 placeholder-stone-400 outline-none focus:ring-1 focus:ring-[#F878B3]"
             />
             <button
               type="submit"
-              className="w-9 h-9 rounded-full bg-[#F878B3] hover:bg-[#f762a6] text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
+              className="w-10 h-10 rounded-full bg-[#F878B3] hover:bg-[#f762a6] text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
               aria-label="Отправить сообщение"
             >
               <Send className="w-4 h-4 ml-0.5" />

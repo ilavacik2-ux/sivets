@@ -26,8 +26,8 @@ export default function VideoSection() {
       {/* Chapter Editorial Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-200/80 gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#e8559a] mb-2 font-semibold">
-            <Film className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] mb-2 font-bold">
+            <Film className="w-4 h-4" />
             <span>Видеорасследования</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
@@ -36,7 +36,7 @@ export default function VideoSection() {
         </div>
 
         {/* Minimalist Typographic Category Filter */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2.5">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -44,10 +44,10 @@ export default function VideoSection() {
                 soundEngine.playClick();
                 setActiveFilter(cat.id);
               }}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-sans uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                 activeFilter === cat.id
-                  ? 'bg-stone-900 text-white font-medium shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                  ? 'bg-stone-900 text-white font-bold shadow-xs'
+                  : 'text-stone-700 hover:text-stone-900 hover:bg-stone-100/80'
               }`}
             >
               {cat.label}
@@ -87,8 +87,8 @@ export default function VideoSection() {
             </div>
 
             {/* Editorial Information */}
-            <div className="lg:col-span-5 space-y-5">
-              <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#e8559a] font-semibold">
+            <div className="lg:col-span-5 space-y-6">
+              <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#e8559a] font-bold">
                 ГЛАВНОЕ РАССЛЕДОВАНИЕ &bull; СПЕЦПРОЕКТ
               </div>
 
@@ -96,22 +96,22 @@ export default function VideoSection() {
                 {featuredVideo.title}
               </h3>
 
-              <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
+              <p className="text-stone-700 font-normal leading-relaxed text-base sm:text-lg">
                 Глубокое исследование теневого рынка парфюмерии: почему копии стали визуально неотличимы от оригинала, как молекулярная экспертиза раскрывает подделки и что попадает в дыхательные пути при использовании реплик.
               </p>
 
               {/* Watch Actions */}
-              <div className="flex flex-wrap items-center gap-3 pt-3">
+              <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
                   href={featuredVideo.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-7 py-3.5 rounded-full flex items-center gap-2.5 shadow-xs cursor-pointer hover:scale-105 transition-all"
+                  className="editorial-btn-dark px-7 py-4 rounded-full flex items-center gap-2.5 shadow-xs cursor-pointer hover:scale-105 transition-all text-xs sm:text-sm font-semibold"
                 >
                   <IconYouTube className="w-4 h-4 text-red-500" />
                   <span>Смотреть на YouTube</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
+                  <ArrowUpRight className="w-4 h-4 text-stone-400" />
                 </a>
 
                 <a
@@ -119,11 +119,11 @@ export default function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-light px-6 py-3.5 rounded-full flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-all shadow-2xs"
+                  className="editorial-btn-light px-7 py-4 rounded-full flex items-center gap-2.5 cursor-pointer hover:scale-105 transition-all shadow-2xs text-xs sm:text-sm font-semibold"
                 >
                   <IconVKVideo className="w-4 h-4 text-[#0077FF]" />
                   <span>VK Видео</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-400" />
+                  <ArrowUpRight className="w-4 h-4 text-stone-400" />
                 </a>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function VideoSection() {
       {/* Film Catalog Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
         {filteredVideos.map((vid) => (
-          <div key={vid.id} className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group p-4 sm:p-5">
+          <div key={vid.id} className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group p-5 sm:p-6">
             <div>
               <a
                 href={vid.youtube}
@@ -159,33 +159,33 @@ export default function VideoSection() {
                 </div>
               </a>
 
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-semibold">
+              <div className="flex items-center justify-between mb-2.5">
+                <span className="text-xs sm:text-sm font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                   {vid.tag}
                 </span>
-                <span className="text-[11px] text-stone-400 font-sans">
+                <span className="text-xs text-stone-500 font-sans font-medium">
                   {vid.duration || 'Видео'}
                 </span>
               </div>
 
-              <h3 className="font-serif text-lg sm:text-xl font-normal text-stone-900 leading-snug mb-3 group-hover:text-[#e8559a] transition-colors">
+              <h3 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug mb-3 group-hover:text-[#e8559a] transition-colors">
                 {vid.title}
               </h3>
             </div>
 
             {/* Clear, Prominent Interactive Platform Buttons */}
-            <div className="grid grid-cols-2 gap-2 pt-3 border-t border-stone-100 mt-2">
+            <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-stone-100 mt-2">
               <a
                 href={vid.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-3 py-2.5 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-800 hover:text-red-600 transition-all flex items-center justify-center gap-1.5 text-xs font-sans font-medium group/btn shadow-2xs cursor-pointer"
+                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-900 hover:text-red-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105"
                 title="Смотреть на YouTube"
               >
-                <IconYouTube className="w-3.5 h-3.5 text-red-600 group-hover/btn:scale-110 transition-transform" />
+                <IconYouTube className="w-4 h-4 text-red-600 group-hover/btn:scale-110 transition-transform" />
                 <span>YouTube</span>
-                <ArrowUpRight className="w-3 h-3 text-stone-400 group-hover/btn:text-red-500" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-red-500" />
               </a>
 
               <a
@@ -193,12 +193,12 @@ export default function VideoSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-3 py-2.5 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-800 hover:text-blue-600 transition-all flex items-center justify-center gap-1.5 text-xs font-sans font-medium group/btn shadow-2xs cursor-pointer"
+                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-900 hover:text-blue-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105"
                 title="Смотреть в VK Видео"
               >
-                <IconVKVideo className="w-3.5 h-3.5 text-[#0077FF] group-hover/btn:scale-110 transition-transform" />
+                <IconVKVideo className="w-4 h-4 text-[#0077FF] group-hover/btn:scale-110 transition-transform" />
                 <span>VK Видео</span>
-                <ArrowUpRight className="w-3 h-3 text-stone-400 group-hover/btn:text-blue-500" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-blue-500" />
               </a>
             </div>
           </div>

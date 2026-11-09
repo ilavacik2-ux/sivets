@@ -62,18 +62,18 @@ export default function Navbar() {
             <span className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5" />
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="font-normal text-stone-900 tracking-[0.2em] text-[13px] sm:text-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="font-serif font-medium text-stone-900 tracking-[0.16em] text-sm sm:text-base">
               НАСТЯ СИВЕЦ
             </span>
-            <span className="hidden sm:inline-block text-[9px] font-sans font-semibold uppercase tracking-[0.2em] text-[#e8559a] bg-[#fdf2f7] px-2 py-0.5 rounded-full border border-[#f878b3]/25">
+            <span className="hidden sm:inline-block text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-[0.16em] text-[#e8559a] bg-[#fdf2f7] px-2.5 py-0.5 rounded-full border border-[#f878b3]/30">
               SLUU
             </span>
           </div>
         </a>
 
         {/* Desktop Nav Links with Tactile Pill Hover */}
-        <div className="hidden md:flex items-center gap-1.5 text-[12px] font-sans tracking-[0.14em] uppercase font-medium bg-stone-100/60 p-1 rounded-full border border-stone-200/50">
+        <div className="hidden md:flex items-center gap-2 text-[13px] sm:text-[14px] font-sans tracking-[0.06em] uppercase font-medium bg-stone-100/70 p-1.5 rounded-full border border-stone-200/60">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -81,10 +81,10 @@ export default function Navbar() {
                 key={link.id}
                 href={link.href}
                 onClick={() => soundEngine.playClick()}
-                className={`transition-all duration-300 px-4 py-1.5 rounded-full text-center relative ${
+                className={`transition-all duration-300 px-4 py-2 rounded-full text-center relative ${
                   isActive
                     ? 'bg-stone-900 text-white font-semibold shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900 hover:bg-white/80'
+                    : 'text-stone-700 hover:text-stone-900 hover:bg-white/90'
                 }`}
               >
                 <span>{link.label}</span>
@@ -98,10 +98,10 @@ export default function Navbar() {
           <a
             href="#cooperation"
             onClick={() => soundEngine.playClick()}
-            className="hidden sm:inline-flex items-center gap-2 text-xs font-sans font-medium uppercase tracking-[0.14em] px-5 py-2 rounded-full bg-stone-900 hover:bg-stone-800 text-white transition-all cursor-pointer shadow-sm hover:scale-105 active:scale-95 group"
+            className="hidden sm:inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-medium uppercase tracking-[0.1em] px-5 sm:px-6 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white transition-all cursor-pointer shadow-sm hover:scale-105 active:scale-95 group"
           >
             <span>Сотрудничество</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="w-4 h-4 text-[#f878b3] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
 
           {/* Mobile Menu Hamburger */}

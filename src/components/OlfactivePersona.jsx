@@ -32,8 +32,8 @@ export default function OlfactivePersona() {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#fef3c7]/30 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.22em] text-[#e8559a] font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] font-bold">
+            <Sparkles className="w-4 h-4" />
             <span>Ольфакторная философия</span>
           </div>
 
@@ -42,24 +42,24 @@ export default function OlfactivePersona() {
             <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-8xl sm:text-9xl text-[#f878b3]/20 select-none pointer-events-none leading-none">
               &ldquo;
             </span>
-            <blockquote className="font-serif italic text-2xl sm:text-3xl lg:text-[2.6rem] font-light text-stone-900 leading-[1.32] tracking-tight relative z-10">
+            <blockquote className="font-serif italic text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900 leading-[1.38] tracking-tight relative z-10">
               &laquo;{manifesto.quote}&raquo;
             </blockquote>
           </div>
 
-          <div className="w-12 h-[1px] bg-[#f878b3] mx-auto opacity-60" />
+          <div className="w-16 h-[1.5px] bg-[#f878b3] mx-auto opacity-70" />
 
           {/* 3 Pillars in Clean Architectural Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 text-left">
             {pillars.map((pil) => (
               <div
                 key={pil.num}
-                className="p-6 rounded-2xl bg-white/90 border border-stone-200/70 shadow-2xs space-y-2 hover:border-stone-300 transition-all"
+                className="p-6 rounded-2xl bg-white border border-stone-200/90 shadow-2xs space-y-2.5 hover:border-stone-400 transition-all"
               >
-                <div className="text-[11px] font-mono font-bold text-[#e8559a]">
+                <div className="text-xs sm:text-sm font-sans font-bold text-[#e8559a]">
                   {pil.num} &bull; {pil.title}
                 </div>
-                <p className="text-xs text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-stone-700 font-normal leading-relaxed">
                   {pil.desc}
                 </p>
               </div>

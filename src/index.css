@@ -60,8 +60,8 @@
   color: #ffffff;
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -73,17 +73,17 @@
 .editorial-btn-light {
   background-color: #ffffff;
   color: #1c1917;
-  border: 1px solid rgba(28, 25, 23, 0.15);
+  border: 1px solid rgba(28, 25, 23, 0.18);
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .editorial-btn-light:hover {
   background-color: #faf8f5;
-  border-color: rgba(28, 25, 23, 0.3);
+  border-color: rgba(28, 25, 23, 0.35);
   transform: translateY(-1px);
 }
 

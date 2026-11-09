@@ -44,7 +44,7 @@ export default function EducationAndMasterclasses() {
             Курс по парфюмерии <span className="italic font-light text-stone-500">& лекторий</span>
           </h2>
         </div>
-        <div className="text-xs uppercase tracking-[0.16em] text-stone-400 font-sans font-medium sm:text-right">
+        <div className="text-xs sm:text-sm uppercase tracking-[0.14em] text-stone-600 font-sans font-bold sm:text-right">
           Синхронизация &bull; Лекторий
         </div>
       </div>
@@ -65,12 +65,12 @@ export default function EducationAndMasterclasses() {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs">
               <div>
-                <div className="text-[11px] font-sans uppercase tracking-[0.18em] text-[#e8559a] font-semibold">
+                <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#e8559a] font-bold">
                   Спецусловия по ссылке
                 </div>
-                <div className="text-sm font-sans text-stone-600">
+                <div className="text-sm sm:text-base font-sans text-stone-700 font-medium mt-0.5">
                   Скидка 15% автоматически применяется при переходе
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function EducationAndMasterclasses() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="editorial-btn-dark px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap text-xs font-sans font-medium uppercase tracking-[0.14em] shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-auto"
+                className="editorial-btn-dark px-7 py-4 rounded-xl flex items-center justify-center gap-2.5 whitespace-nowrap text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.1em] shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-auto hover:scale-105"
               >
                 <span>Записаться на курс</span>
                 <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
@@ -91,40 +91,40 @@ export default function EducationAndMasterclasses() {
           {/* Right: Course Narrative & Readable 4-Module Overview */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <div className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#c5a059] font-medium mb-2">
+              <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#c5a059] font-bold mb-2">
                 СОВМЕСТНО С ЛЕКТОРИЕМ «СИНХРОНИЗАЦИЯ»
               </div>
 
-              <h3 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 leading-tight mb-4">
+              <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-normal text-stone-900 leading-tight mb-4">
                 {course.title}
               </h3>
 
-              <p className="text-stone-600 font-light leading-relaxed text-sm sm:text-base">
+              <p className="text-stone-700 font-normal leading-relaxed text-base sm:text-lg">
                 {course.description} Курс создан для тех, кто хочет научиться слышать архитектуру аромата, распознавать редкие компоненты от синтетических молекул и уверенно формировать собственный ольфакторный гардероб.
               </p>
             </div>
 
             {/* Clear, well-proportioned 4-module syllabus without squished buttons */}
-            <div className="space-y-3 pt-4 border-t border-stone-200/80">
-              <div className="text-[11px] font-sans uppercase tracking-[0.18em] font-semibold text-stone-400 mb-3">
+            <div className="space-y-4 pt-4 border-t border-stone-200/80">
+              <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] font-bold text-stone-700">
                 ПРОГРАММА ОБУЧЕНИЯ (4 МОДУЛЯ):
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {course.modules.map((mod) => (
                   <div
                     key={mod.num}
-                    className="p-4 rounded-xl bg-white border border-stone-200/80 space-y-1.5 shadow-2xs"
+                    className="p-5 rounded-2xl bg-white border border-stone-200/90 space-y-2 shadow-2xs hover:border-stone-400 transition-all"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-mono font-bold text-[#e8559a]">
+                      <span className="text-xs sm:text-sm font-sans font-bold text-[#e8559a]">
                         МОДУЛЬ {mod.num}
                       </span>
                     </div>
-                    <div className="font-serif text-base text-stone-900 font-normal">
+                    <div className="font-serif text-lg sm:text-xl text-stone-900 font-medium">
                       {mod.title}
                     </div>
-                    <p className="text-xs text-stone-500 font-light leading-relaxed">
+                    <p className="text-sm text-stone-700 font-normal leading-relaxed">
                       {mod.desc}
                     </p>
                   </div>
@@ -159,26 +159,26 @@ export default function EducationAndMasterclasses() {
                 />
               </div>
 
-              <div className="p-5 sm:p-6 space-y-2.5">
-                <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-semibold">
+              <div className="p-6 space-y-3">
+                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                   {lectures[0].format}
                 </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
                   {lectures[0].title}
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-stone-700 font-normal leading-relaxed">
                   {lectures[0].description}
                 </p>
               </div>
             </div>
 
-            <div className="p-5 sm:p-6 pt-0 mt-auto">
+            <div className="p-6 pt-0 mt-auto">
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                 <div>
-                  <span className="font-mono text-lg font-bold text-stone-900">
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
                     {lectures[0].price}
                   </span>
-                  <div className="text-[10px] text-stone-400 font-sans">
+                  <div className="text-xs text-stone-500 font-sans font-medium">
                     Бессрочный доступ
                   </div>
                 </div>
@@ -188,10 +188,10 @@ export default function EducationAndMasterclasses() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-5 py-2.5 rounded-xl flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
+                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
                 >
                   <span>Купить</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
                 </a>
               </div>
             </div>
@@ -212,26 +212,26 @@ export default function EducationAndMasterclasses() {
                 />
               </div>
 
-              <div className="p-5 sm:p-6 space-y-2.5">
-                <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-semibold">
+              <div className="p-6 space-y-3">
+                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                   {lectures[1].format}
                 </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
                   {lectures[1].title}
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-stone-700 font-normal leading-relaxed">
                   {lectures[1].description}
                 </p>
               </div>
             </div>
 
-            <div className="p-5 sm:p-6 pt-0 mt-auto">
+            <div className="p-6 pt-0 mt-auto">
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                 <div>
-                  <span className="font-mono text-lg font-bold text-stone-900">
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
                     {lectures[1].price}
                   </span>
-                  <div className="text-[10px] text-stone-400 font-sans">
+                  <div className="text-xs text-stone-500 font-sans font-medium">
                     Бессрочный доступ
                   </div>
                 </div>
@@ -241,10 +241,10 @@ export default function EducationAndMasterclasses() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-5 py-2.5 rounded-xl flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
+                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
                 >
                   <span>Купить</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
                 </a>
               </div>
             </div>
@@ -266,48 +266,48 @@ export default function EducationAndMasterclasses() {
 
                 <button
                   onClick={toggleAudioDemo}
-                  className="absolute bottom-2.5 right-2.5 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-stone-900 shadow-md backdrop-blur-md text-[11px] font-sans font-medium flex items-center gap-1.5 cursor-pointer transition-all hover:scale-105"
+                  className="absolute bottom-3 right-3 px-3.5 py-2 rounded-full bg-white/95 hover:bg-white text-stone-900 shadow-md backdrop-blur-md text-xs font-sans font-semibold flex items-center gap-1.5 cursor-pointer transition-all hover:scale-105"
                   title={isPlayingDemo ? "Остановить фрагмент" : "Прослушать фрагмент атмосферы"}
                 >
                   {isPlayingDemo ? (
                     <>
-                      <Pause className="w-3 h-3 text-[#e8559a] fill-current" />
-                      <span className="text-[#e8559a] font-mono text-[10px] font-semibold">{demoSec}s</span>
+                      <Pause className="w-3.5 h-3.5 text-[#e8559a] fill-current" />
+                      <span className="text-[#e8559a] font-mono text-xs font-bold">{demoSec}s</span>
                     </>
                   ) : (
                     <>
-                      <Play className="w-3 h-3 text-stone-900 fill-current ml-0.5" />
-                      <span className="text-[10px] font-mono">Тест 25s</span>
+                      <Play className="w-3.5 h-3.5 text-stone-900 fill-current ml-0.5" />
+                      <span className="text-xs font-mono font-medium">Тест 25s</span>
                     </>
                   )}
                 </button>
               </div>
 
-              <div className="p-5 sm:p-6 space-y-2.5">
-                <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-semibold">
+              <div className="p-6 space-y-3">
+                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                   В наушниках &bull; 35 мин
                 </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
                   {audioGuides[0].title}
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-stone-700 font-normal leading-relaxed">
                   {audioGuides[0].description}
                 </p>
               </div>
             </div>
 
-            <div className="p-5 sm:p-6 pt-0 mt-auto">
+            <div className="p-6 pt-0 mt-auto">
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                 <div>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="font-mono text-lg font-bold text-stone-900">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
                       {audioGuides[0].price}
                     </span>
-                    <span className="text-xs font-mono text-stone-400 line-through">
+                    <span className="text-sm font-mono text-stone-400 line-through">
                       {audioGuides[0].oldPrice}
                     </span>
                   </div>
-                  <div className="text-[10px] text-emerald-600 font-sans font-medium">
+                  <div className="text-xs text-emerald-600 font-sans font-semibold">
                     Выгода 360 ₽
                   </div>
                 </div>
@@ -317,10 +317,10 @@ export default function EducationAndMasterclasses() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-5 py-2.5 rounded-xl flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
+                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
                 >
                   <span>Купить</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
                 </a>
               </div>
             </div>
@@ -341,27 +341,27 @@ export default function EducationAndMasterclasses() {
                 />
               </div>
 
-              <div className="p-5 sm:p-6 space-y-2.5">
-                <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-semibold flex items-center gap-1">
-                  <Shield className="w-3 h-3 text-[#e8559a]" />
+              <div className="p-6 space-y-3">
+                <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold flex items-center gap-1.5">
+                  <Shield className="w-3.5 h-3.5 text-[#e8559a]" />
                   <span>Лимитированный тираж</span>
                 </div>
-                <h4 className="font-serif text-xl sm:text-2xl font-normal text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
                   {merch.title}
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-stone-700 font-normal leading-relaxed">
                   {merch.description}
                 </p>
               </div>
             </div>
 
-            <div className="p-5 sm:p-6 pt-0 mt-auto">
+            <div className="p-6 pt-0 mt-auto">
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                 <div>
-                  <span className="font-mono text-base font-semibold text-stone-900">
+                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900">
                     1 490 ₽
                   </span>
-                  <div className="text-[10px] text-stone-400 font-sans">
+                  <div className="text-xs text-stone-500 font-sans font-medium">
                     Коллекционный мерч
                   </div>
                 </div>
@@ -371,10 +371,10 @@ export default function EducationAndMasterclasses() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEngine.playClick()}
-                  className="editorial-btn-dark px-5 py-2.5 rounded-xl flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
+                  className="editorial-btn-dark px-6 py-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-sm cursor-pointer"
                 >
                   <span>Заказать</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
                 </a>
               </div>
             </div>

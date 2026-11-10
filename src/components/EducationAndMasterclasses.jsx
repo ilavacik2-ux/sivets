@@ -253,18 +253,18 @@ export default function EducationAndMasterclasses() {
 
       {/* Part 2: Educational Materials, Audio Guide & Merch (Horizontal Smooth Scroll Carousel) */}
       <div>
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="mb-6 flex items-center justify-between gap-4 pb-3 border-b border-stone-200/80">
           <div>
             <h3 className="font-serif text-2xl sm:text-4xl font-normal text-stone-900 tracking-tight">
               Авторские лекции, аудиогид <span className="italic font-light text-stone-400">& артефакт</span>
             </h3>
-            <p className="text-xs sm:text-sm text-stone-500 font-sans mt-1">
+            <p className="text-xs sm:text-sm text-stone-500 font-sans mt-0.5">
               Листайте вбок для выбора программы
             </p>
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => scrollBoutique('left')}
               className="w-10 h-10 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
@@ -282,21 +282,21 @@ export default function EducationAndMasterclasses() {
           </div>
         </div>
 
-        {/* Horizontal Carousel Track */}
-        <div
-          ref={boutiqueScrollRef}
-          className="flex gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16"
-          style={{ WebkitOverflowScrolling: 'touch' }}
-        >
-          {boutiqueItems.map((item) => (
-            <div
-              key={item.id}
-              className="w-[84vw] sm:w-[420px] lg:w-[440px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl group flex flex-col justify-between"
-            >
-              <div>
-                {/* Widescreen 16:9 Image Preview with Badges */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
-                  <img
+        {/* Horizontal Carousel Track - Seamless Gallery with edge bleed and card peek */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+          <div
+            ref={boutiqueScrollRef}
+            className="flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 lg:px-8 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
+          >
+            {boutiqueItems.map((item) => (
+              <div
+                key={item.id}
+                className="w-[84vw] sm:w-[380px] lg:w-[400px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/70 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] group flex flex-col justify-between"
+              >
+                <div>
+                  {/* Widescreen 16:9 Image Preview with Badges */}
+                  <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
+                    <img
                     src={item.image}
                     alt={item.title}
                     loading="eager"
@@ -376,11 +376,11 @@ export default function EducationAndMasterclasses() {
               <div className="p-5 sm:p-6 pt-0 mt-auto">
                 <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
                   <div className="flex items-baseline gap-2 whitespace-nowrap shrink-0">
-                    <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900 whitespace-nowrap">
+                    <span className="editorial-price text-2xl sm:text-3xl text-stone-900 whitespace-nowrap">
                       {item.price}
                     </span>
                     {item.oldPrice && (
-                      <span className="font-mono text-xs text-stone-400 line-through whitespace-nowrap">
+                      <span className="editorial-price text-sm text-stone-400 line-through whitespace-nowrap">
                         {item.oldPrice}
                       </span>
                     )}
@@ -396,16 +396,17 @@ export default function EducationAndMasterclasses() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => soundEngine.playClick()}
-                    className="editorial-btn-dark px-5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-xs cursor-pointer whitespace-nowrap shrink-0"
+                    className="editorial-btn-dark px-4 sm:px-5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-xs cursor-pointer whitespace-nowrap shrink-0 max-w-[55%]"
                   >
-                    <span>{item.btnText}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                    <span className="truncate">{item.btnText}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3] shrink-0" />
                   </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

@@ -122,7 +122,7 @@ export default function SluuBrand() {
 
       {/* 4 Authentic Blend Cards with Horizontal Smooth Scroll */}
       <div>
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-3 border-b border-stone-200/80">
+        <div className="mb-6 flex items-center justify-between gap-3 pb-3 border-b border-stone-200/80">
           <div>
             <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-900 font-bold">
               Коллекция блендов &bull; 100% эфирные масла
@@ -132,7 +132,7 @@ export default function SluuBrand() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => scrollSluu('left')}
               className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
@@ -150,88 +150,89 @@ export default function SluuBrand() {
           </div>
         </div>
 
-        {/* Horizontal Track */}
-        <div
-          ref={sluuScrollRef}
-          className="flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16"
-          style={{ WebkitOverflowScrolling: 'touch' }}
-        >
-          {sluuBrand.products.map((prod) => (
-            <div
-              key={prod.id}
-              className="w-[78vw] sm:w-[280px] lg:w-[290px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
-            >
-              <div>
-                {/* Product Photo */}
-                <div className="relative aspect-square overflow-hidden bg-[#FAF8F5]">
-                  <img
-                    src={prod.image}
-                    alt={prod.name}
-                    loading="eager"
-                    decoding="async"
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute top-2.5 left-2.5 text-[11px] font-sans font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
-                    {prod.badge}
+        {/* Horizontal Track - Seamless Gallery with edge bleed and card peek */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+          <div
+            ref={sluuScrollRef}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 lg:px-8 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
+          >
+            {sluuBrand.products.map((prod) => (
+              <div
+                key={prod.id}
+                className="w-[78vw] sm:w-[280px] lg:w-[290px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/70 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Product Photo */}
+                  <div className="relative aspect-square overflow-hidden bg-[#FAF8F5]">
+                    <img
+                      src={prod.image}
+                      alt={prod.name}
+                      loading="eager"
+                      decoding="async"
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute top-2.5 left-2.5 text-[11px] font-sans font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                      {prod.badge}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4 sm:p-5 space-y-2">
+                    <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-bold">
+                      {prod.type}
+                    </div>
+                    <h4 className="font-serif text-lg sm:text-xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                      «{prod.name}»
+                    </h4>
+                    <p className="text-xs text-stone-600 font-sans font-normal leading-relaxed line-clamp-2">
+                      {prod.desc}
+                    </p>
+
+                    {/* Aromatic composition */}
+                    {prod.notes && (
+                      <div className="pt-2.5 border-t border-stone-100 space-y-0.5">
+                        <div className="text-[10px] font-sans uppercase tracking-wider text-stone-400 font-bold">
+                          Масла:
+                        </div>
+                        <div className="text-xs text-stone-800 font-medium leading-relaxed truncate">
+                          {prod.notes}
+                        </div>
+                      </div>
+                    )}
+
+                    {prod.benefit && (
+                      <div className="text-xs text-[#e8559a] font-semibold flex items-center gap-1.5 pt-0.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
+                        <span className="truncate">{prod.benefit}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-5 space-y-2">
-                  <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-bold">
-                    {prod.type}
+                {/* Price & Action */}
+                <div className="p-4 sm:p-5 pt-0 mt-auto">
+                  <div className="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
+                    <span className="editorial-price text-xl sm:text-2xl text-stone-900 whitespace-nowrap shrink-0">
+                      {prod.price}
+                    </span>
+
+                    <a
+                      href={prod.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => soundEngine.playClick()}
+                      className="editorial-btn-dark px-4 py-2 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider flex items-center gap-1.5 shadow-2xs hover:scale-105 transition-all cursor-pointer whitespace-nowrap shrink-0"
+                    >
+                      <span>Купить</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
+                    </a>
                   </div>
-                  <h4 className="font-serif text-lg sm:text-xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
-                    «{prod.name}»
-                  </h4>
-                  <p className="text-xs text-stone-600 font-sans font-normal leading-relaxed line-clamp-2">
-                    {prod.desc}
-                  </p>
-
-                  {/* Aromatic composition */}
-                  {prod.notes && (
-                    <div className="pt-2.5 border-t border-stone-100 space-y-0.5">
-                      <div className="text-[10px] font-sans uppercase tracking-wider text-stone-400 font-bold">
-                        Масла:
-                      </div>
-                      <div className="text-xs text-stone-800 font-medium leading-relaxed truncate">
-                        {prod.notes}
-                      </div>
-                    </div>
-                  )}
-
-                  {prod.benefit && (
-                    <div className="text-xs text-[#e8559a] font-semibold flex items-center gap-1.5 pt-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
-                      <span className="truncate">{prod.benefit}</span>
-                    </div>
-                  )}
                 </div>
               </div>
-
-              {/* Price & Action */}
-              <div className="p-4 sm:p-5 pt-0 mt-auto">
-                <div className="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
-                  <span className="font-mono text-lg sm:text-xl font-bold text-stone-900 whitespace-nowrap shrink-0">
-                    {prod.price}
-                  </span>
-
-                  <a
-                    href={prod.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => soundEngine.playClick()}
-                    className="editorial-btn-dark px-4 py-2 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider flex items-center gap-1.5 shadow-2xs hover:scale-105 transition-all cursor-pointer whitespace-nowrap shrink-0"
-                  >
-                    <span>Купить</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

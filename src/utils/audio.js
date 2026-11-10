@@ -9,7 +9,7 @@ class OlfactiveAudioEngine {
     this.ctx = null;
     this.ambientNodes = null;
     this.ambientActive = false;
-    this.sfxEnabled = true;
+    this.sfxEnabled = false; // Muted per user request
     this.listeners = new Set();
   }
 

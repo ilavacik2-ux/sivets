@@ -18,9 +18,8 @@ export const SITE_DATA = {
   socials: [
     { name: "Telegram", handle: "@nastyasivets", url: "https://t.me/nastyasivets", icon: "Send", count: "48K+ подписчиков" },
     { name: "YouTube", handle: "@nastyasivets", url: "https://www.youtube.com/@nastyasivets", icon: "Youtube", count: "120K+ просмотров" },
-    { name: "Instagram*", handle: "@sivets", url: "https://www.instagram.com/sivets/", icon: "Instagram", count: "Личный блог" },
-    { name: "TikTok", handle: "@nastyasivets", url: "https://www.tiktok.com/@nastyasivets", icon: "Video", count: "Shorts & тренды" },
-    { name: "VK Видео", handle: "@nastyasivets", url: "https://vkvideo.ru/@nastyasivets", icon: "PlaySquare", count: "Эксклюзивы" }
+    { name: "VK Видео", handle: "@nastyasivets", url: "https://vkvideo.ru/@nastyasivets", icon: "PlaySquare", count: "Эксклюзивы" },
+    { name: "TikTok", handle: "@nastyasivets", url: "https://www.tiktok.com/@nastyasivets", icon: "Video", count: "Shorts & тренды" }
   ],
 
   manifesto: {

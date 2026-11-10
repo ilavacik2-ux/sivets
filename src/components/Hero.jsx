@@ -152,7 +152,6 @@ export default function Hero() {
           <div className="pt-3 flex flex-wrap items-center gap-3.5">
             <a
               href="#course"
-              onClick={() => soundEngine.playClick()}
               className="editorial-btn-dark px-7 py-4 rounded-full inline-flex items-center justify-center gap-2.5 shadow-sm text-center whitespace-nowrap cursor-pointer hover:scale-105 transition-all text-xs sm:text-sm font-semibold"
             >
               <span>Курс с Синхронизацией</span>
@@ -161,19 +160,10 @@ export default function Hero() {
 
             <a
               href="#sluu"
-              onClick={() => soundEngine.playClick()}
               className="editorial-btn-light px-7 py-4 rounded-full inline-flex items-center justify-center gap-2.5 shadow-2xs text-center whitespace-nowrap cursor-pointer hover:scale-105 transition-all text-xs sm:text-sm font-semibold"
             >
               <span>Ателье SLUU</span>
               <ArrowDown className="w-4 h-4 text-[#c5a059]" />
-            </a>
-
-            <a
-              href="#persona"
-              onClick={() => soundEngine.playClick()}
-              className="px-6 py-4 rounded-full border border-stone-300 hover:border-stone-500 bg-white text-stone-800 hover:text-stone-900 text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.12em] transition-all inline-flex items-center justify-center whitespace-nowrap cursor-pointer shadow-2xs hover:scale-105"
-            >
-              Философия &rarr;
             </a>
           </div>
 

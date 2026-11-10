@@ -283,15 +283,15 @@ export default function EducationAndMasterclasses() {
         </div>
 
         {/* Horizontal Carousel Track - Seamless Gallery with edge bleed and card peek */}
-        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="relative -mx-6 sm:-mx-12 lg:-mx-16">
           <div
             ref={boutiqueScrollRef}
-            className="flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 lg:px-8 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-6 sm:px-12 lg:px-16 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
           >
             {boutiqueItems.map((item) => (
               <div
                 key={item.id}
-                className="w-[84vw] sm:w-[380px] lg:w-[400px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/70 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-xl shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] group flex flex-col justify-between"
+                className="w-[82vw] sm:w-[350px] lg:w-[370px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] group flex flex-col justify-between"
               >
                 <div>
                   {/* Widescreen 16:9 Image Preview with Badges */}
@@ -396,9 +396,9 @@ export default function EducationAndMasterclasses() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => soundEngine.playClick()}
-                    className="editorial-btn-dark px-4 sm:px-5 py-2.5 rounded-xl flex items-center justify-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-xs cursor-pointer whitespace-nowrap shrink-0 max-w-[55%]"
+                    className="editorial-btn-dark px-3.5 sm:px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-wider hover:scale-105 transition-all shadow-xs cursor-pointer whitespace-nowrap shrink-0"
                   >
-                    <span className="truncate">{item.btnText}</span>
+                    <span>{item.btnText}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3] shrink-0" />
                   </a>
                 </div>

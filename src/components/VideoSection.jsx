@@ -172,15 +172,15 @@ export default function VideoSection() {
       </div>
 
       {/* Film Catalog Horizontal Track - Seamless Gallery with edge bleed and card peek */}
-      <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+      <div className="relative -mx-6 sm:-mx-12 lg:-mx-16">
         <div
           ref={videoScrollRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 lg:px-8 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-6 sm:px-12 lg:px-16 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
         >
           {filteredVideos.map((vid) => (
             <div
               key={vid.id}
-              className="w-[82vw] sm:w-[340px] lg:w-[360px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/70 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] flex flex-col justify-between group p-4 sm:p-5"
+              className="w-[82vw] sm:w-[320px] lg:w-[340px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group p-4 sm:p-5"
             >
               <div>
                 <a

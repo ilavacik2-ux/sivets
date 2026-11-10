@@ -22,7 +22,7 @@ export default function VideoSection() {
   const featuredVideo = videos[0]; // Sadovod investigation
 
   return (
-    <section id="videos" className="py-16 sm:py-20 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="videos" className="py-12 sm:py-14 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Chapter Editorial Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
         <div>

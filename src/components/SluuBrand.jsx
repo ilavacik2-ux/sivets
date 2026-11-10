@@ -7,9 +7,9 @@ export default function SluuBrand() {
   const { sluuBrand } = SITE_DATA;
 
   return (
-    <section id="sluu" className="py-16 sm:py-20 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="sluu" className="pt-8 sm:pt-10 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-9 pb-5 border-b border-stone-200/80 gap-6">
         <div>
           <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] mb-2 font-bold">
             <Sparkles className="w-4 h-4" />
@@ -25,7 +25,7 @@ export default function SluuBrand() {
       </div>
 
       {/* Hero Atmosphere Banner + Direct Store Channels */}
-      <div className="mb-14 rounded-3xl overflow-hidden border border-stone-200/90 bg-white shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
+      <div className="mb-10 rounded-3xl overflow-hidden border border-stone-200/90 bg-white shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
         {/* Lifestyle Photography */}
         <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-[16/11] overflow-hidden bg-stone-100">
           <img

@@ -117,9 +117,9 @@ export default function EducationAndMasterclasses() {
   ];
 
   return (
-    <section id="education" className="py-16 sm:py-20 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="education" className="py-12 sm:py-14 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-9 pb-5 border-b border-stone-200/80 gap-6">
         <div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight [text-wrap:balance]">
             Курс по парфюмерии <span className="italic font-light text-stone-500">& лекторий</span>

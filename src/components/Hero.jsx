@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { IconTelegram, IconYouTube, IconInstagram, IconTikTok, IconVKVideo } from './Icons';
 
 export default function Hero() {
@@ -39,26 +39,19 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-12 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
+    <section className="relative flex flex-col justify-between pt-24 sm:pt-28 pb-6 sm:pb-8 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto">
       {/* 1. Grand Masthead Typographic Display */}
-      <div className="pt-2 sm:pt-4 pb-8 sm:pb-10 border-b border-stone-200/60">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] font-bold">
-            <Sparkles className="w-4 h-4" />
-            <span>Парфюмерный исследователь &bull; Создательница SLUU</span>
-          </div>
-          <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-600 font-semibold">
-            Москва &bull; Париж &bull; Грас
-          </div>
-        </div>
-
+      <div className="pt-1 sm:pt-2 pb-6 sm:pb-8 border-b border-stone-200/60 flex flex-col md:flex-row md:items-end justify-between gap-3">
         <h1 className="font-serif text-[12vw] sm:text-[10vw] lg:text-[7.2rem] xl:text-[8.2rem] font-light leading-[0.88] tracking-tight text-stone-900 select-none">
           НАСТЯ <span className="italic font-extralight text-stone-400">СИВЕЦ</span>
         </h1>
+        <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-600 font-semibold md:pb-2 whitespace-nowrap">
+          Москва &bull; Париж &bull; Грас
+        </div>
       </div>
 
       {/* 2. Composition Grid */}
-      <div className="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="py-7 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         {/* Left Column: Natural Museum-Grade Portrait with Floating Label */}
         <div className="lg:col-span-6 xl:col-span-6 relative">
           <div className="relative aspect-[3/4] sm:aspect-[4/5] max-h-[660px] overflow-hidden bg-stone-100 group rounded-3xl shadow-md border border-stone-200/80">
@@ -207,7 +200,7 @@ export default function Hero() {
       </div>
 
       {/* 3. Bottom Ledger: Sleek Luxury Social Links */}
-      <div className="pt-8 border-t border-stone-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="pt-6 border-t border-stone-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
         <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-700 font-bold">
           ОФИЦИАЛЬНЫЕ РЕСУРСЫ:
         </div>

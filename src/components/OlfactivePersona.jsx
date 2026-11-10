@@ -24,9 +24,9 @@ export default function OlfactivePersona() {
   ];
 
   return (
-    <section id="persona" className="py-14 sm:py-18 px-6 sm:px-12 lg:px-16 max-w-6xl mx-auto scroll-mt-24">
+    <section id="persona" className="py-6 sm:py-8 px-6 sm:px-12 lg:px-16 max-w-6xl mx-auto scroll-mt-24">
       {/* Editorial Manifesto Pavilion Card */}
-      <div className="relative rounded-3xl bg-gradient-to-b from-white via-[#FAF8F5] to-white border border-stone-200/90 p-8 sm:p-14 lg:p-16 shadow-sm overflow-hidden">
+      <div className="relative rounded-3xl bg-gradient-to-b from-white via-[#FAF8F5] to-white border border-stone-200/90 p-7 sm:p-12 lg:p-14 shadow-sm overflow-hidden">
         {/* Subtle Decorative Ambient Glow */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#fce7f3]/40 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#fef3c7]/30 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />

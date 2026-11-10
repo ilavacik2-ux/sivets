@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SITE_DATA } from '../data/content';
 import { IconYouTube, IconVKVideo } from './Icons';
 import { soundEngine } from '../utils/audio';
-import { Play, Film, ArrowUpRight } from 'lucide-react';
+import { Play, Film, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function VideoSection() {
   const { videos } = SITE_DATA;
   const [activeFilter, setActiveFilter] = useState('all');
+  const videoScrollRef = useRef(null);
+
+  const scrollVideos = (direction) => {
+    if (videoScrollRef.current) {
+      soundEngine.playClick();
+      const scrollAmount = direction === 'left' ? -360 : 360;
+      videoScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const categories = [
     { id: 'all', label: 'Все фильмы' },
@@ -136,17 +145,54 @@ export default function VideoSection() {
         </div>
       )}
 
-      {/* Film Catalog Grid (Balanced, Rich, No Awkward Empty Voids) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {/* Film Catalog Header with Controls */}
+      <div className="mt-8 mb-5 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div className="text-xs font-sans uppercase tracking-[0.16em] text-stone-900 font-bold">
+            Каталог фильмов & расследований
+          </div>
+          <p className="text-xs text-stone-500 font-sans mt-0.5">
+            Листайте вбок для просмотра всех выпусков
+          </p>
+        </div>
+
+        {/* Carousel arrows */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => scrollVideos('left')}
+            className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+            aria-label="Предыдущее видео"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scrollVideos('right')}
+            className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+            aria-label="Следующее видео"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Film Catalog Horizontal Track */}
+      <div
+        ref={videoScrollRef}
+        className="flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
         {filteredVideos.map((vid) => (
-          <div key={vid.id} className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group p-5 sm:p-6">
+          <div
+            key={vid.id}
+            className="w-[82vw] sm:w-[340px] lg:w-[360px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group p-4 sm:p-5"
+          >
             <div>
               <a
                 href={vid.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="block relative aspect-[16/9] overflow-hidden rounded-xl mb-4 bg-stone-100 border border-stone-200/60 cursor-pointer shadow-2xs"
+                className="block relative aspect-[16/9] overflow-hidden rounded-xl mb-3.5 bg-stone-100 border border-stone-200/60 cursor-pointer shadow-2xs"
               >
                 <img
                   src={vid.image}
@@ -159,54 +205,44 @@ export default function VideoSection() {
                 />
 
                 <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 ml-0.5 fill-current text-[#e8559a]" />
+                  <div className="w-11 h-11 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Play className="w-4 h-4 ml-0.5 fill-current text-[#e8559a]" />
                   </div>
                 </div>
               </a>
 
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="text-xs sm:text-sm font-sans uppercase tracking-wider text-[#e8559a] font-bold">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                   {vid.tag}
                 </span>
-                <span className="text-xs text-stone-500 font-sans font-medium">
+                <span className="text-[11px] text-stone-400 font-sans font-medium">
                   {vid.duration || 'Видео'}
                 </span>
               </div>
 
-              <h3 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug mb-2.5 group-hover:text-[#e8559a] transition-colors">
+              <h3 className="font-serif text-lg sm:text-xl font-medium text-stone-900 leading-snug mb-2 group-hover:text-[#e8559a] transition-colors line-clamp-2">
                 {vid.title}
               </h3>
 
-              {/* Engaging Synopsis to eliminate empty space */}
               {vid.synopsis && (
-                <p className="text-sm text-stone-600 font-normal leading-relaxed mb-3">
+                <p className="text-xs text-stone-600 font-sans font-normal leading-relaxed mb-3 line-clamp-2">
                   {vid.synopsis}
                 </p>
               )}
-
-              {/* Highlights tags */}
-              {vid.highlights && (
-                <div className="text-xs font-sans text-stone-400 font-medium mb-3 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
-                  <span>{vid.highlights}</span>
-                </div>
-              )}
             </div>
 
-            {/* Clear, Prominent Interactive Platform Buttons */}
-            <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-stone-100 mt-auto">
+            {/* Platform Buttons */}
+            <div className="grid grid-cols-2 gap-2 pt-3.5 border-t border-stone-100 mt-auto">
               <a
                 href={vid.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-900 hover:text-red-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
+                className="px-3 py-2 rounded-xl border border-stone-200 hover:border-red-500/50 bg-stone-50/70 hover:bg-red-50/40 text-stone-900 hover:text-red-600 transition-all flex items-center justify-center gap-1.5 text-xs font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
                 title="Смотреть на YouTube"
               >
-                <IconYouTube className="w-4 h-4 text-red-600 group-hover/btn:scale-110 transition-transform" />
+                <IconYouTube className="w-3.5 h-3.5 text-red-600 group-hover/btn:scale-110 transition-transform" />
                 <span>YouTube</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-red-500" />
               </a>
 
               <a
@@ -214,12 +250,11 @@ export default function VideoSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEngine.playClick()}
-                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-900 hover:text-blue-600 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
+                className="px-3 py-2 rounded-xl border border-stone-200 hover:border-blue-500/50 bg-stone-50/70 hover:bg-blue-50/40 text-stone-900 hover:text-blue-600 transition-all flex items-center justify-center gap-1.5 text-xs font-sans font-semibold group/btn shadow-2xs cursor-pointer hover:scale-105 whitespace-nowrap"
                 title="Смотреть в VK Видео"
               >
-                <IconVKVideo className="w-4 h-4 text-[#0077FF] group-hover/btn:scale-110 transition-transform" />
+                <IconVKVideo className="w-3.5 h-3.5 text-[#0077FF] group-hover/btn:scale-110 transition-transform" />
                 <span>VK Видео</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover/btn:text-blue-500" />
               </a>
             </div>
           </div>

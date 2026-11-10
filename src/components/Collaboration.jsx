@@ -95,18 +95,20 @@ export default function Collaboration() {
 
               <button
                 onClick={copyEmail}
-                className="editorial-btn-light w-full py-4 rounded-xl flex items-center justify-center gap-2.5 text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider border border-stone-300 hover:border-stone-500 bg-white transition-all cursor-pointer shadow-2xs hover:scale-[1.02]"
+                className="w-full py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-sans font-medium uppercase tracking-wider border border-stone-200 hover:border-stone-400 bg-white text-stone-800 transition-all cursor-pointer shadow-2xs hover:scale-[1.01] active:scale-95 overflow-hidden"
                 title="Нажмите, чтобы скопировать email"
               >
-                <span className="font-mono text-sm sm:text-base font-semibold">{collaboration.email}</span>
+                <span className="truncate max-w-[200px] sm:max-w-none text-xs sm:text-sm lowercase font-medium tracking-normal text-stone-900">
+                  {collaboration.email}
+                </span>
                 {copiedEmail ? (
-                  <Check className="w-4 h-4 text-emerald-600 ml-1" />
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                 ) : (
-                  <Copy className="w-4 h-4 text-stone-400 ml-1" />
+                  <Copy className="w-3.5 h-3.5 text-stone-400 shrink-0" />
                 )}
                 {copiedEmail && (
-                  <span className="text-xs text-emerald-600 font-sans font-bold">
-                    (Скопировано!)
+                  <span className="text-[11px] text-emerald-600 font-sans font-bold shrink-0">
+                    (Скопировано)
                   </span>
                 )}
               </button>

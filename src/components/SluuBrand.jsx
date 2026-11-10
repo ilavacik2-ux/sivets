@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SITE_DATA } from '../data/content';
 import { soundEngine } from '../utils/audio';
-import { ShoppingBag, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ShoppingBag, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function SluuBrand() {
   const { sluuBrand } = SITE_DATA;
+  const sluuScrollRef = useRef(null);
+
+  const scrollSluu = (direction) => {
+    if (sluuScrollRef.current) {
+      soundEngine.playClick();
+      const scrollAmount = direction === 'left' ? -300 : 300;
+      sluuScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="sluu" className="pt-8 sm:pt-12 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
@@ -111,18 +120,46 @@ export default function SluuBrand() {
         </div>
       </div>
 
-      {/* 4 Authentic Blend Cards with Real Product Photos */}
+      {/* 4 Authentic Blend Cards with Horizontal Smooth Scroll */}
       <div>
-        <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-700 mb-8 pb-3 border-b border-stone-200/80 font-bold flex items-center justify-between">
-          <span>КОЛЛЕКЦИЯ БЛЕНДОВ &bull; 100% ЭФИРНЫЕ МАСЛА</span>
-          <span className="hidden sm:inline text-stone-500 text-xs font-semibold">Терапевтический класс</span>
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-3 border-b border-stone-200/80">
+          <div>
+            <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-900 font-bold">
+              Коллекция блендов &bull; 100% эфирные масла
+            </div>
+            <p className="text-xs text-stone-500 font-sans mt-0.5">
+              Листайте вбок для выбора аромата
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => scrollSluu('left')}
+              className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+              aria-label="Предыдущий бленд"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scrollSluu('right')}
+              className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+              aria-label="Следующий бленд"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Horizontal Track */}
+        <div
+          ref={sluuScrollRef}
+          className="flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {sluuBrand.products.map((prod) => (
             <div
               key={prod.id}
-              className="editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
+              className="w-[78vw] sm:w-[280px] lg:w-[290px] shrink-0 snap-start editorial-card rounded-2xl overflow-hidden border border-stone-200/90 hover:border-stone-400/80 bg-white transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
             >
               <div>
                 {/* Product Photo */}
@@ -136,30 +173,30 @@ export default function SluuBrand() {
                     height={400}
                     className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute top-3 left-3 text-xs font-sans font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
+                  <div className="absolute top-2.5 left-2.5 text-[11px] font-sans font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-stone-900/85 text-white backdrop-blur-md">
                     {prod.badge}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-5 sm:p-6 space-y-2.5">
-                  <div className="text-xs font-sans uppercase tracking-wider text-[#e8559a] font-bold">
+                <div className="p-4 sm:p-5 space-y-2">
+                  <div className="text-[11px] font-sans uppercase tracking-wider text-[#e8559a] font-bold">
                     {prod.type}
                   </div>
-                  <h4 className="font-serif text-xl sm:text-2xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
+                  <h4 className="font-serif text-lg sm:text-xl font-medium text-stone-900 leading-snug group-hover:text-[#e8559a] transition-colors">
                     «{prod.name}»
                   </h4>
-                  <p className="text-sm text-stone-700 font-normal leading-relaxed">
+                  <p className="text-xs text-stone-600 font-sans font-normal leading-relaxed line-clamp-2">
                     {prod.desc}
                   </p>
 
-                  {/* Aromatic composition & therapeutic benefit to fill empty space */}
+                  {/* Aromatic composition */}
                   {prod.notes && (
-                    <div className="pt-3 border-t border-stone-100 space-y-1">
-                      <div className="text-[11px] font-sans uppercase tracking-wider text-stone-400 font-bold">
-                        Ключевые масла:
+                    <div className="pt-2.5 border-t border-stone-100 space-y-0.5">
+                      <div className="text-[10px] font-sans uppercase tracking-wider text-stone-400 font-bold">
+                        Масла:
                       </div>
-                      <div className="text-xs text-stone-800 font-medium leading-relaxed">
+                      <div className="text-xs text-stone-800 font-medium leading-relaxed truncate">
                         {prod.notes}
                       </div>
                     </div>
@@ -168,16 +205,16 @@ export default function SluuBrand() {
                   {prod.benefit && (
                     <div className="text-xs text-[#e8559a] font-semibold flex items-center gap-1.5 pt-0.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
-                      <span>{prod.benefit}</span>
+                      <span className="truncate">{prod.benefit}</span>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Price & Action (Guaranteed whitespace-nowrap, no towers) */}
-              <div className="p-5 sm:p-6 pt-0 mt-auto">
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
-                  <span className="font-mono text-xl sm:text-2xl font-bold text-stone-900 whitespace-nowrap shrink-0">
+              {/* Price & Action */}
+              <div className="p-4 sm:p-5 pt-0 mt-auto">
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
+                  <span className="font-mono text-lg sm:text-xl font-bold text-stone-900 whitespace-nowrap shrink-0">
                     {prod.price}
                   </span>
 
@@ -186,10 +223,10 @@ export default function SluuBrand() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => soundEngine.playClick()}
-                    className="editorial-btn-dark px-5 py-2.5 rounded-xl text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider flex items-center gap-2 shadow-xs hover:scale-105 transition-all cursor-pointer whitespace-nowrap shrink-0"
+                    className="editorial-btn-dark px-4 py-2 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider flex items-center gap-1.5 shadow-2xs hover:scale-105 transition-all cursor-pointer whitespace-nowrap shrink-0"
                   >
-                    <span>Заказать</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#f878b3]" />
+                    <span>Купить</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#f878b3]" />
                   </a>
                 </div>
               </div>

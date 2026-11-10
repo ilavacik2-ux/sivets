@@ -53,7 +53,7 @@ export default function Navbar() {
         >
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-stone-300/80 shadow-2xs group-hover:scale-105 transition-transform duration-300 bg-stone-100 shrink-0">
             <img
-              src="/favicon.png"
+              src="./favicon.png"
               alt="Настя Сивец"
               width={32}
               height={32}

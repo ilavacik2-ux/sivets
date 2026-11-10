@@ -67,18 +67,7 @@ export default function Hero() {
               }`}
             />
 
-            {/* Architectural Glass Label on Portrait */}
-            <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/70 shadow-lg flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#f878b3] animate-pulse" />
-                <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.14em] text-stone-900">
-                  Архив формул & исследований
-                </span>
-              </div>
-              <span className="text-xs font-mono font-medium text-stone-500">
-                2026
-              </span>
-            </div>
+            {/* Subtle clean frame border without obstructive overlays */}
           </div>
         </div>
 
@@ -94,53 +83,64 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Interactive Sensory Scent Accords (Clear, Large, Highly Readable) */}
+          {/* Interactive Sensory Scent Accords — Refined Haute Parfumerie Design */}
           <div className="pt-6 border-t border-stone-200/90 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs sm:text-sm uppercase tracking-[0.16em] text-stone-900 font-sans font-bold">
-                ОЛЬФАКТОРНЫЙ ФОКУС &bull; АВТОРСКИЕ АККОРДЫ:
-              </span>
-              <span className="text-xs text-[#e8559a] font-medium font-sans">
-                нажмите на ноту
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#f878b3]" />
+              <span className="text-xs uppercase tracking-[0.18em] text-stone-900 font-sans font-bold">
+                Ольфакторный фокус &bull; Авторские аккорды
               </span>
             </div>
 
-            {/* Interactive Accord Chips - Large, Bold & Clear */}
-            <div className="flex flex-wrap gap-2.5">
-              {chords.map((chord, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    soundEngine.playChime(chord.freq, 0.8);
-                    setActiveChord(activeChord === chord.name ? null : chord.name);
-                  }}
-                  className={`px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium font-sans tracking-wide transition-all duration-200 cursor-pointer border ${
-                    activeChord === chord.name
-                      ? 'bg-stone-900 text-white border-stone-900 shadow-md scale-105 ring-2 ring-[#f878b3]/50'
-                      : 'bg-white hover:bg-[#FAF8F5] text-stone-900 border-stone-300 hover:border-stone-500 hover:scale-105 shadow-2xs'
-                  }`}
-                  title={chord.note}
-                >
-                  <span>{chord.name}</span>
-                </button>
-              ))}
+            {/* Interactive Accord Chips — Haute Couture pill styling */}
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              {chords.map((chord, idx) => {
+                const isActive = activeChord === chord.name;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      soundEngine.playChime(chord.freq, 0.8);
+                      setActiveChord(isActive ? null : chord.name);
+                    }}
+                    className={`group relative px-4 py-2.5 rounded-full text-xs sm:text-sm font-sans tracking-wide transition-all duration-300 cursor-pointer border ${
+                      isActive
+                        ? 'bg-stone-900 text-white border-stone-900 shadow-md ring-2 ring-[#f878b3]/40'
+                        : 'bg-white hover:bg-stone-50 text-stone-800 border-stone-200 hover:border-stone-400 shadow-2xs'
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <span className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                        isActive ? 'bg-[#f878b3]' : 'bg-stone-300 group-hover:bg-[#f878b3]'
+                      }`} />
+                      <span className="font-medium">{chord.name}</span>
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Active Chord Micro-Note */}
+            {/* Active Chord Detail Card — Elegant luxury drawer */}
             {activeChord && (
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#fdf2f7] border border-[#f878b3]/40 text-sm sm:text-base font-sans text-stone-900 animate-in fade-in duration-200 flex items-center justify-between shadow-xs">
-                <div>
-                  <span className="font-bold text-[#e8559a] mr-2 uppercase tracking-wider text-xs sm:text-sm">
-                    ОЛЬФАКТОРНАЯ НОТА:
-                  </span>
-                  <span className="font-medium text-stone-900 text-sm sm:text-base">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#FAF8F5] to-white border border-[#f878b3]/30 text-stone-900 animate-in fade-in duration-300 flex items-center justify-between shadow-sm">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-sans font-bold text-[#e8559a] uppercase tracking-widest">
+                      Нота композиции
+                    </span>
+                    <span className="text-stone-300">&bull;</span>
+                    <span className="font-serif italic text-stone-900 font-medium text-base sm:text-lg">
+                      {activeChord}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-stone-600 font-sans font-normal">
                     {chords.find(c => c.name === activeChord)?.note}
-                  </span>
+                  </p>
                 </div>
                 <button
                   onClick={() => setActiveChord(null)}
-                  className="text-stone-400 hover:text-stone-700 text-lg px-2 cursor-pointer"
-                  aria-label="Закрыть описание ноты"
+                  className="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-400 hover:text-stone-700 flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-4"
+                  aria-label="Закрыть"
                 >
                   &times;
                 </button>

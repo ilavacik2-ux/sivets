@@ -139,7 +139,8 @@ export default function EducationAndMasterclasses() {
               <img
                 src={course.image}
                 alt={course.title}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 width={800}
                 height={450}
                 className="w-full h-full object-contain bg-[#f7f5f2]"
@@ -261,7 +262,8 @@ export default function EducationAndMasterclasses() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                     width={700}
                     height={394}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"

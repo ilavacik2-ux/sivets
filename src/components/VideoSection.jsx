@@ -72,7 +72,8 @@ export default function VideoSection() {
                 <img
                   src={featuredVideo.image}
                   alt={featuredVideo.title}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                   width={800}
                   height={450}
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
@@ -150,7 +151,8 @@ export default function VideoSection() {
                 <img
                   src={vid.image}
                   alt={vid.title}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                   width={400}
                   height={225}
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

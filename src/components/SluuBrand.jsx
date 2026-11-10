@@ -7,56 +7,53 @@ export default function SluuBrand() {
   const { sluuBrand } = SITE_DATA;
 
   return (
-    <section id="sluu" className="pt-8 sm:pt-10 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
+    <section id="sluu" className="pt-8 sm:pt-12 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto scroll-mt-24">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-9 pb-5 border-b border-stone-200/80 gap-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-5 border-b border-stone-200/80 gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-[0.16em] text-[#e8559a] mb-2 font-bold">
-            <Sparkles className="w-4 h-4" />
-            <span>Бренд Насти Сивец</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight">
-            SLUU <span className="italic font-light text-stone-500">Aromatherapy</span>
+            SLUU <span className="italic font-light text-stone-400">Aromatherapy</span>
           </h2>
         </div>
-        <p className="text-base sm:text-lg text-stone-700 font-normal max-w-lg sm:text-right">
+        <p className="text-base sm:text-lg text-stone-600 font-sans font-normal max-w-lg sm:text-right">
           {sluuBrand.description}
         </p>
       </div>
 
       {/* Hero Atmosphere Banner + Direct Store Channels */}
-      <div className="mb-10 rounded-3xl overflow-hidden border border-stone-200/90 bg-white shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
+      <div className="mb-12 rounded-3xl overflow-hidden border border-stone-200/80 bg-white shadow-xs grid grid-cols-1 lg:grid-cols-12 items-stretch">
         {/* Lifestyle Photography */}
-        <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-[16/11] overflow-hidden bg-stone-100">
+        <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] overflow-hidden bg-stone-100 flex items-center justify-center">
           <img
             src={sluuBrand.heroImage}
             alt="SLUU Aromatherapy — ритуалы заботы о себе"
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             width={900}
             height={600}
             className="w-full h-full object-cover object-center filter contrast-[1.02]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent lg:hidden" />
-          <div className="absolute bottom-4 left-4 lg:hidden text-white font-serif text-xl font-medium">
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/10 to-transparent" />
+          <div className="absolute bottom-5 left-5 sm:bottom-7 sm:left-7 text-white font-serif text-xl sm:text-2xl font-light tracking-wide">
             100% терапевтические бленды
           </div>
         </div>
 
         {/* Narrative & Store Access */}
-        <div className="lg:col-span-5 p-8 sm:p-10 space-y-6">
-          <div className="space-y-3">
-            <span className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-[#e8559a] font-bold">
-              РИТУАЛЫ ЗАМЕДЛЕНИЯ
+        <div className="lg:col-span-5 p-7 sm:p-10 flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#e8559a] font-bold">
+              Ритуалы замедления
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900 leading-snug">
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-[2rem] font-normal text-stone-900 leading-snug">
               {sluuBrand.tagline}
             </h3>
-            <p className="text-sm sm:text-base text-stone-700 font-normal leading-relaxed">
-              Чистые эфирные масла без синтетических фиксаторов и отдушек. Каждая формула создана для точечной работы с эмоциональным состоянием.
+            <p className="text-sm sm:text-base text-stone-600 font-sans font-normal leading-relaxed">
+              Чистые эфирные масла без синтетических фиксаторов и отдушек. Каждая формула создана для точечной работы с эмоциональным состоянием и восстановления баланса.
             </p>
           </div>
 
-          <div className="space-y-3 pt-3 border-t border-stone-100">
+          <div className="space-y-3 pt-5 border-t border-stone-100">
             <div className="text-xs sm:text-sm font-sans uppercase tracking-[0.14em] text-stone-700 font-bold mb-3">
               ГДЕ КУПИТЬ ПРОДУКЦИЮ:
             </div>
@@ -133,7 +130,8 @@ export default function SluuBrand() {
                   <img
                     src={prod.image}
                     alt={prod.name}
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                     width={400}
                     height={400}
                     className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"

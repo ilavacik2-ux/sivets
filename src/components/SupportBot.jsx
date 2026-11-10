@@ -4,9 +4,18 @@ import { soundEngine } from '../utils/audio';
 
 export default function SupportBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showPrompt, setShowPrompt] = useState(true);
+  // Default to collapsed on mobile to avoid covering half the screen
+  const [showPrompt, setShowPrompt] = useState(false);
   const [hasUnread, setHasUnread] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    // Only auto-show prompt on desktop after delay, leave mobile clean
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      const timer = setTimeout(() => setShowPrompt(true), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   const [chatHistory, setChatHistory] = useState([
     {
       id: 1,
@@ -162,14 +171,14 @@ export default function SupportBot() {
   };
 
   return (
-    <aside aria-label="Служба заботы Насти" className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
-      {/* Speech Bubble & Quick Chips (shown when closed) */}
+    <aside aria-label="Служба заботы Насти" className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end pointer-events-none">
+      {/* Speech Bubble & Quick Chips (hidden on mobile, shown on tablet/desktop) */}
       {!isOpen && showPrompt && (
-        <div className="mb-3 flex flex-col items-end gap-2 animate-in fade-in slide-in-from-bottom-3 duration-300">
+        <div className="mb-3 hidden md:flex flex-col items-end gap-2 animate-in fade-in slide-in-from-bottom-3 duration-300 pointer-events-auto">
           {/* Main Speech Card - Clickable to open chat */}
           <div
             onClick={handleOpen}
-            className="relative rounded-2xl bg-white px-4 py-3 text-sm font-medium text-stone-800 shadow-xl border border-stone-200/90 max-w-[270px] text-right cursor-pointer hover:border-stone-400 transition-all hover:scale-[1.02]"
+            className="relative rounded-2xl bg-white px-4 py-3 text-xs sm:text-sm font-medium text-stone-800 shadow-xl border border-stone-200/90 max-w-[260px] text-right cursor-pointer hover:border-stone-400 transition-all hover:scale-[1.02]"
             title="Нажмите, чтобы открыть диалог"
           >
             <button
@@ -187,17 +196,17 @@ export default function SupportBot() {
             </p>
           </div>
 
-          {/* Quick Action Chips exactly like in Nastya's screenshot */}
-          <div className="flex flex-col items-end gap-2">
+          {/* Quick Action Chips */}
+          <div className="flex flex-col items-end gap-1.5">
             <button
               onClick={() => handleQuickQuestion('materials')}
-              className="px-4 py-2 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs font-bold tracking-wide shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               Вопрос по материалам
             </button>
             <button
               onClick={() => handleQuickQuestion('payment')}
-              className="px-4 py-2 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs sm:text-sm font-bold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F878B3]/10 text-[#F878B3] border border-[#F878B3]/50 text-xs font-bold tracking-wide shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               Вопрос по оплате
             </button>
@@ -209,12 +218,12 @@ export default function SupportBot() {
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="relative w-14 h-14 rounded-full bg-[#F878B3] hover:bg-[#f762a6] text-white flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+          className="relative w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#F878B3] hover:bg-[#e8559a] text-white flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer pointer-events-auto group ring-4 ring-white/60"
           aria-label="Открыть онлайн-чат поддержки"
         >
-          <MessageCircle className="w-6 h-6 fill-current" />
+          <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
           {hasUnread && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-600 text-white text-[11px] font-bold flex items-center justify-center ring-2 ring-white animate-pulse">
+            <span className="absolute -top-1 -right-1 w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#e8559a] text-white text-[10px] sm:text-[11px] font-bold flex items-center justify-center ring-2 ring-white">
               1
             </span>
           )}
@@ -223,7 +232,7 @@ export default function SupportBot() {
 
       {/* Expanded Interactive Chat Modal */}
       {isOpen && (
-        <div className="w-[92vw] sm:w-[400px] h-[550px] max-h-[85vh] rounded-3xl bg-white border border-stone-200/90 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="w-[94vw] sm:w-[400px] h-[540px] max-h-[82vh] rounded-3xl bg-white border border-stone-200/90 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 pointer-events-auto">
           {/* Chat Header */}
           <div className="px-5 py-4 bg-[#FAF8F5] border-b border-stone-200 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">

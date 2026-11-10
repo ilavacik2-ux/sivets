@@ -150,17 +150,16 @@ export default function SluuBrand() {
           </div>
         </div>
 
-        {/* Horizontal Track - Seamless Gallery with edge bleed and card peek */}
-        <div className="relative -mx-6 sm:-mx-12 lg:-mx-16">
-          <div
-            ref={sluuScrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-6 sm:px-12 lg:px-16 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
-          >
-            {sluuBrand.products.map((prod) => (
-              <div
-                key={prod.id}
-                className="w-[78vw] sm:w-[280px] lg:w-[290px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group"
-              >
+        {/* Horizontal Track */}
+        <div
+          ref={sluuScrollRef}
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track pr-6 sm:pr-8"
+        >
+          {sluuBrand.products.map((prod) => (
+            <div
+              key={prod.id}
+              className="w-[78vw] sm:w-[270px] md:w-[280px] lg:w-[290px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group"
+            >
                 <div>
                   {/* Product Photo */}
                   <div className="relative aspect-square overflow-hidden bg-[#FAF8F5]">
@@ -234,7 +233,6 @@ export default function SluuBrand() {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 }

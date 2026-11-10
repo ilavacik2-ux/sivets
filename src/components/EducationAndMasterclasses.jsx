@@ -282,17 +282,16 @@ export default function EducationAndMasterclasses() {
           </div>
         </div>
 
-        {/* Horizontal Carousel Track - Seamless Gallery with edge bleed and card peek */}
-        <div className="relative -mx-6 sm:-mx-12 lg:-mx-16">
-          <div
-            ref={boutiqueScrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-6 sm:px-12 lg:px-16 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
-          >
-            {boutiqueItems.map((item) => (
-              <div
-                key={item.id}
-                className="w-[82vw] sm:w-[350px] lg:w-[370px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] group flex flex-col justify-between"
-              >
+        {/* Horizontal Carousel Track */}
+        <div
+          ref={boutiqueScrollRef}
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track pr-6 sm:pr-8"
+        >
+          {boutiqueItems.map((item) => (
+            <div
+              key={item.id}
+              className="w-[85vw] sm:w-[320px] md:w-[340px] lg:w-[350px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] group flex flex-col justify-between"
+            >
                 <div>
                   {/* Widescreen 16:9 Image Preview with Badges */}
                   <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
@@ -406,7 +405,6 @@ export default function EducationAndMasterclasses() {
             </div>
           ))}
         </div>
-      </div>
       </div>
     </section>
   );

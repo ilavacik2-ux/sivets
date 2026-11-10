@@ -171,18 +171,17 @@ export default function VideoSection() {
         </div>
       </div>
 
-      {/* Film Catalog Horizontal Track - Seamless Gallery with edge bleed and card peek */}
-      <div className="relative -mx-6 sm:-mx-12 lg:-mx-16">
-        <div
-          ref={videoScrollRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-6 sm:px-12 lg:px-16 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
-        >
-          {filteredVideos.map((vid) => (
-            <div
-              key={vid.id}
-              className="w-[82vw] sm:w-[320px] lg:w-[340px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group p-4 sm:p-5"
-            >
-              <div>
+      {/* Film Catalog Horizontal Track */}
+      <div
+        ref={videoScrollRef}
+        className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track pr-6 sm:pr-8"
+      >
+        {filteredVideos.map((vid) => (
+          <div
+            key={vid.id}
+            className="w-[85vw] sm:w-[320px] md:w-[330px] lg:w-[340px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group p-4 sm:p-5"
+          >
+            <div>
                 <a
                   href={vid.youtube}
                   target="_blank"
@@ -256,7 +255,6 @@ export default function VideoSection() {
             </div>
           ))}
         </div>
-      </div>
     </section>
   );
 }

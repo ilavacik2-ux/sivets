@@ -132,7 +132,7 @@ export default function SluuBrand() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 lg:hidden">
             <button
               onClick={() => scrollSluu('left')}
               className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-800 bg-white text-stone-700 hover:text-stone-900 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
@@ -150,15 +150,15 @@ export default function SluuBrand() {
           </div>
         </div>
 
-        {/* Horizontal Track */}
+        {/* Desktop: Balanced 4-card grid perfectly aligned to container. Mobile/Tablet: Smooth horizontal carousel */}
         <div
           ref={sluuScrollRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track pr-6 sm:pr-8"
+          className="flex lg:grid lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth gallery-carousel-track"
         >
           {sluuBrand.products.map((prod) => (
             <div
               key={prod.id}
-              className="w-[78vw] sm:w-[270px] md:w-[280px] lg:w-[290px] shrink-0 snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group"
+              className="w-[78vw] sm:w-[270px] md:w-[280px] lg:w-auto shrink-0 lg:shrink snap-start rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col justify-between group"
             >
                 <div>
                   {/* Product Photo */}
